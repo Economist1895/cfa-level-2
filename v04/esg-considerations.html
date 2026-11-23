@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>ESG Considerations · L2 Quick Notes</title>
+  <meta name="theme-color" content="#f6f5f1" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f1115" media="(prefers-color-scheme: dark)">
+  <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+  <link rel="preload" href="../assets/vendor/katex/fonts/KaTeX_Main-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/vendor/katex/fonts/KaTeX_Math-Italic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-root="../" data-vol="4" data-module="CFA2022">
+  <header class="topbar">
+    <div class="wrap">
+      <a class="back-btn" href="../index.html" aria-label="All notes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>All notes</a>
+      <span class="title">ESG Considerations</span>
+      <button class="icon-btn theme-toggle" type="button"></button>
+    </div>
+    <div class="progress"></div>
+  </header>
+
+  <main class="wrap">
+    <div class="m-head">
+      <span class="eyebrow" data-fill="eyebrow">Corporate Finance</span>
+      <h1>ESG Considerations in Investment Analysis</h1>
+      <div class="meta"></div>
+      <nav class="chips" aria-label="Sections"></nav>
+    </div>
+
+    <div class="tldr">
+      <h2>In 30 seconds</h2>
+      <ul class="pts">
+        <li>Ownership × voting power decides the conflict: dispersed/dispersed → <b>principal–agent</b>; concentrated voting → <b>principal–principal</b>.</li>
+        <li>Judge the board: independence, CEO duality, committees, skills, tenure (&gt;10 yrs = long), diversity. Plus pay and voting rights.</li>
+        <li>ESG data is <b>voluntary and inconsistent</b> → comparability problems. Materiality depends on industry and <b>horizon</b>.</li>
+        <li>Equity: ESG finds <b>opportunities and downside</b>. Fixed income: mainly <b>downside</b> (bond is capped at par).</li>
+        <li>Integration = adjust forecasts (revenue, costs, capex, impairments) then valuation (discount rate, multiples; <b>credit spread</b> for bonds).</li>
+      </ul>
+    </div>
+
+    <!-- 1 ─────────────────────────────────────────── -->
+    <section class="sec" id="own" data-chip="Ownership">
+      <h2><span class="n">01</span>Ownership structures &amp; conflicts</h2>
+      <ul class="pts">
+        <li><b>Dispersed</b>: many holders, none can control. <b>Concentrated</b>: a holder or group (family, company, state) can control. <b>Hybrid</b> in between. Concentrated is the global norm.</li>
+        <li>Control ≠ ownership: a controller can be a <b>minority</b> holder via <b>dual-class shares</b>, <b>pyramid</b> (vertical) structures or <b>cross-holdings</b> (horizontal).</li>
+      </ul>
+      <div class="tbl-wrap"><table class="tbl">
+        <tr><th>Ownership / voting</th><th>Result</th></tr>
+        <tr><td>Dispersed / dispersed</td><td>Weak holders, strong managers → <b>principal–agent</b></td></tr>
+        <tr><td>Concentrated / concentrated</td><td>Strong holders, weak managers → <b>principal–principal</b> (controller vs minority)</td></tr>
+        <tr><td>Dispersed / concentrated</td><td><b>Principal–principal</b>; controller owns &lt; 50% (dual-class, pyramid)</td></tr>
+        <tr><td>Concentrated / dispersed</td><td><b>Voting caps</b> (legal limits on large stakes, e.g. to block foreign control)</td></tr>
+      </table></div>
+      <div class="callout key"><span class="ic">💡</span><div>Diagnose from the vignette: % owned by the largest holder <b>and</b> whether votes are one-share-one-vote. A family with 55% and equal votes = concentrated/concentrated → principal–principal.</div></div>
+    </section>
+
+    <!-- 2 ─────────────────────────────────────────── -->
+    <section class="sec" id="holders" data-chip="Influential holders">
+      <h2><span class="n">02</span>Influential shareholders</h2>
+      <div class="tbl-wrap"><table class="tbl">
+        <tr><th>Holder</th><th>Governance angle</th></tr>
+        <tr><td><b>Banks</b></td><td>Lender + owner conflict: may push excess borrowing on poor terms</td></tr>
+        <tr><td><b>Families</b></td><td>Lower principal–agent risk; but poor transparency, weak accountability, minority rights, talent. Interlocking directorates</td></tr>
+        <tr><td><b>State (SOEs)</b></td><td>Mixed ownership; less market scrutiny (implicit guarantee); may pursue policy goals over value</td></tr>
+        <tr><td><b>Institutions</b></td><td>Rarely controlling, but hold boards accountable</td></tr>
+        <tr><td><b>Group companies</b></td><td>Cross-holdings block outsiders; related-party transaction risk</td></tr>
+        <tr><td><b>Private equity</b></td><td>VC/LBO bring codes, performance-based pay</td></tr>
+        <tr><td><b>Foreign investors</b></td><td>Demand more transparency; cross-listing helps local minorities</td></tr>
+        <tr><td><b>Insiders</b></td><td>More ownership → better alignment, but large stakes → entrenchment</td></tr>
+      </table></div>
+      <h3 class="sub">How ownership shapes governance</h3>
+      <ul class="pts">
+        <li><b>Independent directors</b>: more common in dispersed markets (they police managers). Rules: minimum number (1–3) or ratio (<b>20–50%+</b>).</li>
+        <li><b>Board structure</b>: one-tier (exec + non-exec) is most common; <b>two-tier</b> = supervisory board over management board (mandatory in some countries; may include labour/bank reps).</li>
+        <li><b>Special voting arrangements</b> to protect minorities (e.g. separate minority approval of independent directors).</li>
+        <li><b>Codes</b>: "comply or explain"; some go further. <b>Stewardship codes</b> push investors to engage.</li>
+      </ul>
+    </section>
+
+    <!-- 3 ─────────────────────────────────────────── -->
+    <section class="sec" id="board" data-chip="Board &amp; pay">
+      <h2><span class="n">03</span>Evaluating governance</h2>
+      <div class="tbl-wrap"><table class="tbl">
+        <tr><th>Factor</th><th>Red flag</th></tr>
+        <tr><td><b>Structure</b></td><td><b>CEO duality</b> (CEO = chair) with no lead independent director</td></tr>
+        <tr><td><b>Independence</b></td><td>None or only a minority independent</td></tr>
+        <tr><td><b>Committees</b></td><td>Audit, nomination, remuneration not independent → conflicts</td></tr>
+        <tr><td><b>Skills</b></td><td>Narrow or unrelated expertise; no ESG expertise in high-ESG-risk sectors</td></tr>
+        <tr><td><b>Tenure</b></td><td><b>&gt; 10 years</b> = long: knowledge vs lost independence, resistance to change</td></tr>
+        <tr><td><b>Composition</b></td><td>Too large, low diversity (gender, age, background)</td></tr>
+      </table></div>
+      <ul class="pts">
+        <li><b>Board evaluation</b>: self or external review; covers duties, leadership, structure, board–management interaction.</li>
+        <li><b>Remuneration</b>: transparency, KPI disclosure, link to strategy, CEO-to-worker pay ratio. <b>Say-on-pay</b> = shareholder vote; <b>clawback</b> = recover pay after restatement or misconduct.</li>
+        <li><b>Voting</b>: straight voting (one share, one vote) vs <b>dual-class</b> (founders keep control → minority conflict).</li>
+        <li>Also look at ethics, bribery, whistleblower and related-party policies.</li>
+        <li>Good governance → lower cost of capital, better credit access. Analysts express governance views via the <b>risk premium or credit spread</b>.</li>
+      </ul>
+    </section>
+
+    <!-- 4 ─────────────────────────────────────────── -->
+    <section class="sec" id="identify" data-chip="Identify ESG">
+      <h2><span class="n">04</span>Identifying ESG risks &amp; opportunities</h2>
+      <ul class="pts">
+        <li>Main challenge: getting <b>relevant, comparable, decision-useful</b> data. Disclosure is mostly <b>voluntary</b> and inconsistently reported; reports may not be assured.</li>
+        <li><b>Materiality</b>: ESG issues expected to affect operations, financial performance and valuation. Firms may label positive items "material" and under-report negative ones.</li>
+        <li><b>Horizon matters</b> (esp. for bonds of different maturities). Issues can jump from long-term to short-term (new regulation, spill).</li>
+        <li><b>Governance</b> factors are fairly uniform across firms; <b>E and S</b> are industry-specific (energy/steel → E; banks → S such as data privacy).</li>
+      </ul>
+      <div class="tbl-wrap"><table class="tbl">
+        <tr><th>Source</th><th>Weakness</th></tr>
+        <tr><td><b>Proprietary</b> (own research, filings, sustainability reports)</td><td>Inconsistent, voluntary company disclosure</td></tr>
+        <tr><td><b>ESG data providers</b> (scores, rankings)</td><td>Subjective scoring</td></tr>
+        <tr><td><b>Not-for-profit frameworks</b> (IIRC, GRI, SASB materiality maps)</td><td>Push for uniform standards; still voluntary</td></tr>
+      </table></div>
+      <ul class="pts">
+        <li><b>Stranded assets</b>: obsolete or uneconomic due to regulation or demand shifts → impairments; hit long-dated bonds harder than short-dated.</li>
+      </ul>
+    </section>
+
+    <!-- 5 ─────────────────────────────────────────── -->
+    <section class="sec" id="integrate" data-chip="Integration">
+      <h2><span class="n">05</span>ESG integration &amp; green bonds</h2>
+      <div class="tbl-wrap"><table class="tbl">
+        <tr><th></th><th>Equity</th><th>Credit</th></tr>
+        <tr><td>Goal</td><td>Opportunities + downside</td><td>Mainly <b>downside</b></td></tr>
+        <tr><td>Statements</td><td colspan="2">Revenue, costs, margins, capex; balance-sheet <b>impairments</b></td></tr>
+        <tr><td>Valuation</td><td>Discount rate, multiples, terminal value, scenarios</td><td>Credit <b>spread</b>, CDS, relative value, duration</td></tr>
+      </table></div>
+      <ul class="pts">
+        <li>Process: identify material factors → assess vs history and peers → adjust forecasts → adjust valuation. Check whether the risk is <b>already priced</b> in spreads.</li>
+        <li>Recurring vs one-off issues need different forecast treatment.</li>
+        <li><b>E</b>: resource intensity (e.g. water per unit output) → COGS and margin. <b>S</b>: recalls, warning letters, fines, labour turnover, wage laws → revenue ↓, costs ↑, litigation provisions. <b>G</b>: weak board vs peers → higher risk premium / spread.</li>
+      </ul>
+      <h3 class="sub">Green bonds</h3>
+      <ul class="pts">
+        <li>Proceeds earmarked for environmental projects; <b>same rating and recourse</b> as the issuer's conventional bonds. Analysis ≈ conventional.</li>
+        <li>Issuer labels the bond; <b>Green Bond Principles</b> are voluntary (ICMA). Extra monitoring/reporting cost; benefit: broader investor base, possible new-issue premium.</li>
+        <li>May trade at a <b>premium (tighter spread)</b> from demand. Risks: <b>greenwashing</b> (proceeds not really green) and <b>liquidity</b> (buy-and-hold holders).</li>
+      </ul>
+    </section>
+
+    <!-- 6 ─────────────────────────────────────────── -->
+    <section class="sec" id="traps" data-chip="Exam traps">
+      <h2><span class="n">06</span>Exam traps</h2>
+      <div class="callout trap"><span class="ic">⚠️</span><div>
+        <ul class="pts" style="margin:0">
+          <li>Majority family stake + equal votes → <b>principal–principal</b>, not principal–agent. Voting caps = concentrated ownership with <b>dispersed</b> votes.</li>
+          <li>Family control <b>lowers</b> principal–agent risk; it isn't automatically the governance red flag.</li>
+          <li>1 independent of 15 directors is below the 20–50% norm → the governance risk. Separate CEO/chair = <b>no</b> duality (a positive).</li>
+          <li>"Material ESG info is best obtained from companies" → <b>false</b>: company data are inconsistent and voluntary.</li>
+          <li>"Horizon has little effect on materiality" → <b>false</b>.</li>
+          <li>Weakness by source: proprietary → inconsistent reporting; vendors → <b>subjective</b> scores; SASB etc. → promote uniform standards (not a weakness).</li>
+          <li>Bond analysis focuses on <b>downside risk</b> and adjusts the <b>spread</b>, not the equity discount rate.</li>
+          <li>Coal-reliant producer facing emissions rules + falling customer demand → <b>E</b> risk, stranded assets, higher discount rate, lower revenue, higher costs → value ↓.</li>
+          <li>Higher labour costs from wage laws + weak board → spread <b>widens</b>.</li>
+        </ul>
+      </div></div>
+    </section>
+
+    <nav class="pager"></nav>
+    <a class="home-cta" href="../index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Back to all notes</a>
+  </main>
+
+  <footer class="foot wrap">Personal study notes · not affiliated with CFA Institute </footer>
+
+  <script src="../assets/js/catalog.js"></script>
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>

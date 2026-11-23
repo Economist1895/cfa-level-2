@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Corporate Restructuring · L2 Quick Notes</title>
+  <meta name="theme-color" content="#f6f5f1" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f1115" media="(prefers-color-scheme: dark)">
+  <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+  <link rel="preload" href="../assets/vendor/katex/fonts/KaTeX_Main-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/vendor/katex/fonts/KaTeX_Math-Italic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-root="../" data-vol="4" data-module="CFA0089">
+  <header class="topbar">
+    <div class="wrap">
+      <a class="back-btn" href="../index.html" aria-label="All notes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>All notes</a>
+      <span class="title">Corporate Restructuring</span>
+      <button class="icon-btn theme-toggle" type="button"></button>
+    </div>
+    <div class="progress"></div>
+  </header>
+
+  <main class="wrap">
+    <div class="m-head">
+      <span class="eyebrow" data-fill="eyebrow">Corporate Finance</span>
+      <h1>Corporate Restructuring</h1>
+      <div class="meta"></div>
+      <nav class="chips" aria-label="Sections"></nav>
+    </div>
+
+    <div class="tldr">
+      <h2>In 30 seconds</h2>
+      <ul class="pts">
+        <li>Three families: <b>investment</b> (size ↑: equity stake, JV, acquisition), <b>divestment</b> (size ↓: sale, spin-off), <b>restructuring</b> (same scope: cost, balance sheet, reorganisation). LBO mixes all three.</li>
+        <li>Activity is <b>pro-cyclical</b> (confidence, cheap financing, overvalued stock), plus industry shocks.</li>
+        <li>Evaluate: <b>initial</b> (what, why, material?, when) → <b>preliminary valuation</b> (comps, transactions, premium paid) → <b>pro forma modelling</b> → update thesis.</li>
+        <li>Material = <b>size</b> (&gt; 10% of acquirer's EV) <b>or fit</b> (signals a strategy change).</li>
+        <li>Pro forma: EPS, net debt/EBITDA, interest coverage, <b>WACC</b> (weights and component costs both move; watch the IG rating line).</li>
+      </ul>
+    </div>
+
+    <!-- 1 ─────────────────────────────────────────── -->
+    <section class="sec" id="types" data-chip="Types">
+      <h2><span class="n">01</span>Life cycle, motives &amp; types</h2>
+      <ul class="pts">
+        <li>Life cycle: start-up → growth → maturity (peak FCF, 20%+ debt) → decline. Managers act to change that destiny.</li>
+      </ul>
+      <div class="tbl-wrap"><table class="tbl">
+        <tr><th>Category</th><th>Issuer-specific motives</th></tr>
+        <tr><td><b>Investment</b></td><td>Synergies, growth, capabilities/resources (vertical integration), undervalued target</td></tr>
+        <tr><td><b>Divestment</b></td><td>Focus, valuation (conglomerate discount), liquidity, regulation</td></tr>
+        <tr><td><b>Restructuring</b></td><td>Raise returns on capital (opportunistic), or forced by financial distress</td></tr>
+      </table></div>
+      <ul class="pts">
+        <li><b>Cost synergies</b> = economies of <b>scale</b> (one HQ, utilisation, route density). <b>Revenue synergies</b> = economies of <b>scope</b> (cross-selling, pricing power).</li>
+        <li><b>Top-down drivers</b>: high security prices (CEO confidence, lower financing cost, overvalued stock as currency) and <b>industry shocks</b> (regulation, technology, growth shifts). Deals in weak economies have created <b>more</b> value on average.</li>
+      </ul>
+      <div class="tbl-wrap"><table class="tbl">
+        <tr><th>Action</th><th>Key feature</th></tr>
+        <tr><td><b>Equity investment</b></td><td>&lt; 50% stake; independent; maybe a board seat. Partnership, toehold, or undervalued</td></tr>
+        <tr><td><b>Joint venture</b></td><td>New jointly controlled company; more equal governance, bigger investment than a stake. Often new-market entry with a local partner</td></tr>
+        <tr><td><b>Acquisition</b></td><td><b>Control</b>; target consolidated; paid in cash, stock or assumed debt</td></tr>
+        <tr><td><b>Sale</b></td><td>Cash for the business; exposure ends; definitive value</td></tr>
+        <tr><td><b>Spin-off</b></td><td>New independent company, shares to parent's holders; focus, tied incentives; slow; light regulatory scrutiny</td></tr>
+      </table></div>
+    </section>
+
+    <!-- 2 ─────────────────────────────────────────── -->
+    <section class="sec" id="restr" data-chip="Restructuring">
+      <h2><span class="n">02</span>Restructuring actions &amp; LBOs</h2>
+      <ul class="pts">
+        <li><b>Opportunistic</b>: change the business model (e.g. <b>franchising</b>: asset-light royalty income, store-level risk shifts to franchisees).</li>
+        <li><b>Cost restructuring</b>: lift margins to history/peers; <b>outsourcing</b> (third party, scale) and <b>offshoring</b> (own operations moved abroad). Often prompted by activists or an unwanted bid.</li>
+        <li><b>Balance sheet restructuring</b>:
+          <ul class="pts">
+            <li><b>Sale-leaseback</b>: cash now, keep use. Lease cost usually &gt; the depreciation it replaces. Quick liquidity; unlocks non-core asset value.</li>
+            <li><b>Dividend recap</b>: borrow to pay dividends/buy back → cheaper capital mix, lower WACC, higher leverage. Suits <b>stable</b> cash flows.</li>
+          </ul>
+        </li>
+        <li><b>Reorganisation</b>: court-supervised; operations and management continue; negotiate asset sales, debt-for-equity, refinancing. Can be pre-packaged. ≠ <b>liquidation</b> (court sells assets, pays creditors by priority).</li>
+        <li><b>LBO</b>: PE fund buys with heavy debt, restructures, exits by sale or IPO. Returns driven by <b>purchase price, leverage, FCF used to repay debt, exit price</b>. More leveraged after exit than before.</li>
+      </ul>
+    </section>
+
+    <!-- 3 ─────────────────────────────────────────── -->
+    <section class="sec" id="eval" data-chip="Evaluation">
+      <h2><span class="n">03</span>Initial evaluation &amp; preliminary valuation</h2>
+      <ul class="pts">
+        <li>Four questions: <b>what</b>, <b>why</b>, <b>is it material</b>, <b>when</b>. Be sceptical: management always frames it positively.</li>
+        <li>Size: deal value (cash + stock + debt assumed) ÷ acquirer's <b>pre-deal EV</b>; for cost programmes, cuts as % of revenue/opex. Most deals are small; for large caps most are immaterial.</li>
+        <li>Fit: even a small deal in a new industry can signal a strategy change or a problem in the core business.</li>
+      </ul>
+      <div class="f-card">
+        <div class="f-head"><span class="f-tag">F1</span><h3>Takeover premium</h3></div>
+        <div class="f-math"><span class="m d" data-tex="PRM = \frac{DP - SP}{SP}"><!--k--><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.1389em;">P</span><span class="mord mathnormal" style="margin-right:0.0077em;">R</span><span class="mord mathnormal" style="margin-right:0.109em;">M</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:2.0463em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0576em;">S</span><span class="mord mathnormal" style="margin-right:0.1389em;">P</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0278em;">D</span><span class="mord mathnormal" style="margin-right:0.1389em;">P</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.0576em;">S</span><span class="mord mathnormal" style="margin-right:0.1389em;">P</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span><!--/k--></span></div>
+        <dl class="f-vars">
+          <dt>DP</dt><dd>deal price per share</dd>
+          <dt>SP</dt><dd><b>unaffected</b> price (e.g. 1 week before, or a VWAP; strip out rumour run-ups)</dd>
+        </dl>
+        <p class="f-use">Control premium. Historical median ≈ <b>30%</b> (range 20–40%).</p>
+      </div>
+      <div class="tbl-wrap"><table class="tbl">
+        <tr><th>Method</th><th>Pros</th><th>Cons</th></tr>
+        <tr><td><b>Comparable company</b> (trading multiples)</td><td>Market-based, data available, few assumptions</td><td>Peers may not exist; market mispricing; <b>no control premium</b> (add one)</td></tr>
+        <tr><td><b>Comparable transaction</b></td><td>Actual deal prices; premium <b>built in</b></td><td>Few deals; old macro conditions; past over/under-payment (bidding wars)</td></tr>
+        <tr><td><b>Premium paid</b></td><td>Direct control price</td><td>Listed targets only; needs unaffected price</td></tr>
+      </table></div>
+      <ul class="pts">
+        <li>Comps suit <b>spin-offs</b> (no control changes hands); transactions suit sales/acquisitions.</li>
+        <li>EV multiples (EV/EBITDA, EV/sales) preferred: less sensitive to capital structure. EV = market cap + debt − cash.</li>
+      </ul>
+      <div class="f-card">
+        <div class="f-head"><span class="f-tag">F2</span><h3>Sum of the parts &amp; conglomerate discount</h3></div>
+        <div class="f-math"><span class="m d" data-tex="\begin{gathered} EV_{SOTP} = \sum_i \text{Metric}_i \times \text{Peer multiple}_i \\[4pt] \text{Discount} = EV_{SOTP} - EV_{\text{trading}} \end{gathered}"><!--k--><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:3.8277em;vertical-align:-1.6638em;"></span><span class="mord"><span class="mtable"><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.1638em;"><span style="top:-4.1638em;"><span class="pstrut" style="height:3.05em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0576em;">E</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.2222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.0576em;">S</span><span class="mord mathnormal mtight" style="margin-right:0.0278em;">O</span><span class="mord mathnormal mtight" style="margin-right:0.1389em;">T</span><span class="mord mathnormal mtight" style="margin-right:0.1389em;">P</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.05em;"><span style="top:-1.8723em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span><span style="top:-3.05em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.2777em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord text"><span class="mord">Metric</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord text"><span class="mord">Peer multiple</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2175em;"><span style="top:-2.4559em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2441em;"><span></span></span></span></span></span></span></span></span><span style="top:-1.7462em;"><span class="pstrut" style="height:3.05em;"></span><span class="mord"><span class="mord text"><span class="mord">Discount</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal" style="margin-right:0.0576em;">E</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.2222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.0576em;">S</span><span class="mord mathnormal mtight" style="margin-right:0.0278em;">O</span><span class="mord mathnormal mtight" style="margin-right:0.1389em;">T</span><span class="mord mathnormal mtight" style="margin-right:0.1389em;">P</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.0576em;">E</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.2222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">trading</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.6638em;"><span></span></span></span></span></span></span></span></span></span></span></span><!--/k--></span></div>
+        <p class="f-use">Use each segment's own <b>peer median</b> multiple (not one average multiple). Allocate corporate costs to a segment. Pick the peer whose <b>growth</b> best matches when multiples track growth. A big discount supports a sale or spin-off.</p>
+      </div>
+    </section>
+
+    <!-- 4 ─────────────────────────────────────────── -->
+    <section class="sec" id="model" data-chip="Pro forma">
+      <h2><span class="n">04</span>Modelling: pro forma effects</h2>
+      <div class="tbl-wrap"><table class="tbl">
+        <tr><th>Line</th><th>Acquisition adjustment</th></tr>
+        <tr><td>Revenue</td><td>Combine; + revenue synergies (− dis-synergies)</td></tr>
+        <tr><td>Opex</td><td>Combine; − cost synergies; + <b>one-time</b> integration costs</td></tr>
+        <tr><td>D&amp;A</td><td>Combine; + amortisation of acquired intangibles</td></tr>
+        <tr><td>Interest</td><td>Acquirer's + new debt × new rate</td></tr>
+        <tr><td>Tax</td><td>EBT-weighted blend</td></tr>
+        <tr><td>Shares</td><td>Acquirer's + new shares issued</td></tr>
+      </table></div>
+      <ul class="pts">
+        <li>Then: financing → synergies → required divestitures → goodwill and fair-value step-ups.</li>
+        <li><b>Debt-funded equity stake</b> in a loss-maker: equity-method losses + interest → EPS ↓; debt ↑ but investee income isn't in EBITDA → <b>debt/EBITDA ↑</b>.</li>
+        <li><b>JV buy-out</b> to control: switch from equity method to <b>consolidation</b> + non-controlling interest.</li>
+        <li><b>Stock-funded</b> deal: share count ↑ → EPS can fall even if earnings rise. Selling a segment for acquirer stock leaves the seller with an equity investment.</li>
+        <li><b>Sale + buyback</b>: lost segment earnings usually dilute EPS; buyback offsets partly.</li>
+      </ul>
+      <div class="f-card">
+        <div class="f-head"><span class="f-tag">F3</span><h3>Cost cut to reach a target margin</h3></div>
+        <div class="f-math"><span class="m d" data-tex="\text{Cut} = \text{Opex} - \text{Sales}\,(1 - \text{Target margin})"><!--k--><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord text"><span class="mord">Cut</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">Opex</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">Sales</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">Target margin</span></span><span class="mclose">)</span></span></span></span></span><!--/k--></span></div>
+        <p class="f-use">Phase in evenly over the programme; one-time restructuring costs can make <b>next year's</b> EBIT fall. Risks: cutting the spend that drives growth; political/regulatory backlash from layoffs.</p>
+      </div>
+      <div class="f-card">
+        <div class="f-head"><span class="f-tag">F4</span><h3>Credit ratios &amp; cap rate</h3></div>
+        <div class="f-math"><span class="m d" data-tex="\begin{gathered} \frac{\text{Debt}}{EBITDA},\qquad \text{Coverage} = \frac{EBIT}{\text{Interest}} \\[6pt] \text{Cap rate} = \frac{NOI}{\text{Property value}} \end{gathered}"><!--k--><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:4.8722em;vertical-align:-2.1861em;"></span><span class="mord"><span class="mtable"><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.6861em;"><span style="top:-4.6861em;"><span class="pstrut" style="height:3.3714em;"></span><span class="mord"><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0576em;">E</span><span class="mord mathnormal" style="margin-right:0.0502em;">B</span><span class="mord mathnormal" style="margin-right:0.0785em;">I</span><span class="mord mathnormal" style="margin-right:0.1389em;">T</span><span class="mord mathnormal" style="margin-right:0.0278em;">D</span><span class="mord mathnormal">A</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">Debt</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:2em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord text"><span class="mord">Coverage</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">Interest</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0576em;">E</span><span class="mord mathnormal" style="margin-right:0.0502em;">B</span><span class="mord mathnormal" style="margin-right:0.0785em;">I</span><span class="mord mathnormal" style="margin-right:0.1389em;">T</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span><span style="top:-2.0658em;"><span class="pstrut" style="height:3.3714em;"></span><span class="mord"><span class="mord text"><span class="mord">Cap rate</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">Property value</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.109em;">N</span><span class="mord mathnormal" style="margin-right:0.0278em;">O</span><span class="mord mathnormal" style="margin-right:0.0785em;">I</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8804em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:2.1861em;"><span></span></span></span></span></span></span></span></span></span></span></span><!--/k--></span></div>
+        <p class="f-use">Sale-leaseback: rent ↑ opex, depreciation ↓, deferred gain amortised; repaying debt cuts interest → ratios improve → possible upgrade. <b>Lower</b> cap rate = higher price = better for the seller.</p>
+      </div>
+      <h3 class="sub">Pro forma WACC</h3>
+      <ul class="pts">
+        <li><b>Weights</b>: debt-funded cash deal → <span class="m" data-tex="w_d"><!--k--><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0269em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">d</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><!--/k--></span> ↑. Selling a unit to repay debt → <span class="m" data-tex="w_e"><!--k--><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0269em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">e</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><!--/k--></span> ↑. Measure with <b>market</b> values (shares × price).</li>
+        <li><b>Costs</b> move with profitability, volatility, leverage (debt/EBITDA), collateral, rates. More leverage + lower margins → higher WACC.</li>
+        <li>Falling from <b>BBB to BB</b> (IG → speculative) adds several hundred bp to WACC, so IG issuers size deals to keep the rating.</li>
+      </ul>
+    </section>
+
+    <!-- 5 ─────────────────────────────────────────── -->
+    <section class="sec" id="divest" data-chip="Sale vs spin">
+      <h2><span class="n">05</span>Sale vs spin-off decision</h2>
+      <div class="tbl-wrap"><table class="tbl">
+        <tr><th></th><th>Sale</th><th>Spin-off</th></tr>
+        <tr><td>Value</td><td><b>Definitive</b> price; cash to parent</td><td>Market sets it; correction risk</td></tr>
+        <tr><td>Favoured when</td><td>Many bidders, buyer synergies</td><td>Expected trading multiple &gt; bid multiple</td></tr>
+        <tr><td>Speed</td><td>Faster</td><td>Takes quarters (new management, functions)</td></tr>
+      </table></div>
+      <ul class="pts">
+        <li>Judge a bid against (1) comparable transactions and (2) the segment's <b>implied value</b> inside the current EV (current EV − other segments' value).</li>
+        <li>Separating a low-margin segment lifts <b>margin</b> but can cut <b>total EBIT</b>; also check stranded corporate costs and effects on remaining segments.</li>
+        <li>Strategic reviews get priced in on announcement → value each scenario × likelihood.</li>
+      </ul>
+    </section>
+
+    <!-- 6 ─────────────────────────────────────────── -->
+    <section class="sec" id="traps" data-chip="Exam traps">
+      <h2><span class="n">06</span>Exam traps</h2>
+      <div class="callout trap"><span class="ic">⚠️</span><div>
+        <ul class="pts" style="margin:0">
+          <li>Selling stores and leasing them back = <b>balance sheet restructuring</b>, not cost restructuring or reorganisation.</li>
+          <li>Sale-leaseback that repays debt → cost of capital <b>falls</b> (not rises); real estate is <b>non-core</b> for a retailer.</li>
+          <li>SOTP: multiply each segment by <b>its own</b> peer multiple; using an average multiple is the distractor.</li>
+          <li>Conglomerate discount = SOTP − current EV (not the reverse).</li>
+          <li>Pro forma operating income: include <b>both</b> that year's synergies and one-time costs.</li>
+          <li>Material if deal value &gt; <b>10%</b> of the acquirer's pre-announcement EV, even with no strategy change.</li>
+          <li>Pre-deal debt = post-deal debt − debt assumed − new debt; equity at <b>market</b> (shares × price).</li>
+          <li>Only acquisitions give <b>control</b>; JVs need bigger investment and more equal governance than equity stakes.</li>
+          <li>Comparable company analysis gives a <b>trading</b> price: add a premium for a takeover value. Its strength is market-derived values, its weakness market mispricing.</li>
+        </ul>
+      </div></div>
+    </section>
+
+    <nav class="pager"></nav>
+    <a class="home-cta" href="../index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Back to all notes</a>
+  </main>
+
+  <footer class="foot wrap">Personal study notes · not affiliated with CFA Institute </footer>
+
+  <script src="../assets/js/catalog.js"></script>
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>
