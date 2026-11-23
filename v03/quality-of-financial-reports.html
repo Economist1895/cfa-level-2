@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Evaluating Quality of Financial Reports · L2 Quick Notes</title>
+  <meta name="theme-color" content="#f6f5f1" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f1115" media="(prefers-color-scheme: dark)">
+  <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+  <link rel="preload" href="../assets/vendor/katex/fonts/KaTeX_Main-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/vendor/katex/fonts/KaTeX_Math-Italic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-root="../" data-vol="3" data-module="CFA1522">
+  <header class="topbar">
+    <div class="wrap">
+      <a class="back-btn" href="../index.html" aria-label="All notes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>All notes</a>
+      <span class="title">Quality of Financial Reports</span>
+      <button class="icon-btn theme-toggle" type="button"></button>
+    </div>
+    <div class="progress"></div>
+  </header>
+
+  <main class="wrap">
+    <div class="m-head">
+      <span class="eyebrow" data-fill="eyebrow">Financial Statement Analysis</span>
+      <h1>Evaluating Quality of Financial Reports</h1>
+      <div class="meta"></div>
+      <nav class="chips" aria-label="Sections"></nav>
+    </div>
+
+    <div class="tldr">
+      <h2>In 30 seconds</h2>
+      <ul class="pts">
+        <li>Two questions: is <b>reporting</b> GAAP-compliant and decision-useful? Are <b>results</b> (earnings) high quality, i.e. <b>sustainable</b> and returning ≥ cost of capital?</li>
+        <li>High reporting quality is <b>necessary</b> to judge earnings quality but doesn't guarantee good earnings.</li>
+        <li>Earnings with big <b>accruals</b> are less persistent and <b>mean-revert faster</b>; cash earnings persist.</li>
+        <li>Screens: <b>Beneish M-score</b> (manipulation; higher = worse, cutoff −1.78) and <b>Altman Z-score</b> (bankruptcy; higher = safer, &lt; 1.81 distress).</li>
+        <li>BS quality = <b>completeness, unbiased measurement, clear presentation</b>. Audit opinions are rarely a timely risk signal; auditor changes, NT filings and CFO exits are.</li>
+      </ul>
+    </div>
+
+    <!-- 1 ─────────────────────────────────────────── -->
+    <section class="sec" id="frame" data-chip="Framework">
+      <h2><span class="n">01</span>Conceptual framework</h2>
+      <ul class="pts">
+        <li><b>Reporting quality</b>: the information is relevant and faithfully represents reality. <b>Earnings (results) quality</b>: the underlying performance is sustainable and adequate.</li>
+        <li>Low earnings quality can sit with <b>high</b> reporting quality (e.g. honest reporting of a one-off gain). Poor results do <b>motivate</b> misreporting.</li>
+      </ul>
+
+      <h3 class="sub">Quality spectrum (best → worst)</h3>
+      <ul class="pts">
+        <li><b>1.</b> GAAP, decision-useful, <b>sustainable &amp; adequate</b> returns</li>
+        <li><b>2.</b> GAAP, decision-useful, but low earnings quality (not sustainable / inadequate)</li>
+        <li><b>3.</b> GAAP, but <b>biased choices</b></li>
+        <li><b>4.</b> GAAP, but <b>earnings management</b> (real or accounting)</li>
+        <li><b>5.</b> <b>Non-compliant</b> accounting (can't assess earnings)</li>
+        <li><b>6.</b> <b>Fictitious</b> transactions or omissions (fabrication)</li>
+      </ul>
+      <ul class="pts">
+        <li><b>Aggressive</b> = boosts current performance/position (and may hurt later periods). <b>Conservative</b> = lowers current (and may flatter later periods). Both are bias.</li>
+        <li><b>Smoothing</b> = under-reporting in good times, over-reporting in bad times → GAAP-compliant <b>earnings management</b>.</li>
+        <li>Bias can also be in <b>presentation</b> (burying bad news, highlighting good).</li>
+        <li>New management, or a firm in trouble, may bias income <b>down</b> now ("big bath") to flatter later periods.</li>
+      </ul>
+    </section>
+
+    <!-- 2 ─────────────────────────────────────────── -->
+    <section class="sec" id="problems" data-chip="Problems">
+      <h2><span class="n">02</span>Potential problems &amp; warning signs</h2>
+      <h3 class="sub">Amounts &amp; timing (A − L = E)</h3>
+      <ul class="pts">
+        <li>Aggressive/fictitious <b>revenue</b> → income, equity and <b>receivables</b> overstated (and inventory understated).</li>
+        <li>Delayed or omitted <b>expenses</b> → income and equity overstated; assets overstated (low bad-debt → AR; low depreciation → PP&amp;E) or liabilities understated (accrued interest, tax).</li>
+        <li><b>OCF</b> can be pumped by stretching payables, speeding up collections, delaying inventory purchases, maintenance or R&amp;D.</li>
+      </ul>
+      <h3 class="sub">Classification</h3>
+      <ul class="pts">
+        <li>BS: moving AR to <b>long-term</b> or notes receivable, selling it or parking it in a controlled entity → lower AR, flattering DSO and turnover. Inventory moved to "other assets" breaks the turnover time series.</li>
+        <li>IS: non-operating gains called operating, ordinary expenses called <b>non-recurring</b>, gains through NI but losses through <b>OCI</b>.</li>
+        <li>CF: asset sales put in <b>CFO</b>; capitalising costs moves the outflow to <b>CFI</b>.</li>
+      </ul>
+
+      <div class="tbl-wrap"><table class="tbl">
+        <tr><th>Issue</th><th>Warning signs</th></tr>
+        <tr><td><b>Income</b> overstated / not sustainable</td><td>Revenue growth &gt; peers; rising discounts &amp; returns; <b>receivables growing faster than revenue</b>; big Q4 revenue share (non-seasonal); CFO ≪ operating income; changing item mix; <b>rising operating margin</b>; long depreciable lives; losses in OCI; pay tied to results</td></tr>
+        <tr><td><b>Balance sheet</b> misstated</td><td>Biased FV models/inputs (inconsistent for A vs L); current assets in non-current; erratic reserves/allowances; high <b>goodwill/TA</b>; SPVs; big DTA/DTL swings; off-BS financing</td></tr>
+        <tr><td><b>CFO</b> overstated</td><td><b>AP up while AR &amp; inventory fall</b>; capitalised spend in CFI; sale-leasebacks; rising bank overdrafts</td></tr>
+      </table></div>
+
+      <h3 class="sub">M&amp;A</h3>
+      <ul class="pts">
+        <li>Acquiring a firm with healthy cash flow <b>hides</b> the acquirer's weak CFO (the acquired CFO lands in consolidated CFO; the price is in CFI, or nowhere if paid in stock). No "with vs without" disclosure is required.</li>
+        <li>Stock-paying acquirers and targets may inflate earnings pre-deal. Misreporters acquire more often, to hurt comparability.</li>
+        <li><b>Under-valuing amortisable intangibles</b> → more <b>goodwill</b> (not amortised) → <b>earnings overstated</b> until impaired.</li>
+      </ul>
+
+      <h3 class="sub">GAAP but not economic reality</h3>
+      <ul class="pts">
+        <li><b>Impairments &amp; restructuring</b>: if recurring, <b>normalise</b> (spread over past and current periods). If truly one-off, exclude.</li>
+        <li>Sudden jumps in <b>allowances/reserves</b> or big loss accruals → prior earnings were probably <b>overstated</b>. Revisions to asset lives raise the question of whether they should have come earlier.</li>
+        <li>Unrecognised assets: <b>R&amp;D</b> (US GAAP expenses; IFRS capitalises development only if all 6 criteria are met) and <b>order backlog</b>.</li>
+        <li><b>OCI items</b> the analyst may pull into income: FVOCI equity gains/losses, PP&amp;E revaluation (IFRS only), CTA, pension remeasurements, cash flow hedges.</li>
+      </ul>
+    </section>
+
+    <!-- 3 ─────────────────────────────────────────── -->
+    <section class="sec" id="steps" data-chip="Steps &amp; Beneish">
+      <h2><span class="n">03</span>Evaluation steps &amp; the Beneish model</h2>
+      <ul class="pts">
+        <li><b>1.</b> Understand the <b>company &amp; industry</b> and the accounting norms of peers.</li>
+        <li><b>2.</b> Learn about <b>management</b>: incentives, compensation, <b>insider sales</b>, related parties.</li>
+        <li><b>3.</b> Identify <b>significant accounting areas</b> (judgement-heavy).</li>
+        <li><b>4.</b> <b>Compare</b>: this year vs last year's report, policies vs peers, ratios vs peers.</li>
+        <li><b>5.</b> Check <b>warning signs</b>: falling AR turnover (fictitious/premature revenue, thin allowance), falling inventory turnover (obsolescence), <b>NI &gt; CFO</b> (aggressive accruals).</li>
+        <li><b>6.</b> Multi-segment firms: watch for sales/costs <b>shifted</b> into the "hot" segment (strong segment, flat total).</li>
+        <li><b>7.</b> Use <b>quantitative tools</b>.</li>
+      </ul>
+
+      <div class="f-card">
+        <div class="f-head"><span class="f-tag">F1</span><h3>Beneish M-score</h3></div>
+        <div class="f-math"><span class="m d" data-tex="\begin{aligned} M = \;&amp;{-4.84} + 0.920\,\text{DSR} + 0.528\,\text{GMI} \\ &amp;+ 0.404\,\text{AQI} + 0.892\,\text{SGI} \\ &amp;+ 0.115\,\text{DEPI} - 0.172\,\text{SGAI} \\ &amp;+ 4.679\,\text{Accruals} - 0.327\,\text{LEVI} \end{aligned}"><!--k--><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:5.7em;vertical-align:-2.6em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:3.1em;"><span style="top:-5.26em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.109em;">M</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span></span><span style="top:-3.76em;"><span class="pstrut" style="height:3em;"></span><span class="mord"></span></span><span style="top:-2.26em;"><span class="pstrut" style="height:3em;"></span><span class="mord"></span></span><span style="top:-0.76em;"><span class="pstrut" style="height:3em;"></span><span class="mord"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:2.6em;"><span></span></span></span></span></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:3.1em;"><span style="top:-5.26em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mord"><span class="mord">−</span><span class="mord">4.84</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">0.920</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord text"><span class="mord">DSR</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">0.528</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord text"><span class="mord">GMI</span></span></span></span><span style="top:-3.76em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">0.404</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord text"><span class="mord">AQI</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">0.892</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord text"><span class="mord">SGI</span></span></span></span><span style="top:-2.26em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">0.115</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord text"><span class="mord">DEPI</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">0.172</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord text"><span class="mord">SGAI</span></span></span></span><span style="top:-0.76em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">4.679</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord text"><span class="mord">Accruals</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">0.327</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord text"><span class="mord">LEVI</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:2.6em;"><span></span></span></span></span></span></span></span></span></span></span></span><!--/k--></span></div>
+        <dl class="f-vars">
+          <dt>DSR</dt><dd>(AR/Sales)<sub>t</sub> ÷ (AR/Sales)<sub>t−1</sub>: revenue recognition</dd>
+          <dt>GMI</dt><dd>GM<sub>t−1</sub> ÷ GM<sub>t</sub> (inverted): falling margins pressure managers</dd>
+          <dt>AQI</dt><dd>[1 − (PPE + CA)/TA]<sub>t</sub> ÷ same<sub>t−1</sub>: excess capitalisation</dd>
+          <dt>SGI</dt><dd>Sales<sub>t</sub> ÷ Sales<sub>t−1</sub>: growth pressure</dd>
+          <dt>DEPI</dt><dd>Dep. rate<sub>t−1</sub> ÷ Dep. rate<sub>t</sub> (inverted); rate = Dep/(Dep + PPE)</dd>
+          <dt>SGAI</dt><dd>(SGA/Sales)<sub>t</sub> ÷ (SGA/Sales)<sub>t−1</sub>: falling efficiency</dd>
+          <dt>Accruals</dt><dd>(Income before extraordinary items − CFO) ÷ TA</dd>
+          <dt>LEVI</dt><dd>(Debt/Assets)<sub>t</sub> ÷ (Debt/Assets)<sub>t−1</sub></dd>
+        </dl>
+        <p class="f-use">M ~ standard normal; P(manipulation) = N(M). <b>Higher (less negative) = more likely manipulator.</b> Cutoff <b>−1.78</b> (≈ 3.8%); −1.49 ≈ 6.8%. The cutoff trades off Type I (missing a manipulator) vs Type II (flagging an innocent firm) costs.</p>
+      </div>
+
+      <ul class="pts">
+        <li>Other useful variables: accruals quality, deferred taxes, <b>auditor change</b>, market-to-book, listing status, financial vs non-financial growth gaps (patents, staff), governance and incentive pay.</li>
+      </ul>
+      <div class="callout trap"><span class="ic">⚠️</span><div>
+        <b>Limits:</b> models show <b>association, not cause and effect</b>. Their predictive power is <b>declining</b> because managers test their tricks against the model. Use qualitative work too.
+      </div></div>
+    </section>
+
+    <!-- 4 ─────────────────────────────────────────── -->
+    <section class="sec" id="earn" data-chip="Earnings">
+      <h2><span class="n">04</span>Earnings quality indicators</h2>
+      <ul class="pts">
+        <li><b>Recurring earnings</b>: strip out discontinued ops and one-offs (asset sales, litigation, tax settlements). More one-offs = lower quality.</li>
+        <li><b>Classification shifting</b> (total NI unchanged): ordinary costs moved into "special items" or discontinued ops → inflated <b>core</b> earnings. Scrutinise income-decreasing special items, especially when they help beat forecasts.</li>
+        <li><b>Non-GAAP / pro forma</b> earnings must be reconciled to reported; check that the excluded items really are non-recurring.</li>
+        <li><b>Core pre-tax earnings</b> = reported pre-tax + non-recurring expenses (leave recurring non-operating costs in).</li>
+      </ul>
+
+      <div class="f-card">
+        <div class="f-head"><span class="f-tag">F2</span><h3>Earnings persistence</h3></div>
+        <div class="f-math"><span class="m d" data-tex="\begin{gathered} E_{t+1} = \alpha + \beta_1 E_t + \varepsilon \\[6pt] E_{t+1} = \alpha + \beta_1 \text{CF}_t + \beta_2 \text{Accruals}_t + \varepsilon \end{gathered}"><!--k--><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:3.3em;vertical-align:-1.4em;"></span><span class="mord"><span class="mtable"><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.9em;"><span style="top:-4.06em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.0576em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0528em;">β</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0528em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0576em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal">ε</span></span></span><span style="top:-1.96em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.0576em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0528em;">β</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0528em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord text"><span class="mord">CF</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0528em;">β</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0528em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord text"><span class="mord">Accruals</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal">ε</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.4em;"><span></span></span></span></span></span></span></span></span></span></span></span><!--/k--></span></div>
+        <p class="f-use">Higher <span class="m" data-tex="\beta_1"><!--k--><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0528em;">β</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0528em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><!--/k--></span> = more persistent. Empirically <span class="m" data-tex="\beta_1 &gt; \beta_2"><!--k--><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0528em;">β</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0528em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0528em;">β</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0528em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><!--/k--></span>: the <b>cash</b> component persists more than accruals.</p>
+      </div>
+      <ul class="pts">
+        <li><b>Non-discretionary</b> accruals come from normal business; <b>discretionary</b> accruals come from unusual choices. Model normal accruals (regress on credit-sales growth, depreciable assets); the <b>residual = abnormal accruals</b> → focus here.</li>
+        <li>Simple screen: total accruals scaled by average assets or NOI across firms.</li>
+        <li><b>Positive NI with negative CFO</b> is a strong red flag. But <b>CFO &gt; NI is no all-clear</b>: capitalising operating costs moves outflows to CFI, inflating CFO; some frauds were built to generate CFO.</li>
+        <li><b>Mean reversion</b>: extreme earnings and returns (high or low) revert toward normal through competition and restructuring. A big <b>accrual</b> component (especially outlier accruals) → <b>faster</b> reversion. Don't extrapolate extremes; forecast normalised earnings.</li>
+        <li><b>Benchmarks</b>: consistently <b>just</b> meeting or narrowly beating consensus is a possible sign of management (debated).</li>
+        <li><b>External</b> confirmations (enforcement actions, restatements) come too late to be very useful.</li>
+      </ul>
+
+      <h3 class="sub">Revenue &amp; expense red-flag checks</h3>
+      <ul class="pts">
+        <li>Revenue: shipping terms, <b>return rights</b>, rebates, <b>multiple deliverables</b> (shifting value to the earlier element; deferred revenue on BS?). <b>Channel stuffing</b> (incentives to over-order, often with returns), <b>bill-and-hold</b> (needs a buyer request, business purpose and transfer of risk).</li>
+        <li>Trend and peer-compare <b>DSO</b> and AR/revenue; tie revenue to non-financial data (stores, capacity, headcount); watch related-party sales.</li>
+        <li>Costs: check capitalisation and depreciation policies vs peers. Red flags: <b>non-current assets building up while margins hold</b> in a weak industry; falling asset turnover with steady revenue; falling depreciation/asset base; <b>capex/gross PP&amp;E rising</b>.</li>
+        <li>Related parties: <b>tunnelling</b> (wealth moved out to manager-owned entities) vs <b>propping</b> (resources moved in to keep the firm alive).</li>
+      </ul>
+    </section>
+
+    <!-- 5 ─────────────────────────────────────────── -->
+    <section class="sec" id="altman" data-chip="Bankruptcy">
+      <h2><span class="n">05</span>Bankruptcy prediction</h2>
+      <div class="f-card">
+        <div class="f-head"><span class="f-tag">F3</span><h3>Altman Z-score</h3></div>
+        <div class="f-math"><span class="m d" data-tex="\begin{aligned} Z = \;&amp;1.2\,\frac{\text{NWC}}{\text{TA}} + 1.4\,\frac{\text{RE}}{\text{TA}} + 3.3\,\frac{\text{EBIT}}{\text{TA}} \\[4pt] &amp;+ 0.6\,\frac{\text{MV equity}}{\text{BV liabilities}} + 1.0\,\frac{\text{Sales}}{\text{TA}} \end{aligned}"><!--k--><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:4.4778em;vertical-align:-1.9889em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.4889em;"><span style="top:-4.5em;"><span class="pstrut" style="height:3.3714em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0715em;">Z</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span></span><span style="top:-2.0686em;"><span class="pstrut" style="height:3.3714em;"></span><span class="mord"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.9889em;"><span></span></span></span></span></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.4889em;"><span style="top:-4.5em;"><span class="pstrut" style="height:3.3714em;"></span><span class="mord"><span class="mord"></span><span class="mord">1.2</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">TA</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">NWC</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">1.4</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">TA</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">RE</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">3.3</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">TA</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">EBIT</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span><span style="top:-2.0686em;"><span class="pstrut" style="height:3.3714em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">0.6</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">BV liabilities</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">MV equity</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">1.0</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">TA</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">Sales</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.9889em;"><span></span></span></span></span></span></span></span></span></span></span></span><!--/k--></span></div>
+        <dl class="f-vars">
+          <dt>NWC/TA</dt><dd>liquidity</dd>
+          <dt>RE/TA</dt><dd>cumulative profitability &amp; firm age</dd>
+          <dt>EBIT/TA</dt><dd>profitability (ROA variant)</dd>
+          <dt>MVE/BVL</dt><dd>leverage (higher = more solvent)</dd>
+          <dt>Sales/TA</dt><dd>activity</dd>
+        </dl>
+        <p class="f-use"><b>Higher = safer.</b> &lt; 1.81 high bankruptcy risk; &gt; 3.00 low; in between = grey zone. Combines ratios rather than viewing each alone.</p>
+      </div>
+      <ul class="pts">
+        <li>Weaknesses: <b>single-period, static</b> → hazard models use all years. Accounting data are <b>backward-looking</b> and assume a <b>going concern</b> → market-based models (equity as a call on assets; CDS and bond spreads).</li>
+        <li>Best models combine <b>accounting + market</b> data.</li>
+      </ul>
+    </section>
+
+    <!-- 6 ─────────────────────────────────────────── -->
+    <section class="sec" id="cfbs" data-chip="CF &amp; BS">
+      <h2><span class="n">06</span>Cash flow &amp; balance sheet quality</h2>
+      <h3 class="sub">High-quality OCF (established firm)</h3>
+      <ul class="pts">
+        <li><b>Positive</b>, from <b>sustainable</b> sources, enough to <b>cover capex, dividends and debt repayments</b>, with <b>low volatility</b> vs peers. (Start-ups are expected to have negative CFO and CFI.)</li>
+        <li>Low quality = honestly reported bad performance <b>or</b> misreporting.</li>
+        <li><b>Timing</b>: selling receivables or stretching payables boosts CFO → DSO falls, days payable rises. Check activity ratios and the notes.</li>
+        <li><b>Classification shifting</b> into CFO changes the mix, not the total. Trading securities → CFO; non-trading → CFI, and management decides which is which. Compare each year's restated prior year to the original.</li>
+      </ul>
+      <div class="tbl-wrap"><table class="tbl">
+        <tr><th>Cash flow</th><th>IFRS</th><th>US GAAP</th></tr>
+        <tr><td>Interest paid</td><td>CFO or CFF</td><td>CFO</td></tr>
+        <tr><td>Interest &amp; dividends received</td><td>CFO or CFI</td><td>CFO</td></tr>
+        <tr><td>Dividends paid</td><td>CFO or CFF</td><td>CFF</td></tr>
+      </table></div>
+      <p>An IFRS firm switching interest paid from CFO to CFF lifts CFO with no real change.</p>
+
+      <h3 class="sub">Balance sheet quality</h3>
+      <ul class="pts">
+        <li>Results quality = optimal leverage, adequate liquidity, good asset allocation. <b>Reporting quality</b> = the three below.</li>
+        <li><b>Completeness</b>: off-BS obligations (take-or-pay purchase contracts → <b>constructively capitalise</b> at PV). <b>Equity-method / unconsolidated JVs</b> hide liabilities and <b>overstate return on sales</b> (profit share counted without the sales) → adjusting <b>lowers</b> the margin. Many ~50%-owned unconsolidated subs = warning.</li>
+        <li><b>Unbiased measurement</b>: impairments (inventory obsolescence, PP&amp;E), goodwill with <b>MV equity &lt; BV equity</b>, DTA valuation allowance swings, Level 3 investments, pension discount rate.</li>
+        <li><b>Clear presentation</b>: aggregation choices; read the notes (e.g. LIFO inventory under inflation is unlikely to be overstated).</li>
+      </ul>
+    </section>
+
+    <!-- 7 ─────────────────────────────────────────── -->
+    <section class="sec" id="risk" data-chip="Risk info">
+      <h2><span class="n">07</span>Sources of information about risk</h2>
+      <ul class="pts">
+        <li><b>Financial statements</b>: leverage and coverage (financial risk), volatile CFO and falling margins (operating risk), Z and M models.</li>
+        <li><b>Audit opinion</b>: historical and <b>rarely timely</b>. A negative, going-concern or ICFR-weakness opinion is a warning, but often too late. <b>Auditor changes</b> (shopping), an <b>undersized auditor</b> or doubts about independence are better signals.</li>
+        <li><b>Notes</b>: contingencies (amount, timing, uncertainty), pensions, financial instrument risks (rate, FX sensitivities).</li>
+        <li><b>Management commentary / MD&amp;A</b>: IFRS practice statement (non-binding) has 5 elements (nature of business; objectives &amp; strategy; resources, risks &amp; relationships; results &amp; prospects; performance measures). US MD&amp;A covers liquidity, capital resources, results, off-BS and contractual arrangements; market risk goes in Item 7A. Watch for <b>generic boilerplate</b> risks.</li>
+        <li><b>Event disclosures</b> (8-K; ad hoc EU releases): <b>NT late-filing</b> notices (highly likely to signal reporting problems), sudden <b>CFO or auditor resignation</b>, legal disputes, M&amp;A.</li>
+        <li><b>Financial press</b>: can uncover issues first. Always confirm with filings and consider the source's credibility and bias.</li>
+      </ul>
+    </section>
+
+    <!-- 8 ─────────────────────────────────────────── -->
+    <section class="sec" id="traps" data-chip="Exam traps">
+      <h2><span class="n">08</span>Exam traps</h2>
+      <div class="callout trap"><span class="ic">⚠️</span><div>
+        <ul class="pts" style="margin:0">
+          <li><b>Shortening</b> asset lives is conservative, not a warning sign. <b>Falling</b> discounts/returns are fine; <b>rising</b> ones are the warning.</li>
+          <li>Rising inventory or AR turnover is <b>not</b> a red flag; <b>falling</b> turnover is. <b>NI &gt; CFO</b> is.</li>
+          <li>Operating income <b>below</b> CFO is not the warning; <b>AP up while AR &amp; inventory fall</b> is (CFO pumped).</li>
+          <li>Revenue growing faster than receivables is fine; <b>receivables outgrowing revenue</b> is the flag. Flat margins are fine; <b>rising</b> margins are the flag.</li>
+          <li>Persistence: <span class="m" data-tex="\beta_{CF} &gt; \beta_{Accruals}"><!--k--><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0528em;">β</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0528em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.0715em;">C</span><span class="mord mathnormal mtight" style="margin-right:0.1389em;">F</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0528em;">β</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0528em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">A</span><span class="mord mathnormal mtight" style="margin-right:0.0278em;">ccr</span><span class="mord mathnormal mtight">u</span><span class="mord mathnormal mtight">a</span><span class="mord mathnormal mtight" style="margin-right:0.0197em;">l</span><span class="mord mathnormal mtight">s</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><!--/k--></span>. Higher cash share → ROE reverts <b>more slowly</b>.</li>
+          <li>Core pre-tax = reported + <b>non-recurring</b> expenses only (e.g. 5.4 + 1.2 + 0.5 = 7.1).</li>
+          <li>Misstatement NI impact is <b>after tax</b>: (50 revenue + 100 capitalised cost) × (1 − 25%) = 112.5.</li>
+          <li>M-score: the <b>highest</b> (least negative) is the likeliest manipulator, above −1.78. Change in M is irrelevant to the ranking.</li>
+          <li>Inflated sales (channel stuffing) → NI and AR <b>overstated</b>, inventory <b>understated</b>.</li>
+          <li>Obsolete inventory not written down = <b>unbiased measurement</b> failure (not completeness). Smoothing within GAAP = GAAP-compliant <b>with earnings management</b>.</li>
+          <li>Understated intangibles + no goodwill impairment → earnings <b>overstated</b>. Accrual follow-up → <b>discretionary</b> accruals. AR shifted to long-term → DSO <b>falls</b> (false comfort).</li>
+        </ul>
+      </div></div>
+    </section>
+
+    <nav class="pager"></nav>
+    <a class="home-cta" href="../index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Back to all notes</a>
+  </main>
+
+  <footer class="foot wrap">Personal study notes · not affiliated with CFA Institute </footer>
+
+  <script src="../assets/js/catalog.js"></script>
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>

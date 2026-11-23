@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Analysis of Financial Institutions · L2 Quick Notes</title>
+  <meta name="theme-color" content="#f6f5f1" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f1115" media="(prefers-color-scheme: dark)">
+  <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+  <link rel="preload" href="../assets/vendor/katex/fonts/KaTeX_Main-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/vendor/katex/fonts/KaTeX_Math-Italic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-root="../" data-vol="3" data-module="CFA1917">
+  <header class="topbar">
+    <div class="wrap">
+      <a class="back-btn" href="../index.html" aria-label="All notes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>All notes</a>
+      <span class="title">Financial Institutions</span>
+      <button class="icon-btn theme-toggle" type="button"></button>
+    </div>
+    <div class="progress"></div>
+  </header>
+
+  <main class="wrap">
+    <div class="m-head">
+      <span class="eyebrow" data-fill="eyebrow">Financial Statement Analysis</span>
+      <h1>Analysis of Financial Institutions</h1>
+      <div class="meta"></div>
+      <nav class="chips" aria-label="Sections"></nav>
+    </div>
+
+    <div class="tldr">
+      <h2>In 30 seconds</h2>
+      <ul class="pts">
+        <li>Banks are <b>systemically important</b> (contagion) → heavily regulated. Assets are mostly <b>financial</b> (loans, securities), carried near fair value.</li>
+        <li><b>Basel III</b> = minimum <b>capital</b> (% of RWA), minimum <b>liquidity</b> (LCR, 30-day stress) and <b>stable funding</b> (NSFR, 1-year horizon).</li>
+        <li><b>CAMELS</b>: Capital, Asset quality, Management, Earnings, Liquidity, Sensitivity. Rated 1 (best) to 5 (worst); composite is <b>judgement-weighted</b>, not a simple mean.</li>
+        <li>CAMELS misses: government support, mission, culture, competition, off-BS items, segments, FX, risk factors.</li>
+        <li>Insurers earn <b>premiums + float income</b>. P&amp;C: short, lumpy claims → combined ratio, loss reserves, liquid portfolio. L&amp;H: long, predictable claims → riskier assets, lower capital, ALM duration.</li>
+      </ul>
+    </div>
+
+    <!-- 1 ─────────────────────────────────────────── -->
+    <section class="sec" id="why" data-chip="Why different">
+      <h2><span class="n">01</span>Why financial institutions differ</h2>
+      <ul class="pts">
+        <li><b>Systemic risk</b>: impairment in one part of the system spreads to the whole economy. <b>Contagion</b> = shocks spreading across sectors/countries. Bigger, more interlinked bank → bigger impact.</li>
+        <li>Bank <b>liabilities</b> are mostly <b>deposits</b> (often government-insured, to prevent runs). Bank <b>assets</b> are <b>loans &amp; securities</b> → credit, liquidity, market and interest rate risk.</li>
+        <li><b>Banks vs insurers:</b> insurance has less cross-border business (reinsurance is the exception) and foreign branches must hold local assets against local liabilities → <b>global commercial banks</b> carry the most global systemic risk.</li>
+      </ul>
+
+      <div class="tbl-wrap"><table class="tbl">
+        <tr><th>Body</th><th>Focus</th></tr>
+        <tr><td><b>Basel Committee</b> (hosted by BIS)</td><td>Bank capital, liquidity, funding standards (Basel III)</td></tr>
+        <tr><td><b>FSB</b></td><td>G-20 financial stability; identify systemic risk</td></tr>
+        <tr><td><b>IAIS</b></td><td>Insurance supervision</td></tr>
+        <tr><td><b>IADI</b></td><td>Deposit insurance effectiveness</td></tr>
+        <tr><td><b>IOSCO</b></td><td>Fair, efficient securities markets</td></tr>
+      </table></div>
+      <ul class="pts">
+        <li>The <b>Joint Forum</b> = Basel Committee + IAIS + IOSCO. National regulators hold the actual authority and set the binding minimums.</li>
+      </ul>
+    </section>
+
+    <!-- 2 ─────────────────────────────────────────── -->
+    <section class="sec" id="capital" data-chip="C &amp; A">
+      <h2><span class="n">02</span>Capital adequacy &amp; asset quality</h2>
+
+      <div class="f-card">
+        <div class="f-head"><span class="f-tag">F1</span><h3>Risk-weighted assets</h3></div>
+        <div class="f-math"><span class="m d" data-tex="\text{RWA} = \sum_i \text{Asset}_i \times w_i"><!--k--><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord text"><span class="mord">RWA</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:2.3277em;vertical-align:-1.2777em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.05em;"><span style="top:-1.8723em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span><span style="top:-3.05em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.2777em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord text"><span class="mord">Asset</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0269em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span><!--/k--></span></div>
+        <p class="f-use">Cash 0%, corporate loans 100%, high-risk loans (90+ days past due, volatile CRE) &gt; 100%. <b>Off-BS exposures</b> are included. RWA cover credit, counterparty, market and operational risk.</p>
+      </div>
+
+      <div class="f-card">
+        <div class="f-head"><span class="f-tag">F2</span><h3>Basel III capital ratios (minimums)</h3></div>
+        <div class="f-math"><span class="m d" data-tex="\begin{aligned} \frac{\text{CET1}}{\text{RWA}} &amp;\ge 4.5\% \\[10pt] \frac{\text{CET1} + \text{AT1}}{\text{RWA}} &amp;\ge 6.0\% \\[10pt] \frac{\text{Tier 1} + \text{Tier 2}}{\text{RWA}} &amp;\ge 8.0\% \end{aligned}"><!--k--><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:8.087em;vertical-align:-3.7935em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:4.2935em;"><span style="top:-6.2935em;"><span class="pstrut" style="height:3.3603em;"></span><span class="mord"><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">RWA</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">CET1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span><span style="top:-3.2732em;"><span class="pstrut" style="height:3.3603em;"></span><span class="mord"><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">RWA</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">CET1</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord text"><span class="mord">AT1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span><span style="top:-0.2528em;"><span class="pstrut" style="height:3.3603em;"></span><span class="mord"><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">RWA</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">Tier 1</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord text"><span class="mord">Tier 2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:3.7935em;"><span></span></span></span></span></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:4.2935em;"><span style="top:-6.2935em;"><span class="pstrut" style="height:3.3603em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">4.5%</span></span></span><span style="top:-3.2732em;"><span class="pstrut" style="height:3.3603em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">6.0%</span></span></span><span style="top:-0.2528em;"><span class="pstrut" style="height:3.3603em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">8.0%</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:3.7935em;"><span></span></span></span></span></span></span></span></span></span></span></span><!--/k--></span></div>
+        <dl class="f-vars">
+          <dt>CET1</dt><dd>common stock + surplus + retained earnings + AOCI − intangibles − DTAs. Most loss-absorbing</dd>
+          <dt>AT1</dt><dd>other Tier 1: subordinated, no maturity, fully discretionary payouts (e.g. perpetual preferred)</dd>
+          <dt>Tier 2</dt><dd>subordinated, original maturity ≥ 5 yrs; part of the loan-loss allowance</dd>
+        </dl>
+        <p class="f-use">Ratios rise if capital rises <b>or RWA fall</b>. A flat total ratio with falling CET1/Tier 1 = shift toward Tier 2 → <b>weaker</b> capital.</p>
+      </div>
+
+      <h3 class="sub">Asset quality</h3>
+      <ul class="pts">
+        <li>Composition, riskiest last: <b>liquid assets</b> (cash, central bank balances, reverse repos) → <b>investments</b> → <b>loans</b> (largest, most judgement).</li>
+        <li>Loans at <b>amortised cost</b>, net of the allowance. Securities: IFRS 9 amortised cost / FVOCI / FVPL. US GAAP equity → FV through NI; debt → HTM / AFS / trading.</li>
+        <li><b>Reverse repo</b> = the bank lends against collateral (a loan asset). "Assets held for sale" ≠ "available for sale".</li>
+        <li><b>Unrealised losses aged &gt; 12 months</b> (esp. HTM, which hides FV) → possible unrecognised impairment.</li>
+        <li>Allowance should move with <b>impaired</b> and <b>past-due</b> assets. Avoid credit <b>concentration</b>.</li>
+      </ul>
+
+      <div class="f-card">
+        <div class="f-head"><span class="f-tag">F3</span><h3>Loan-loss allowance tests</h3></div>
+        <div class="f-math"><span class="m d" data-tex="\begin{gathered} \frac{\text{Allowance}}{\text{Non-performing loans}} \\[10pt] \frac{\text{Allowance}}{\text{Net charge-offs}} \\[10pt] \frac{\text{Provision}}{\text{Net charge-offs}} \end{gathered}"><!--k--><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:8.3037em;vertical-align:-3.9018em;"></span><span class="mord"><span class="mtable"><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:4.4018em;"><span style="top:-6.4018em;"><span class="pstrut" style="height:3.3714em;"></span><span class="mord"><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">Non-performing loans</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">Allowance</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8804em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span><span style="top:-3.3704em;"><span class="pstrut" style="height:3.3714em;"></span><span class="mord"><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">Net charge-offs</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">Allowance</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8804em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span><span style="top:-0.3501em;"><span class="pstrut" style="height:3.3714em;"></span><span class="mord"><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">Net charge-offs</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">Provision</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8804em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:3.9018em;"><span></span></span></span></span></span></span></span></span></span></span></span><!--/k--></span></div>
+        <dl class="f-vars">
+          <dt>Net charge-offs</dt><dd>charge-offs − recoveries</dd>
+          <dt>Allowance</dt><dd>BS contra-asset; + provision (IS expense), − net charge-offs</dd>
+        </dl>
+        <p class="f-use">Each compares a <b>discretionary</b> number to a more <b>objective</b> one. Higher / rising = more conservative. Provision/NCO &lt; 1 for years = provisions trailing losses. Falling allowance/NCO = thinner cushion. Analyse consumer and corporate loans <b>separately</b>.</p>
+      </div>
+    </section>
+
+    <!-- 3 ─────────────────────────────────────────── -->
+    <section class="sec" id="mels" data-chip="M, E, L, S">
+      <h2><span class="n">03</span>Management, earnings, liquidity, sensitivity</h2>
+
+      <h3 class="sub">Management</h3>
+      <ul class="pts">
+        <li>Ability to exploit opportunities <b>while controlling risk</b>. Outsiders see only <b>circumstantial</b> evidence: independent board, separate CEO/chair, active risk committee, clean internal-control opinion, related-party terms.</li>
+        <li>These show an environment where good management <b>can</b> flourish, not proof of it. <b>Overall performance</b> is the best indicator.</li>
+      </ul>
+
+      <h3 class="sub">Earnings</h3>
+      <ul class="pts">
+        <li>Quality = unbiased estimates + <b>sustainable</b> sources. Key estimates: loan-loss <b>provisions</b>, Level 3 fair values, goodwill impairment, DTA recognition, contingencies.</li>
+        <li>Sustainability ranking: <b>net interest income</b> &amp; <b>fee/service income</b> (high quality) &gt; <b>trading income</b> (most volatile). A rising trading share = falling quality. Volatile NII hints at excess rate risk.</li>
+        <li>Profits driven by <b>falling provisions</b> = low quality.</li>
+        <li><b>FV hierarchy</b>: L1 quoted price, identical asset, active market; L2 observable inputs (similar assets, inactive markets, yield curves, implied vol); L3 unobservable model inputs → most judgement.</li>
+        <li><b>Derivatives</b>: cash flow or net investment hedge → FV changes to <b>OCI</b>. Fair value hedge or <b>free-standing</b> → FV changes to <b>NI</b> (volatile; may need extra collateral).</li>
+      </ul>
+
+      <div class="f-card">
+        <div class="f-head"><span class="f-tag">F4</span><h3>Net interest margin</h3></div>
+        <div class="f-math"><span class="m d" data-tex="\text{NIM} = \frac{\text{Int. income} - \text{Int. expense}}{\text{Avg interest-earning assets}}"><!--k--><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord text"><span class="mord">NIM</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:2.2408em;vertical-align:-0.8804em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">Avg interest-earning assets</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">Int. income</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord text"><span class="mord">Int. expense</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8804em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span><!--/k--></span></div>
+        <p class="f-use">Banks borrow short, lend long (maturity transformation). A flatter or <b>inverted</b> curve raises funding costs → NIM <b>falls</b>. Average-balance analysis explains the past; <b>period-end</b> balances are a better start for forecasting.</p>
+      </div>
+
+      <h3 class="sub">Liquidity (Basel III)</h3>
+      <div class="f-card">
+        <div class="f-head"><span class="f-tag">F5</span><h3>Liquidity coverage ratio</h3></div>
+        <div class="f-math"><span class="m d" data-tex="\begin{gathered} \text{LCR} = \frac{\text{High-quality liquid assets}}{\text{Net cash outflows, 30-day stress}} \\[6pt] \text{LCR} \ge 100\% \end{gathered}"><!--k--><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:3.8314em;vertical-align:-1.6657em;"></span><span class="mord"><span class="mtable"><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.1657em;"><span style="top:-4.1657em;"><span class="pstrut" style="height:3.3714em;"></span><span class="mord"><span class="mord text"><span class="mord">LCR</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">Net cash outflows, 30-day stress</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">High-quality liquid assets</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8804em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span><span style="top:-2.0657em;"><span class="pstrut" style="height:3.3714em;"></span><span class="mord"><span class="mord text"><span class="mord">LCR</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">100%</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.6657em;"><span></span></span></span></span></span></span></span></span></span></span></span><!--/k--></span></div>
+        <p class="f-use"><b>Short-term</b> survival. LCR of 121% ≈ survives 1.21 × 30 ≈ 36 days of stress outflows. Short-dated liquid assets (e.g. 30-day reverse repos) hit LCR.</p>
+      </div>
+      <div class="f-card">
+        <div class="f-head"><span class="f-tag">F6</span><h3>Net stable funding ratio</h3></div>
+        <div class="f-math"><span class="m d" data-tex="\begin{gathered} \text{NSFR} = \frac{\text{Available stable funding}}{\text{Required stable funding}} \\[6pt] \text{NSFR} &gt; 100\% \end{gathered}"><!--k--><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:3.8314em;vertical-align:-1.6657em;"></span><span class="mord"><span class="mtable"><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.1657em;"><span style="top:-4.1657em;"><span class="pstrut" style="height:3.3714em;"></span><span class="mord"><span class="mord text"><span class="mord">NSFR</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">Required stable funding</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">Available stable funding</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8804em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span><span style="top:-2.0657em;"><span class="pstrut" style="height:3.3714em;"></span><span class="mord"><span class="mord text"><span class="mord">NSFR</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">100%</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.6657em;"><span></span></span></span></span></span></span></span></span></span></span></span><!--/k--></span></div>
+        <dl class="f-vars">
+          <dt>ASF</dt><dd>funding × factor: capital &amp; ≥ 1-yr liabilities 100%; stable retail deposits 95%; less stable retail 90%; short corporate/sovereign 50%; other 0%</dd>
+          <dt>RSF</dt><dd>depends on asset composition and maturity (long loans need stable funding; liquid assets don't)</dd>
+        </dl>
+        <p class="f-use"><b>1-year</b> horizon; an "inverted LCR". Longer tenor and <b>retail</b> deposits are more stable than interbank funding.</p>
+      </div>
+      <ul class="pts">
+        <li>Also monitored: <b>concentration of funding</b> (one source could be pulled) and <b>contractual maturity mismatch</b>.</li>
+      </ul>
+
+      <h3 class="sub">Sensitivity to market risk</h3>
+      <ul class="pts">
+        <li>Mismatches in maturity, <b>repricing frequency</b>, reference rate or currency. Assets repricing faster than liabilities → NII rises when rates rise.</li>
+        <li>Rate sensitivity tables are <b>static</b> (structure fixed, no management action).</li>
+        <li><b>VaR</b> (e.g. 99%, 1-day): good for <b>trends within one bank</b>, poor across banks (different assumptions); ignores lingering, multi-day shocks. Falling VaR = less market risk.</li>
+        <li>Trading revenue ÷ average daily VaR = <b>reward per unit of risk</b>.</li>
+      </ul>
+
+      <div class="f-card">
+        <div class="f-head"><span class="f-tag">F7</span><h3>CAMELS composite</h3></div>
+        <div class="f-math"><span class="m d" data-tex="\text{Composite} = \frac{\sum_k w_k R_k}{\sum_k w_k}"><!--k--><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">Composite</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:2.4254em;vertical-align:-0.9857em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.4397em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1864em;"><span style="top:-2.4003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0315em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2997em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0269em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0315em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.6897em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1864em;"><span style="top:-2.4003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0315em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2997em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0269em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0315em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0077em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0077em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0315em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.9857em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span><!--/k--></span></div>
+        <p class="f-use">Equal weights → simple mean (scores range 6–30 → ratings 1–5). Analysts overweight what they care about: <b>equity</b> → earnings &amp; asset quality; <b>debt</b> → capital &amp; liquidity. Ratings 1, 2.5, 2, 3, 1, 1: mean 1.75; double-weight A &amp; E → 16/8 = 2.00.</p>
+      </div>
+    </section>
+
+    <!-- 4 ─────────────────────────────────────────── -->
+    <section class="sec" id="non" data-chip="Beyond CAMELS">
+      <h2><span class="n">04</span>Beyond CAMELS</h2>
+      <p>CAMELS is neither comprehensive nor integrated, and the <b>letter order ≠ importance</b> (capital and liquidity are equally important under Basel III).</p>
+      <h3 class="sub">Bank-specific</h3>
+      <ul class="pts">
+        <li><b>Government support</b>: size ("too big to fail", SIFIs), health of the national banking system, <b>government ownership</b> (extra security; a post-crisis stake reduction can signal strength).</li>
+        <li><b>Mission</b>: community bank tied to its local economy vs diversified global bank.</li>
+        <li><b>Culture</b> red flags: losses from narrow, outsized bets; restatements from control failures; <b>above-average equity pay</b> (risk-taking, short-termism); slow provisioning then big write-downs.</li>
+      </ul>
+      <h3 class="sub">Relevant to any company</h3>
+      <ul class="pts">
+        <li><b>Competitive environment</b>: chasing market share at any cost = risk.</li>
+        <li><b>Off-balance-sheet</b>: unconsolidated <b>VIEs</b> (check the reasons for non-consolidation), leases, <b>benefit plans</b> (falling rates or weak returns → cash drains; a falling net obligation is <b>favourable</b>), <b>AUM</b> (fee driver, not on BS).</li>
+        <li><b>Segments</b> (is capital allocated well?), <b>currency</b> exposure (home-currency strength → negative CTA reduces capital), <b>risk factors</b>, Basel III disclosures.</li>
+      </ul>
+    </section>
+
+    <!-- 5 ─────────────────────────────────────────── -->
+    <section class="sec" id="pc" data-chip="P&amp;C insurers">
+      <h2><span class="n">05</span>Property &amp; casualty insurers</h2>
+      <ul class="pts">
+        <li>Short policies; claims <b>variable and lumpy</b>, mostly known within a year.</li>
+        <li><b>Distribution</b>: direct writers (own staff → higher <b>fixed</b> costs) vs agency writers (commissions → <b>variable</b> costs).</li>
+        <li><b>Underwriting cycle</b>: low combined ratio (hard market) → entrants cut prices → ratio rises (soft market) → exits, tighter underwriting → prices rise again.</li>
+        <li><b>Loss reserves</b>: largest, most discretionary expense. Under-reserving → underpricing → possible insolvency. Longer-tail lines are harder to estimate. <b>Downward revisions</b> of prior-year reserves boost pretax income: conservative initial reserving, or a lever to manage earnings.</li>
+        <li><b>Net premiums written</b> = direct written − ceded to reinsurers. <b>Earned</b> = the part of written premiums earned over the period's coverage.</li>
+      </ul>
+
+      <div class="f-card">
+        <div class="f-head"><span class="f-tag">F8</span><h3>Loss &amp; LAE ratio</h3></div>
+        <div class="f-math"><span class="m d" data-tex="\frac{\text{Loss exp.} + \text{Loss adj. exp.}}{\text{Net premiums earned}}"><!--k--><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:2.2519em;vertical-align:-0.8804em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">Net premiums earned</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">Loss exp.</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord text"><span class="mord">Loss adj. exp.</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8804em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span><!--/k--></span></div>
+        <p class="f-use"><b>Underwriting quality</b>: success in <b>estimating insured risks</b>. Lower = better. Losses = claims paid + Δ loss reserves.</p>
+      </div>
+      <div class="f-card">
+        <div class="f-head"><span class="f-tag">F9</span><h3>Underwriting expense ratio</h3></div>
+        <div class="f-math"><span class="m d" data-tex="\frac{\text{Underwriting expense}}{\text{Net premiums written}}"><!--k--><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:2.2519em;vertical-align:-0.8804em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">Net premiums written</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">Underwriting expense</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8804em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span><!--/k--></span></div>
+        <p class="f-use"><b>Efficiency of spending to obtain new premiums</b> (commissions, staff). Lower = better. (Some firms use premiums earned, as US GAAP does.)</p>
+      </div>
+      <div class="f-card">
+        <div class="f-head"><span class="f-tag">F10</span><h3>Combined ratio</h3></div>
+        <div class="f-math"><span class="m d" data-tex="\text{Combined} = \text{Loss \&amp; LAE} + \text{UW expense}"><!--k--><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord">Combined</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord text"><span class="mord">Loss &amp; LAE</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">UW expense</span></span></span></span></span></span><!--/k--></span></div>
+        <p class="f-use"><b>Overall underwriting efficiency</b>. &lt; 100% = underwriting profit; &gt; 100% = underwriting loss.</p>
+      </div>
+      <div class="f-card">
+        <div class="f-head"><span class="f-tag">F11</span><h3>After dividends</h3></div>
+        <div class="f-math"><span class="m d" data-tex="\begin{aligned} \text{Div. ratio} &amp;= \frac{\text{Div. to policyholders}}{\text{Net premiums earned}} \\[4pt] \text{CR after div.} &amp;= \text{Combined} + \text{Div. ratio} \end{aligned}"><!--k--><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:3.7519em;vertical-align:-1.6259em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.1259em;"><span style="top:-4.1259em;"><span class="pstrut" style="height:3.3714em;"></span><span class="mord"><span class="mord text"><span class="mord">Div. ratio</span></span></span></span><span style="top:-2.1055em;"><span class="pstrut" style="height:3.3714em;"></span><span class="mord"><span class="mord text"><span class="mord">CR after div.</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.6259em;"><span></span></span></span></span></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.1259em;"><span style="top:-4.1259em;"><span class="pstrut" style="height:3.3714em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">Net premiums earned</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">Div. to policyholders</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8804em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span><span style="top:-2.1055em;"><span class="pstrut" style="height:3.3714em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord text"><span class="mord">Combined</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord text"><span class="mord">Div. ratio</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.6259em;"><span></span></span></span></span></span></span></span></span></span></span></span><!--/k--></span></div>
+        <p class="f-use">Dividend ratio = a <b>liquidity</b> measure. Combined after dividends is <b>stricter</b> (adds the discretionary cash outlay).</p>
+      </div>
+
+      <ul class="pts">
+        <li><b>Investments</b>: conservative, liquid, mostly fixed income (little equity/real estate). Check concentration by type, maturity, credit, industry, geography, issuer.</li>
+        <li><b>Liquidity</b>: FV hierarchy as a proxy. Level 1 most liquid; Level 2 less liquid but not illiquid; Level 3 implies illiquidity.</li>
+        <li><b>Capital</b>: no global risk-based insurance standard (IAIS developing one); jurisdictional regimes (EU Solvency II, US NAIC RBC).</li>
+      </ul>
+    </section>
+
+    <!-- 6 ─────────────────────────────────────────── -->
+    <section class="sec" id="lh" data-chip="L&amp;H insurers">
+      <h2><span class="n">06</span>Life &amp; health insurers</h2>
+      <ul class="pts">
+        <li><b>Diversify</b> across revenue sources, products, geography, channels, investments. Premium income is the more <b>stable</b> source, so more diversification can mean more volatile revenue.</li>
+        <li>Key estimates: future policyholder benefits (actuarial), <b>capitalised acquisition costs</b> amortised on expected profits, security valuation. <b>Surrenders</b> add expense.</li>
+        <li>Distortion: assets at <b>market</b> values vs liabilities at <b>historical</b> assumptions → rate changes swing earnings.</li>
+        <li>Profitability: ROA, ROE, operating margin, plus A.M. Best ratios: benefits paid ÷ (net premiums written + deposits); commissions &amp; expenses ÷ (net premiums written + deposits).</li>
+        <li><b>Interest rate risk</b>: compare <b>asset vs liability duration</b>.</li>
+        <li><b>Liquidity</b>: liquid assets vs near-term obligations (benefits + <b>surrenders</b>); the current ratio doesn't apply (no current/non-current split). Junk bonds and real estate are less liquid.</li>
+      </ul>
+
+      <div class="f-card">
+        <div class="f-head"><span class="f-tag">F12</span><h3>Investment return (any insurer)</h3></div>
+        <div class="f-math"><span class="m d" data-tex="\frac{\text{Investment income (+ realised G/L)}}{\text{Avg invested assets (cash + inv.)}}"><!--k--><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:2.363em;vertical-align:-0.936em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.427em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">Avg invested assets (cash + inv.)</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">Investment income (+ realised G/L)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span><!--/k--></span></div>
+        <p class="f-use">Compute with and without <b>unrealised</b> gains to see how much they matter.</p>
+      </div>
+
+      <div class="tbl-wrap"><table class="tbl">
+        <tr><th></th><th>P&amp;C</th><th>L&amp;H</th></tr>
+        <tr><td>Policy term</td><td>Short</td><td>Long</td></tr>
+        <tr><td>Claims</td><td>Variable, lumpy</td><td><b>Predictable</b> (mortality tables)</td></tr>
+        <tr><td>Investments</td><td>Conservative, liquid</td><td>Can take <b>more risk</b></td></tr>
+        <tr><td>Capital need</td><td><b>Higher</b></td><td>Lower, but RBC includes <b>interest rate risk</b></td></tr>
+        <tr><td>Key focus</td><td>Combined ratio, loss reserves</td><td>Asset vs liability duration</td></tr>
+      </table></div>
+    </section>
+
+    <!-- 7 ─────────────────────────────────────────── -->
+    <section class="sec" id="traps" data-chip="Exam traps">
+      <h2><span class="n">07</span>Exam traps</h2>
+      <div class="callout trap"><span class="ic">⚠️</span><div>
+        <ul class="pts" style="margin:0">
+          <li>Bank <b>assets</b> are loans &amp; securities; <b>deposits are liabilities</b>.</li>
+          <li>"Minimum % of RWA funded with equity" = <b>capital</b> requirement, not liquidity or stable funding.</li>
+          <li><b>Competitive environment</b> (and government support, culture, off-BS) is outside CAMELS; M and S are in it.</li>
+          <li>Total capital ratio flat but CET1/Tier 1 falling → capital adequacy <b>declined</b>. CET1/T1 up but total down → <b>mixed</b>.</li>
+          <li>Rising allowance can track <b>past-due-but-not-impaired</b> growth even while impaired assets fall. Falling allowance/NCO = cushion <b>shrinking</b>.</li>
+          <li>Efficiency of obtaining premiums = <b>UW expense</b> ratio; estimating risks = <b>loss &amp; LAE</b> ratio; overall = <b>combined</b> (&lt; 100% efficient).</li>
+          <li><b>L&amp;H</b> (not P&amp;C) have predictable claims, lower capital needs, riskier investments, and RBC sensitive to rates.</li>
+          <li>Lower trading share of revenue = <b>higher</b> earnings quality. Free-standing derivatives cut → <b>less</b> earnings volatility.</li>
+          <li>VaR compares a bank to <b>itself</b> over time, not to peers. Revenue/VaR up = better reward per unit of risk.</li>
+          <li>Yield-curve inversion → NIM <b>decreases</b> for borrow-short/lend-long banks. 30-day reverse repos affect the <b>LCR</b>.</li>
+        </ul>
+      </div></div>
+    </section>
+
+    <nav class="pager"></nav>
+    <a class="home-cta" href="../index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Back to all notes</a>
+  </main>
+
+  <footer class="foot wrap">Personal study notes · not affiliated with CFA Institute </footer>
+
+  <script src="../assets/js/catalog.js"></script>
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Multinational Operations · L2 Quick Notes</title>
+  <meta name="theme-color" content="#f6f5f1" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f1115" media="(prefers-color-scheme: dark)">
+  <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+  <link rel="preload" href="../assets/vendor/katex/fonts/KaTeX_Main-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/vendor/katex/fonts/KaTeX_Math-Italic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-root="../" data-vol="3" data-module="CFA0082">
+  <header class="topbar">
+    <div class="wrap">
+      <a class="back-btn" href="../index.html" aria-label="All notes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>All notes</a>
+      <span class="title">Multinational Operations</span>
+      <button class="icon-btn theme-toggle" type="button"></button>
+    </div>
+    <div class="progress"></div>
+  </header>
+
+  <main class="wrap">
+    <div class="m-head">
+      <span class="eyebrow" data-fill="eyebrow">Financial Statement Analysis</span>
+      <h1>Multinational Operations</h1>
+      <div class="meta"></div>
+      <nav class="chips" aria-label="Sections"></nav>
+    </div>
+
+    <div class="tldr">
+      <h2>In 30 seconds</h2>
+      <ul class="pts">
+        <li><b>Transactions</b> in a foreign currency: gains/losses on receivables &amp; payables go to <b>net income</b>, realised or not.</li>
+        <li><b>Functional currency</b> of the sub picks the method: local currency → <b>current rate method</b> (adjustment → equity, CTA). Parent's currency → <b>temporal method</b> (gain/loss → NI).</li>
+        <li>Exposure: current rate = <b>net assets</b>; temporal = <b>net monetary</b> assets/liabilities (usually a net liability).</li>
+        <li><b>Hyperinflation</b> (≥ 100% over 3 years): IFRS restate for inflation, then current rate; US GAAP use temporal.</li>
+        <li>Current rate preserves pure BS and pure IS ratios; temporal distorts most ratios.</li>
+      </ul>
+    </div>
+
+    <!-- 1 ─────────────────────────────────────────── -->
+    <section class="sec" id="txn" data-chip="Transactions">
+      <h2><span class="n">01</span>Foreign currency transactions</h2>
+      <ul class="pts">
+        <li><b>Local</b> currency = where the entity is located. <b>Functional</b> = currency of its primary economic environment. <b>Presentation</b> = currency the statements are shown in. Any non-functional currency is "foreign".</li>
+        <li>Record at the <b>spot rate on the transaction date</b> (sale/inventory and the FC receivable/payable).</li>
+        <li>Revalue the open receivable/payable at each <b>balance sheet date</b>, then at settlement. Each change → gain/loss in <b>NI</b> (even if unrealised).</li>
+      </ul>
+
+      <div class="f-card">
+        <div class="f-head"><span class="f-tag">F1</span><h3>Transaction gain/loss</h3></div>
+        <div class="f-math"><span class="m d" data-tex="\begin{aligned} \text{G/L} = \;&amp;FC \text{ amount} \\ &amp;\times (S_{\text{settle or BS}} - S_{\text{prior}}) \end{aligned}"><!--k--><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:2.7em;vertical-align:-1.1em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6em;"><span style="top:-3.76em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">G/L</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span></span><span style="top:-2.26em;"><span class="pstrut" style="height:3em;"></span><span class="mord"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.1em;"><span></span></span></span></span></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6em;"><span style="top:-3.76em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mord mathnormal" style="margin-right:0.1389em;">F</span><span class="mord mathnormal" style="margin-right:0.0715em;">C</span><span class="mord text"><span class="mord"> amount</span></span></span></span><span style="top:-2.26em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0576em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">settle or BS</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0576em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3175em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">prior</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.1em;"><span></span></span></span></span></span></span></span></span></span></span></span><!--/k--></span></div>
+        <dl class="f-vars"><dt><span class="m" data-tex="S"><!--k--><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.0576em;">S</span></span></span></span><!--/k--></span></dt><dd>functional currency per unit of FC. Sign: + for a receivable, − for a payable</dd></dl>
+      </div>
+
+      <div class="tbl-wrap"><table class="tbl">
+        <tr><th>Position</th><th>FC strengthens</th><th>FC weakens</th></tr>
+        <tr><td>FC receivable (asset)</td><td><b>Gain</b></td><td>Loss</td></tr>
+        <tr><td>FC payable (liability)</td><td>Loss</td><td><b>Gain</b></td></tr>
+      </table></div>
+
+      <div class="callout trap"><span class="ic">⚠️</span><div>
+        <b>Trap:</b> watch the quote direction. If the rate is FC per functional unit (e.g. ₣B/NVK), a <b>higher</b> number means the FC <b>weakened</b>. Inventory stays at the transaction-date cost; only the payable is revalued.
+      </div></div>
+
+      <ul class="pts">
+        <li><b>Placement is a choice:</b> operating or non-operating income. This changes <b>operating margin</b> (not gross or net margin), which hurts comparability.</li>
+        <li>Disclosure: IFRS → "exchange differences recognised in P&amp;L"; US GAAP → aggregate transaction G/L. The line item isn't required.</li>
+        <li>Gains/losses may be immaterial: few FC deals, stable rates, natural offsets (FC receivable + payable), or <b>hedging</b> (forwards, options).</li>
+      </ul>
+    </section>
+
+    <!-- 2 ─────────────────────────────────────────── -->
+    <section class="sec" id="func" data-chip="Functional currency">
+      <h2><span class="n">02</span>Choosing the method</h2>
+
+      <div class="tbl-wrap"><table class="tbl">
+        <tr><th>Sub's functional currency</th><th>Method → where translation G/L goes</th></tr>
+        <tr><td><b>Local</b> currency (autonomous sub)</td><td><b>Current rate</b> → OCI, accumulated in <b>CTA</b> (equity); recycled to NI on disposal</td></tr>
+        <tr><td><b>Parent's</b> currency (extension of parent)</td><td><b>Temporal</b> ("remeasurement" in US GAAP) → <b>net income</b></td></tr>
+        <tr><td>Hyperinflationary economy</td><td><b>IFRS:</b> restate, then current rate (purchasing-power G/L → NI). <b>US GAAP:</b> temporal (G/L → NI)</td></tr>
+      </table></div>
+
+      <h3 class="sub">Functional currency indicators (IFRS)</h3>
+      <ul class="pts">
+        <li><b>Priority:</b> currency that mainly drives <b>sales prices</b>, and the country whose <b>competition &amp; regulation</b> set those prices.</li>
+        <li>Then: currency of labour/material costs, of financing, of retained operating receipts.</li>
+        <li>Parent's currency points: sub is an <b>extension of the parent</b>, large share of transactions with parent, its cash flows directly affect/are remittable to the parent, needs parent funds to service debt.</li>
+        <li>Mixed sub: first translate other-FC balances into its functional currency, then translate to presentation currency at the current rate.</li>
+        <li>The <b>parent's inflation rate is irrelevant</b>; avoiding income volatility is not a valid reason to pick a functional currency.</li>
+      </ul>
+    </section>
+
+    <!-- 3 ─────────────────────────────────────────── -->
+    <section class="sec" id="rules" data-chip="Translation rules">
+      <h2><span class="n">03</span>Translation rules</h2>
+      <div class="tbl-wrap"><table class="tbl">
+        <tr><th>Item</th><th>Current rate</th><th>Temporal</th></tr>
+        <tr><td>Monetary assets &amp; liabilities (cash, AR, AP, debt)</td><td>Current</td><td>Current</td></tr>
+        <tr><td>Non-monetary at <b>historical cost</b> (inventory, PP&amp;E, intangibles, prepaids)</td><td>Current</td><td><b>Historical</b></td></tr>
+        <tr><td>Non-monetary at <b>current value</b></td><td>Current</td><td>Rate at valuation date</td></tr>
+        <tr><td>Common stock / paid-in capital</td><td>Historical</td><td>Historical</td></tr>
+        <tr><td>Revenue, most expenses</td><td>Average</td><td>Average</td></tr>
+        <tr><td>COGS, depreciation, amortisation</td><td>Average</td><td><b>Historical</b> (asset's rate)</td></tr>
+        <tr><td>Dividends</td><td>Rate when declared</td><td>Rate when declared</td></tr>
+        <tr><td>Retained earnings</td><td colspan="2">Roll-forward (F2) under both</td></tr>
+      </table></div>
+
+      <div class="f-card">
+        <div class="f-head"><span class="f-tag">F2</span><h3>Translated retained earnings</h3></div>
+        <div class="f-math"><span class="m d" data-tex="\begin{aligned} RE_{\text{end}}^{PC} = \;&amp;RE_{\text{beg}}^{PC} + NI^{PC} \\ &amp;- \text{Div}^{FC} \times S_{\text{declared}} \end{aligned}"><!--k--><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:2.849em;vertical-align:-1.1745em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6745em;"><span style="top:-3.7832em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0077em;">R</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0576em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8913em;"><span style="top:-2.453em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">end</span></span></span></span></span><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.1389em;">P</span><span class="mord mathnormal mtight" style="margin-right:0.0715em;">C</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span></span><span style="top:-2.1855em;"><span class="pstrut" style="height:3em;"></span><span class="mord"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.1745em;"><span></span></span></span></span></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6745em;"><span style="top:-3.7832em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mord mathnormal" style="margin-right:0.0077em;">R</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0576em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8913em;"><span style="top:-2.453em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">beg</span></span></span></span></span><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.1389em;">P</span><span class="mord mathnormal mtight" style="margin-right:0.0715em;">C</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3831em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.109em;">N</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0785em;">I</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8913em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.1389em;">P</span><span class="mord mathnormal mtight" style="margin-right:0.0715em;">C</span></span></span></span></span></span></span></span></span></span></span><span style="top:-2.1855em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord text"><span class="mord">Div</span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9146em;"><span style="top:-3.1362em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.1389em;">F</span><span class="mord mathnormal mtight" style="margin-right:0.0715em;">C</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0576em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">declared</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.1745em;"><span></span></span></span></span></span></span></span></span></span></span></span><!--/k--></span></div>
+        <p class="f-use"><b>Current rate:</b> RE from the roll-forward; the <b>CTA</b> is the balancing figure. <b>Temporal:</b> no CTA. In a vignette, RE is the figure that balances the translated BS, and NI (incl. remeasurement G/L) can be backed out from it.</p>
+      </div>
+
+      <ul class="pts">
+        <li><b>Temporal + inventory:</b> FIFO → ending inventory at <b>recent</b> rates, COGS at older rates. LIFO → the opposite. Weighted average → average rate.</li>
+        <li>Temporal needs a record of historical rates for each non-monetary asset; current rate doesn't.</li>
+      </ul>
+    </section>
+
+    <!-- 4 ─────────────────────────────────────────── -->
+    <section class="sec" id="exposure" data-chip="Exposure">
+      <h2><span class="n">04</span>Balance sheet exposure</h2>
+
+      <div class="f-card">
+        <div class="f-head"><span class="f-tag">F3</span><h3>Exposure (items at the current rate)</h3></div>
+        <div class="f-math"><span class="m d" data-tex="\begin{aligned} \text{Current rate: } &amp;A - L = \text{Net assets} \\ \text{Temporal: } &amp;\text{Mon. } A - \text{Mon. } L \end{aligned}"><!--k--><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:2.7em;vertical-align:-1.1em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6em;"><span style="top:-3.76em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">Current rate: </span></span></span></span><span style="top:-2.26em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">Temporal: </span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.1em;"><span></span></span></span></span></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6em;"><span style="top:-3.76em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal">L</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord text"><span class="mord">Net assets</span></span></span></span><span style="top:-2.26em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mord text"><span class="mord">Mon. </span></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord text"><span class="mord">Mon. </span></span><span class="mord mathnormal">L</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.1em;"><span></span></span></span></span></span></span></span></span></span></span></span><!--/k--></span></div>
+        <p class="f-use">Current rate → almost always a <b>net asset</b> exposure. Temporal → often a <b>net monetary liability</b> (most liabilities are monetary; only cash &amp; receivables are monetary assets). Selling fixed assets for cash shrinks a net monetary liability; issuing debt grows it.</p>
+      </div>
+
+      <div class="tbl-wrap"><table class="tbl">
+        <tr><th>Exposure</th><th>FC strengthens</th><th>FC weakens</th></tr>
+        <tr><td>Net asset</td><td>Gain / + adjustment</td><td>Loss / − adjustment</td></tr>
+        <tr><td>Net liability</td><td>Loss</td><td>Gain</td></tr>
+      </table></div>
+
+      <div class="callout key"><span class="ic">💡</span><div>
+        <b>FC strengthens:</b> revenues, assets and liabilities all ↑ under both methods. NI and equity ↑ under current rate and temporal with net monetary <b>assets</b>, but ↓ under temporal with net monetary <b>liabilities</b> (translation loss in NI). Reverse everything if the FC weakens.
+      </div></div>
+      <p style="font-size:14.5px">CTA is cumulative: a positive adjustment this period can still leave a negative CTA balance.</p>
+    </section>
+
+    <!-- 5 ─────────────────────────────────────────── -->
+    <section class="sec" id="ratios" data-chip="Ratio effects">
+      <h2><span class="n">05</span>Effects on ratios</h2>
+      <ul class="pts">
+        <li><b>Current rate preserves</b> ratios built purely from the BS (current ratio, D/A, D/E) or purely from the IS (margins, interest coverage).</li>
+        <li><b>Mixed</b> ratios (IS item ÷ BS item: turnovers, ROA, ROE) are distorted under both methods (average vs current rate).</li>
+        <li><b>Temporal distorts</b> almost everything, in no predictable direction. Exception: items using the same rate type (e.g. inventory turnover can be preserved).</li>
+        <li><b>Receivables turnover</b> (sales at average, AR at current) and the <b>cash ratio</b> are the <b>same under both</b> methods.</li>
+        <li>Sales ÷ fixed assets: same sales, but fixed assets at historical (temporal) vs current rates. If the FC has <b>strengthened</b> since purchase, temporal → lower fixed assets → <b>higher</b> turnover.</li>
+        <li>NI under temporal includes the remeasurement G/L; under current rate it doesn't, so NI can differ a lot even when operations are identical.</li>
+      </ul>
+
+      <div class="callout trap"><span class="ic">⚠️</span><div>
+        <b>Gross margin:</b> temporal translates COGS at <b>historical</b> rates. If the FC has been <b>strengthening</b>, old rates are lower → lower COGS → <b>temporal gives the higher margin</b> (highest with FIFO). If the FC is <b>weakening</b>, the current rate method (COGS at average) gives the higher margin. Under the current rate method, the margin equals the local-currency margin.
+      </div></div>
+    </section>
+
+    <!-- 6 ─────────────────────────────────────────── -->
+    <section class="sec" id="hyper" data-chip="Hyperinflation">
+      <h2><span class="n">06</span>Highly inflationary economies</h2>
+      <ul class="pts">
+        <li><b>Definition:</b> US GAAP: cumulative 3-year inflation <b>&gt; 100%</b> (≈ 26% a year). IFRS (IAS 29): cumulative rate <b>approaching or exceeding 100%</b> over 3 years is an indicator. Functional currency is then irrelevant.</li>
+        <li><b>US GAAP:</b> temporal method, <b>no inflation restatement</b>. Avoids the "<b>disappearing plant</b>" problem (current rate × collapsing currency shrinks historical-cost assets).</li>
+        <li><b>IFRS:</b> restate for local inflation (IAS 29), then translate <b>everything at the current rate</b>.</li>
+      </ul>
+
+      <div class="f-card">
+        <div class="f-head"><span class="f-tag">F4</span><h3>IAS 29 restatement</h3></div>
+        <div class="f-math"><span class="m d" data-tex="\text{Restated} = \text{Amount} \times \frac{GPI_{\text{BS date}}}{GPI_{\text{when recorded}}}"><!--k--><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord">Restated</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord text"><span class="mord">Amount</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:2.1963em;vertical-align:-0.836em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1389em;">GP</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0785em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">when recorded</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1389em;">GP</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0785em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">BS date</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.836em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span><!--/k--></span></div>
+        <dl class="f-vars">
+          <dt>Not restated</dt><dd>monetary items (cash, receivables, payables)</dd>
+          <dt>Restated</dt><dd>non-monetary items (from acquisition / revaluation date), equity (from start of period or contribution), <b>all IS items</b> (e.g. revenue × GPI end ÷ GPI average)</dd>
+        </dl>
+        <p class="f-use">Then ÷ or × by the <b>year-end</b> exchange rate.</p>
+      </div>
+
+      <ul class="pts">
+        <li><b>Purchasing power G/L → NI:</b> net monetary <b>assets</b> lose in inflation (loss); net monetary <b>liabilities</b> gain. Analogous to temporal-method gains when the currency weakens.</li>
+        <li>If the FX rate moves exactly with the inflation differential, the IFRS and US GAAP approaches give the <b>same result</b>.</li>
+      </ul>
+    </section>
+
+    <!-- 7 ─────────────────────────────────────────── -->
+    <section class="sec" id="disc" data-chip="Tax &amp; disclosures">
+      <h2><span class="n">07</span>Disclosures, tax &amp; sales growth</h2>
+      <ul class="pts">
+        <li><b>Required:</b> exchange differences in NI (transaction G/L + temporal remeasurement G/L, which need <b>not be split</b>), plus the CTA balance with a beginning-to-end reconciliation. US GAAP also: CTA recycled to NI on disposal.</li>
+        <li><b>Mixed methods:</b> a multinational can use both at once (some subs current rate, some temporal). Peers may choose differently, so <b>compare by adding the CTA change to NI</b> (clean-surplus view).</li>
+        <li><b>Effective tax rate</b> = tax expense ÷ pretax profit. Read the statutory → effective reconciliation: "effect of foreign tax rates" changes come from <b>profit mix shifts</b> between jurisdictions or foreign rate changes. Transfer pricing shifts profit to low-tax countries. Home-country rules (exemption, credit, deferral until repatriation) also matter.</li>
+        <li><b>Sales growth</b> = organic (volume + price) ± acquisitions/divestitures ± <b>FX effect</b>. Organic growth is <b>more sustainable</b> and more within management's control than FX-driven growth.</li>
+        <li><b>Sensitivity disclosures</b> (e.g. profit impact of a 10% FX move, cash-flow-at-risk) feed forecasts and downside cases.</li>
+      </ul>
+    </section>
+
+    <!-- 8 ─────────────────────────────────────────── -->
+    <section class="sec" id="traps" data-chip="Exam traps">
+      <h2><span class="n">08</span>Exam traps</h2>
+      <div class="callout trap"><span class="ic">⚠️</span><div>
+        <ul class="pts" style="margin:0">
+          <li>A loan taken by a sub is translated with the <b>sub's</b> method (set by its functional currency), whatever currency the loan is in.</li>
+          <li>Temporal: <b>debt</b> is monetary → <b>current</b> rate, never the issue-date rate. Inventory &amp; fixed assets → historical.</li>
+          <li>Current rate: <b>all</b> assets &amp; liabilities at current; only equity at historical.</li>
+          <li>Temporal translation G/L → <b>NI</b>; current rate adjustment → <b>OCI/CTA</b>. Switching to the current rate method takes these swings off the income statement.</li>
+          <li>Current rate exposure = <b>net assets</b> (e.g. 400 − 77 − 175 = 148). Temporal exposure = <b>monetary</b> items only.</li>
+          <li>FC weakens + current rate → <b>negative</b> translation adjustment. FC weakens + net monetary liability (temporal) → <b>gain</b>.</li>
+          <li>Hyperinflation: <b>IFRS</b> restate then current rate; <b>US GAAP</b> temporal. Restated revenue uses GPI year-end ÷ GPI <b>average</b>.</li>
+          <li>Receivables turnover and the cash ratio don't change with the method.</li>
+          <li>Transaction G/L placement shifts <b>operating</b> margin only.</li>
+          <li>FX-driven sales growth is the <b>least</b> sustainable component.</li>
+        </ul>
+      </div></div>
+    </section>
+
+    <nav class="pager"></nav>
+    <a class="home-cta" href="../index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Back to all notes</a>
+  </main>
+
+  <footer class="foot wrap">Personal study notes · not affiliated with CFA Institute </footer>
+
+  <script src="../assets/js/catalog.js"></script>
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>

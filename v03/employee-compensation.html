@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Employee Compensation · L2 Quick Notes</title>
+  <meta name="theme-color" content="#f6f5f1" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f1115" media="(prefers-color-scheme: dark)">
+  <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+  <link rel="preload" href="../assets/vendor/katex/fonts/KaTeX_Main-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/vendor/katex/fonts/KaTeX_Math-Italic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-root="../" data-vol="3" data-module="CFA0228">
+  <header class="topbar">
+    <div class="wrap">
+      <a class="back-btn" href="../index.html" aria-label="All notes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>All notes</a>
+      <span class="title">Employee Compensation</span>
+      <button class="icon-btn theme-toggle" type="button"></button>
+    </div>
+    <div class="progress"></div>
+  </header>
+
+  <main class="wrap">
+    <div class="m-head">
+      <span class="eyebrow" data-fill="eyebrow">Financial Statement Analysis</span>
+      <h1>Employee Compensation: Post-Employment and Share-Based</h1>
+      <div class="meta"></div>
+      <nav class="chips" aria-label="Sections"></nav>
+    </div>
+
+    <div class="tldr">
+      <h2>In 30 seconds</h2>
+      <ul class="pts">
+        <li>Core principle: expense the <b>fair value</b> of compensation in the period the employee <b>provides service</b> (≈ as it vests).</li>
+        <li><b>Share-based:</b> grant-date FV, expensed over the vesting period, offset to <b>equity</b>. Never remeasured. Non-cash but a <b>real cost</b> (dilution).</li>
+        <li><b>DB pension:</b> balance sheet shows <b>funded status</b> (plan assets − obligation). IFRS P&amp;L = service cost + net interest; remeasurements → OCI.</li>
+        <li>Valuation: deduct SBC and pension <b>service cost</b> from FCF; treat an <b>underfunded</b> plan as debt; ignore an overfunded one.</li>
+      </ul>
+    </div>
+
+    <!-- 1 ─────────────────────────────────────────── -->
+    <section class="sec" id="types" data-chip="Types">
+      <h2><span class="n">01</span>Types of compensation</h2>
+      <div class="tbl-wrap"><table class="tbl">
+        <tr><th></th><th>Salary</th><th>Shares</th><th>Pension</th></tr>
+        <tr><td>Vests over</td><td>Days–weeks</td><td>Years</td><td>Decades</td></tr>
+        <tr><td>Paid in</td><td>Cash</td><td>Shares</td><td>Cash</td></tr>
+        <tr><td>Measure</td><td>Undiscounted</td><td>Grant-date FV</td><td>PV of benefits</td></tr>
+        <tr><td>BS offset</td><td>Liability</td><td>Equity</td><td>Net pension L/A</td></tr>
+      </table></div>
+      <ul class="pts">
+        <li>Other types: long-term benefits (&gt; 12 months, e.g. sabbatical), termination benefits (often in "restructuring charges").</li>
+        <li>Expense is reported by <b>function</b> (R&amp;D, SG&amp;A…), not as a separate line. Manufacturing labour is capitalised to inventory → COGS on sale.</li>
+        <li>Cash-settled share awards → accounted like short-term benefits (liability).</li>
+      </ul>
+      <div class="duo">
+        <div class="plus"><h4>Share-based: pros</h4><ul class="pts">
+          <li>Aligns employees with shareholders</li>
+          <li>Retention (multi-year vesting)</li>
+          <li>No cash outlay → preserves liquidity</li>
+        </ul></div>
+        <div class="minus"><h4>Share-based: cons</h4><ul class="pts">
+          <li>Employee has little control over share price</li>
+          <li>Shares → too little risk-taking; <b>options → too much</b> (upside-only payoff)</li>
+          <li>Dilution; implicit cash cost (buybacks)</li>
+        </ul></div>
+      </div>
+    </section>
+
+    <!-- 2 ─────────────────────────────────────────── -->
+    <section class="sec" id="sbc" data-chip="RSUs &amp; options">
+      <h2><span class="n">02</span>Share-based compensation accounting</h2>
+
+      <div class="f-card">
+        <div class="f-head"><span class="f-tag">F1</span><h3>Annual expense (straight-line vesting)</h3></div>
+        <div class="f-math"><span class="m d" data-tex="\text{Expense} = \frac{\text{Awards} \times FV_{\text{grant}}}{\text{Vesting years}}"><!--k--><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">Expense</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:2.2519em;vertical-align:-0.8804em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">Vesting years</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">Awards</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.1389em;">F</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.2222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">grant</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8804em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span><!--/k--></span></div>
+        <dl class="f-vars">
+          <dt>RSU FV</dt><dd>share price at grant (less expected dividends if the RSU doesn't receive them)</dd>
+          <dt>Option FV</dt><dd>from a model (Black–Scholes, binomial). Intrinsic value of an ATM option is 0, but time value isn't</dd>
+        </dl>
+        <p class="f-use">Dr expense / Cr <b>share-based comp reserve</b> (equity). Adjusted for awards expected not to vest. <b>No cash flow</b>; added back in indirect-method CFO. Later share price moves don't change a past grant's expense.</p>
+      </div>
+
+      <ul class="pts">
+        <li><b>Restricted stock:</b> actual shares, voting + dividends, not tradeable. <b>RSUs:</b> right to shares, no votes or dividends. RSUs settle <b>automatically at vesting</b> (reserve → share capital).</li>
+        <li>Vesting conditions: <b>service</b> (most common), <b>performance</b> (EPS, ROIC targets), <b>market</b> (TSR vs peers).</li>
+      </ul>
+
+      <div class="f-card">
+        <div class="f-head"><span class="f-tag">F2</span><h3>Option exercise (settlement)</h3></div>
+        <div class="f-math"><span class="m d" data-tex="\begin{aligned} \text{CFF inflow} &amp;= n \times K \\ \text{Reserve} &amp;\;\downarrow\; n \times FV_{\text{grant}} \\ \text{Paid-in capital} &amp;\;\uparrow\; n\,(K + FV_{\text{grant}}) \end{aligned}"><!--k--><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:4.2em;vertical-align:-1.85em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.35em;"><span style="top:-4.51em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">CFF inflow</span></span></span></span><span style="top:-3.01em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">Reserve</span></span></span></span><span style="top:-1.51em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">Paid-in capital</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.85em;"><span></span></span></span></span></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.35em;"><span style="top:-4.51em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.0715em;">K</span></span></span><span style="top:-3.01em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">↓</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.1389em;">F</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.2222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">grant</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span><span style="top:-1.51em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">↑</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.0715em;">K</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.1389em;">F</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.2222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">grant</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.85em;"><span></span></span></span></span></span></span></span></span></span></span></span><!--/k--></span></div>
+        <p class="f-use">Exercise is at the employee's discretion. <b>No P&amp;L effect.</b> The share price at exercise affects only how many are exercised, not the amounts booked.</p>
+      </div>
+
+      <div class="tbl-wrap"><table class="tbl">
+        <tr><th>Option input ↑</th><th>Option FV / expense</th><th>Net income</th></tr>
+        <tr><td>Volatility</td><td>↑</td><td>↓</td></tr>
+        <tr><td>Expected life</td><td>↑</td><td>↓</td></tr>
+        <tr><td>Risk-free rate</td><td>↑</td><td>↓</td></tr>
+        <tr><td>Dividend yield</td><td>↓</td><td>↑</td></tr>
+      </table></div>
+      <p style="font-size:14.5px"><b>Volatility</b> is the most subjective input. It is <b>irrelevant for RSUs</b>, which are valued at the share price.</p>
+
+      <div class="callout key"><span class="ic">💡</span><div>
+        Why firms shifted from options to <b>RSUs</b>: options must be expensed at FV; RSUs keep some value in downturns (no "underwater" problem); symmetric payoff aligns better; simpler, no exercise price to pay.
+      </div></div>
+    </section>
+
+    <!-- 3 ─────────────────────────────────────────── -->
+    <section class="sec" id="tax" data-chip="Tax effects">
+      <h2><span class="n">03</span>Tax windfalls &amp; shortfalls</h2>
+      <div class="tbl-wrap"><table class="tbl">
+        <tr><th></th><th>Book expense</th><th>Tax deduction</th></tr>
+        <tr><td>Timing</td><td>Over vesting</td><td>At settlement</td></tr>
+        <tr><td>Amount</td><td>Grant-date FV</td><td>RSU: price at settlement · Option: intrinsic value at exercise</td></tr>
+      </table></div>
+
+      <div class="f-card">
+        <div class="f-head"><span class="f-tag">F3</span><h3>Excess tax benefit (windfall)</h3></div>
+        <div class="f-math"><span class="m d" data-tex="\begin{aligned} \text{Windfall} = t \times \big(&amp;\text{Tax deduction} \\ &amp;- \text{Book expense}\big) \end{aligned}"><!--k--><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:2.72em;vertical-align:-1.11em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.61em;"><span style="top:-3.76em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">Windfall</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="delimsizing size1">(</span></span></span></span><span style="top:-2.25em;"><span class="pstrut" style="height:3em;"></span><span class="mord"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.11em;"><span></span></span></span></span></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.61em;"><span style="top:-3.76em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mord text"><span class="mord">Tax deduction</span></span></span></span><span style="top:-2.25em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord text"><span class="mord">Book expense</span></span><span class="mord"><span class="delimsizing size1">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.11em;"><span></span></span></span></span></span></span></span></span></span></span></span><!--/k--></span></div>
+        <p class="f-use">Book expense = cumulative grant-date FV. RSUs: <span class="m" data-tex="t \times n \times (P_{\text{settle}} - P_{\text{grant}})"><!--k--><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6984em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1389em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">settle</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1.0361em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1389em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">grant</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span><!--/k--></span>. Price ↑ since grant → windfall; price ↓ → <b>shortfall</b>.</p>
+      </div>
+
+      <div class="tbl-wrap"><table class="tbl">
+        <tr><th></th><th>IFRS</th><th>US GAAP</th></tr>
+        <tr><td>Windfall</td><td>Gain <b>directly in equity</b></td><td><b>↓ income tax expense</b></td></tr>
+        <tr><td>Shortfall</td><td>Loss directly in equity</td><td>↑ income tax expense</td></tr>
+        <tr><td>Effect</td><td>Stable effective tax rate</td><td><b>Volatile ETR</b>, gap vs statutory rate</td></tr>
+      </table></div>
+      <p style="font-size:14.5px">US GAAP: check the statutory-to-effective rate reconciliation; don't extrapolate a windfall-depressed ETR after a share price fall.</p>
+    </section>
+
+    <!-- 4 ─────────────────────────────────────────── -->
+    <section class="sec" id="shares" data-chip="Share count">
+      <h2><span class="n">04</span>Shares outstanding &amp; diluted EPS</h2>
+
+      <div class="f-card">
+        <div class="f-head"><span class="f-tag">F4</span><h3>Treasury stock method for awards</h3></div>
+        <div class="f-math"><span class="m d" data-tex="\begin{gathered} \text{Dilutive shares} = N - \frac{\text{Proceeds}}{\bar{P}} \\[6pt] \begin{aligned} \text{Proceeds} = \;&amp;N \times K \;(\text{0 for RSUs}) \\ &amp;+ \text{avg. unrecognised SBC} \end{aligned} \end{gathered}"><!--k--><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:5.3314em;vertical-align:-2.4157em;"></span><span class="mord"><span class="mtable"><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.9157em;"><span style="top:-5.1443em;"><span class="pstrut" style="height:3.6em;"></span><span class="mord"><span class="mord text"><span class="mord">Dilutive shares</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal" style="margin-right:0.109em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714em;"><span style="top:-2.2899em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord katex-accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8201em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.1389em;">P</span></span><span style="top:-3.2523em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1667em;"><span class="mord">ˉ</span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">Proceeds</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.7101em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span><span style="top:-2.2843em;"><span class="pstrut" style="height:3.6em;"></span><span class="mord"><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6em;"><span style="top:-3.76em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">Proceeds</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span></span><span style="top:-2.26em;"><span class="pstrut" style="height:3em;"></span><span class="mord"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.1em;"><span></span></span></span></span></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6em;"><span style="top:-3.76em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mord mathnormal" style="margin-right:0.109em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.0715em;">K</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mopen">(</span><span class="mord text"><span class="mord">0 for RSUs</span></span><span class="mclose">)</span></span></span><span style="top:-2.26em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord text"><span class="mord">avg. unrecognised SBC</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.1em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:2.4157em;"><span></span></span></span></span></span></span></span></span></span></span></span><!--/k--></span></div>
+        <dl class="f-vars">
+          <dt><span class="m" data-tex="N"><!--k--><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.109em;">N</span></span></span></span><!--/k--></span></dt><dd>unvested RSUs / options outstanding</dd>
+          <dt><span class="m" data-tex="\bar{P}"><!--k--><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8201em;"></span><span class="mord katex-accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8201em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.1389em;">P</span></span><span style="top:-3.2523em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1667em;"><span class="mord">ˉ</span></span></span></span></span></span></span></span></span></span><!--/k--></span></dt><dd><b>average</b> share price for the period</dd>
+          <dt>Avg. unrec.</dt><dd>(beginning + ending unrecognised SBC expense) ÷ 2, at grant-date FV</dd>
+        </dl>
+        <p class="f-use">Negative result → <b>anti-dilutive</b>, excluded. Only awards <b>likely to vest</b> are included (unmet performance conditions excluded).</p>
+      </div>
+
+      <ul class="pts">
+        <li><b>Basic</b> shares rise only when awards <b>settle</b> (RSUs vest, options exercised). Forfeited RSUs don't reduce basic shares.</li>
+        <li>Options: in the money → dilutive; ATM / OTM → anti-dilutive.</li>
+        <li>RSUs are dilutive unless the price has fallen well below the grant price.</li>
+        <li><b>Lower average price</b> → more assumed buybacks → <b>fewer</b> dilutive shares. Higher price → more dilution.</li>
+        <li><b>Net loss</b> → all awards anti-dilutive, so basic = diluted.</li>
+        <li>For valuation, <b>add back anti-dilutive securities</b> (from the notes), especially for loss-makers and after big price drops. Conservative option: basic + <b>gross</b> awards.</li>
+      </ul>
+    </section>
+
+    <!-- 5 ─────────────────────────────────────────── -->
+    <section class="sec" id="model" data-chip="SBC modelling">
+      <h2><span class="n">05</span>Modelling &amp; valuing share-based comp</h2>
+      <ul class="pts">
+        <li><b>Forecast SBC as % of revenue</b>, as a separate line (it falls as % of revenue as firms mature). Strip it out of functional cost lines first.</li>
+        <li>Integrate: expense offset to <b>equity</b> (or the BS won't balance), add back in indirect CFO.</li>
+        <li><b>Basic shares (end)</b> = beginning + RSUs vested / options exercised + other issuance − buybacks. New RSU shares ≈ SBC expense ÷ share price.</li>
+        <li>Diluted shares: assume a historical % of outstanding awards is dilutive.</li>
+        <li><b>DCF:</b> existing awards → use the diluted (plus anti-dilutive) share count. <b>Future</b> awards → <b>deduct SBC from FCF</b> (pragmatic), or raise the share count / apply a dilution factor.</li>
+        <li><b>Multiples:</b> GAAP and non-GAAP (SBC-excluded) multiples aren't comparable. Be consistent across peers.</li>
+        <li>SBC-heavy firms have <b>flattered FCF</b> (higher FCF margin, lower P/FCF) purely from paying in shares, not from being cheaper.</li>
+      </ul>
+    </section>
+
+    <!-- 6 ─────────────────────────────────────────── -->
+    <section class="sec" id="db" data-chip="DB pensions">
+      <h2><span class="n">06</span>Post-employment benefits</h2>
+      <ul class="pts">
+        <li><b>DC:</b> employer pays an agreed contribution. Employee bears investment &amp; actuarial risk. Expense = contribution; CFO outflow; no further obligation.</li>
+        <li><b>DB:</b> defined future benefit (e.g. % of final salary × years). <b>Employer bears</b> investment &amp; actuarial risk. Anything not explicitly DC (incl. <b>OPEB</b>, often unfunded) uses DB accounting.</li>
+        <li><b>Closed</b> plan: no new entrants. <b>Frozen</b>: no further accrual for current members.</li>
+      </ul>
+
+      <div class="f-card">
+        <div class="f-head"><span class="f-tag">F5</span><h3>Funded status (on the balance sheet)</h3></div>
+        <div class="f-math"><span class="m d" data-tex="\text{Funded status} = FV_{\text{plan assets}} - PBO"><!--k--><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord">Funded status</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord mathnormal" style="margin-right:0.1389em;">F</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.2222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">plan assets</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.1389em;">P</span><span class="mord mathnormal" style="margin-right:0.0502em;">B</span><span class="mord mathnormal" style="margin-right:0.0278em;">O</span></span></span></span></span><!--/k--></span></div>
+        <dl class="f-vars">
+          <dt>PBO</dt><dd>PV of benefits earned to date, discounted at the <b>high-quality corporate bond yield</b></dd>
+        </dl>
+        <p class="f-use">Negative → <b>net pension liability</b>; positive → net pension asset. Net presentation is allowed, but <b>separate plans can't be netted</b> against each other. Benefits paid cut assets and PBO equally → no effect on funded status.</p>
+      </div>
+
+      <div class="f-card">
+        <div class="f-head"><span class="f-tag">F6</span><h3>IFRS pension cost</h3></div>
+        <div class="f-math"><span class="m d" data-tex="\begin{aligned} \text{P\&amp;L} = \;&amp;\text{Service cost (current + past)} \\ &amp;+ r \times \text{Net liability}_{\text{beg}} \\[4pt] \text{OCI} = \;&amp;\text{Remeasurements} \end{aligned}"><!--k--><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:4.6em;vertical-align:-2.05em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.55em;"><span style="top:-4.71em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">P&amp;L</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span></span><span style="top:-3.21em;"><span class="pstrut" style="height:3em;"></span><span class="mord"></span></span><span style="top:-1.31em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">OCI</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:2.05em;"><span></span></span></span></span></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.55em;"><span style="top:-4.71em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mord text"><span class="mord">Service cost (current + past)</span></span></span></span><span style="top:-3.21em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.0278em;">r</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord text"><span class="mord">Net liability</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.242em;"><span style="top:-2.4559em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">beg</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3802em;"><span></span></span></span></span></span></span></span></span><span style="top:-1.31em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mord text"><span class="mord">Remeasurements</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:2.05em;"><span></span></span></span></span></span></span></span></span></span></span></span><!--/k--></span></div>
+        <dl class="f-vars">
+          <dt>Service cost</dt><dd><b>operating</b> expense (by function)</dd>
+          <dt>Net interest</dt><dd>below operating income. Same <span class="m" data-tex="r"><!--k--><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0278em;">r</span></span></span></span><!--/k--></span> for assets and PBO. Net <b>asset</b> → net interest <b>income</b></dd>
+          <dt>Remeasurements</dt><dd>actuarial gains/losses + (actual return − <span class="m" data-tex="r"><!--k--><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0278em;">r</span></span></span></span><!--/k--></span> × plan assets). <b>Never recycled</b> to P&amp;L</dd>
+        </dl>
+        <p class="f-use">Contributions are <b>not</b> expense: they're a <b>CFO outflow</b>.</p>
+      </div>
+
+      <div class="f-card">
+        <div class="f-head"><span class="f-tag">F7</span><h3>US GAAP periodic pension cost</h3></div>
+        <div class="f-math"><span class="m d" data-tex="\begin{aligned} \text{P\&amp;L} = \;&amp;\text{Current service cost} \\ &amp;+ r \times PBO_{\text{beg}} \\ &amp;- E(R) \times \text{Plan assets}_{\text{beg}} \\ &amp;+ \text{amort. of past service cost} \\ &amp;+ \text{amort. of net actuarial loss} \end{aligned}"><!--k--><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:7.2em;vertical-align:-3.35em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:3.85em;"><span style="top:-6.01em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">P&amp;L</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span></span><span style="top:-4.51em;"><span class="pstrut" style="height:3em;"></span><span class="mord"></span></span><span style="top:-3.01em;"><span class="pstrut" style="height:3em;"></span><span class="mord"></span></span><span style="top:-1.51em;"><span class="pstrut" style="height:3em;"></span><span class="mord"></span></span><span style="top:-0.01em;"><span class="pstrut" style="height:3em;"></span><span class="mord"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:3.35em;"><span></span></span></span></span></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:3.85em;"><span style="top:-6.01em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mord text"><span class="mord">Current service cost</span></span></span></span><span style="top:-4.51em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.0278em;">r</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.1389em;">P</span><span class="mord mathnormal" style="margin-right:0.0502em;">B</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0278em;">O</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">beg</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.01em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.0576em;">E</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.0077em;">R</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord text"><span class="mord">Plan assets</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">beg</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span><span style="top:-1.51em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord text"><span class="mord">amort. of past service cost</span></span></span></span><span style="top:-0.01em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord text"><span class="mord">amort. of net actuarial loss</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:3.35em;"><span></span></span></span></span></span></span></span></span></span></span></span><!--/k--></span></div>
+        <ul class="pts">
+          <li><b>Past service cost</b> → OCI, then amortised over remaining service lives (IFRS: P&amp;L immediately).</li>
+          <li>Actuarial G/L and actual − expected return → P&amp;L immediately, or (usually) OCI then amortised.</li>
+          <li><b>Corridor:</b> amortise only the excess of cumulative unrecognised G/L over <b>10% of the greater of PBO or plan assets</b> (beginning), over avg. remaining working lives.</li>
+        </ul>
+      </div>
+
+      <h3 class="sub">Changing assumptions</h3>
+      <div class="tbl-wrap"><table class="tbl">
+        <tr><th>Assumption ↑</th><th>PBO</th><th>Pension cost</th></tr>
+        <tr><td>Discount rate</td><td>↓</td><td>Usually ↓ (lower service + interest cost)</td></tr>
+        <tr><td>Salary growth</td><td>↑</td><td>↑ (service cost)</td></tr>
+        <tr><td>Life expectancy</td><td>↑</td><td>↑</td></tr>
+        <tr><td>Healthcare cost trend (OPEB)</td><td>↑</td><td>↑</td></tr>
+        <tr><td>Expected return (US GAAP)</td><td><b>No effect</b></td><td>↓</td></tr>
+      </table></div>
+      <p style="font-size:14.5px"><b>Aggressive</b> = high discount rate, low salary growth, low life expectancy, low inflation/healthcare trend, high E(R) (US GAAP). Salary growth and inflation should move together. None of these changes affect CFO.</p>
+    </section>
+
+    <!-- 7 ─────────────────────────────────────────── -->
+    <section class="sec" id="pval" data-chip="Pension valuation">
+      <h2><span class="n">07</span>Pension modelling &amp; valuation</h2>
+      <ul class="pts">
+        <li>Model service cost, net interest, remeasurements and contributions. Skip detail if the net liability is small (&lt; ~5% of market cap), especially if closed/frozen.</li>
+        <li><b>Underfunded</b> status → treat as <b>debt</b> in the EV → equity bridge (deduct the <b>net</b> liability, not the gross PBO).</li>
+        <li><b>Overfunded</b> → <b>ignored</b>: plan assets can't be withdrawn for shareholders.</li>
+        <li><b>Service cost</b>: keep expensed in FCF (don't add back). <b>Net interest</b>: exclude from the DCF; it's discount unwinding already captured by deducting the liability.</li>
+        <li>Large DB sponsors are <b>hurt by falling rates</b> (PBO ↑), partly offset if assets are long-duration bonds.</li>
+      </ul>
+    </section>
+
+    <!-- 8 ─────────────────────────────────────────── -->
+    <section class="sec" id="traps" data-chip="Exam traps">
+      <h2><span class="n">08</span>Exam traps</h2>
+      <div class="callout trap"><span class="ic">⚠️</span><div>
+        <ul class="pts" style="margin:0">
+          <li>SBC expense uses <b>grant-date</b> FV. A later share price change doesn't touch past grants' expense.</li>
+          <li>Option exercise: CFF inflow = strike × number. <b>No income statement effect.</b></li>
+          <li>Windfall: IFRS → <b>equity</b>; US GAAP → <b>income tax expense</b>. Don't mix them up.</li>
+          <li>Treasury stock method uses the <b>average</b> price and includes <b>unrecognised SBC</b> in proceeds. Net loss → no dilution.</li>
+          <li>IFRS net interest = <span class="m" data-tex="r"><!--k--><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0278em;">r</span></span></span></span><!--/k--></span> × <b>net</b> liability (beginning). US GAAP: interest on gross PBO and a separate <b>expected</b> return.</li>
+          <li>IFRS: past service cost → P&amp;L now; remeasurements → OCI forever. US GAAP: both → OCI, then amortised.</li>
+          <li>Expected return on plan assets doesn't affect the <b>PBO</b>, only US GAAP pension cost.</li>
+          <li>Funded status change: compare (service + interest cost) with (actual return + contributions). Benefits paid cancel out.</li>
+          <li>Valuation: deduct the <b>net</b> pension liability as debt; ignore a surplus; deduct SBC and service cost from FCF; exclude net interest.</li>
+          <li>Indirect CFO: <b>add back</b> SBC; pension contributions (not expense) are the CFO outflow.</li>
+        </ul>
+      </div></div>
+    </section>
+
+    <nav class="pager"></nav>
+    <a class="home-cta" href="../index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Back to all notes</a>
+  </main>
+
+  <footer class="foot wrap">Personal study notes · not affiliated with CFA Institute </footer>
+
+  <script src="../assets/js/catalog.js"></script>
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>
