@@ -1,0 +1,7 @@
+# Official curriculum files & extracted text — never commit
+*.ePub
+*.epub
+*.pdf
+source/
+.DS_Store
+node_modules/

@@ -1,0 +1,7 @@
+{
+  "name": "cfa-l2-notes-tools",
+  "private": true,
+  "type": "module",
+  "scripts": { "build": "node render-math.mjs" },
+  "dependencies": { "katex": "0.19.1" }
+}

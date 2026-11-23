@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>CFA Level II · Quick Notes</title>
+  <meta name="description" content="Bite-sized CFA Level II formulas and key concepts, by volume and module.">
+  <meta name="theme-color" content="#f6f5f1" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f1115" media="(prefers-color-scheme: dark)">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="L2 Notes">
+  <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-root="">
+  <header class="topbar">
+    <div class="wrap">
+      <a class="crumb" href="index.html"><span class="dot" style="background:linear-gradient(135deg,#6366f1,#10b981)"></span>L2 Quick Notes</a>
+      <button class="icon-btn theme-toggle" type="button"></button>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <span class="badge">CFA® Program 2027 · Level II</span>
+      <h1>Quick <span class="grad">Notes</span></h1>
+      <p>Key formulas, concepts and exam traps — one module at a time. Skim before you start a question set.</p>
+      <div class="stats">
+        <span class="pill">📚 10 volumes</span>
+        <span class="pill" id="stat-mods"></span>
+      </div>
+      <label class="search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="q" type="search" placeholder="Search topics, e.g. EVA, duration" autocomplete="off">
+      </label>
+    </section>
+
+    <div id="volumes"></div>
+    <p class="empty">No modules match that search.</p>
+  </main>
+
+  <footer class="foot wrap">Personal study notes · not affiliated with CFA Institute</footer>
+
+  <script src="assets/js/catalog.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
