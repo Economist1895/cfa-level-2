@@ -6,6 +6,13 @@
   const root = document.body.dataset.root || "";
   const CAT = window.CATALOG || [];
 
+  /* ---------- Study-plan button (injected into every top bar) ---------- */
+  const cal = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16.5" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg>';
+  const onPlan = document.body.dataset.page === "plan";
+  $$(".topbar .theme-toggle").forEach(t => t.insertAdjacentHTML("beforebegin",
+    `<a class="icon-btn plan-btn${onPlan ? " on" : ""}" href="${root}plan.html" aria-label="Study plan" title="Study plan"` +
+    `${onPlan ? ' aria-current="page"' : ""}>${cal}</a>`));
+
   /* ---------- Theme toggle ---------- */
   const sun = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>';
   const moon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>';
@@ -74,6 +81,22 @@
       if (prev || next) pager.innerHTML = cell(prev, "prev", "← Previous") + cell(next, "next", "Next →");
       else pager.remove();
     }
+  }
+
+  /* ---------- Study plan page ---------- */
+  if (onPlan) {
+    const byCode = {};
+    CAT.forEach(v => v.modules.forEach(m => { byCode[m.code] = m; }));
+    $$(".pmods[data-codes]").forEach(ul => {
+      ul.innerHTML = ul.dataset.codes.split(/\s+/).map(c => byCode[c]).filter(Boolean).map(m =>
+        m.status === "ready"
+          ? `<li class="ready"><a href="${root}${m.href}">${m.title}<span>→</span></a></li>`
+          : `<li class="soon"><span>${m.title}</span></li>`).join("");
+    });
+    // highlight the current month
+    const d = new Date(), ym = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}`;
+    const cur = $(`.month[data-ym="${ym}"]`);
+    if (cur) { cur.classList.add("now"); $("h2", cur).insertAdjacentHTML("afterend", '<span class="now-tag">Now</span>'); }
   }
 
   /* ---------- Home page ---------- */

@@ -56,6 +56,7 @@ Copy the head, topbar, footer and script tags exactly from the template, changin
 ## Repo layout
 
 - `index.html`: home page (volumes and modules, rendered from the catalog; search).
+- `plan.html`: study plan by month. Module lists come from the catalog via `data-codes`, so ready modules link automatically. `app.js` injects the calendar button into every top bar.
 - `vNN/*.html`: module pages (maths pre-rendered; `.katex` spans keep the TeX in `data-tex`).
 - `assets/css/style.css`: the design system (volume accent colours via `[data-vol]`).
 - `assets/js/catalog.js`: the source of truth for volumes and modules (codes, titles, status).
