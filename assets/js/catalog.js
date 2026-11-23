@@ -26,8 +26,12 @@ window.CATALOG = [
       tags: "big data volume velocity variety veracity data cleansing wrangling normalization standardization winsorization trimming tokenization stemming lemmatization bag-of-words BOW n-grams document term matrix DTM TF-IDF word cloud feature engineering NER confusion matrix precision recall accuracy F1 ROC AUC RMSE grid search" },
   ]},
   { n: 2, title: "Economics", modules: [
-    { code: "CFA1813", title: "Currency Exchange Rates: Understanding Equilibrium Value" },
-    { code: "CFA0236", title: "Economic Growth" },
+    { code: "CFA1813", title: "Currency Exchange Rates: Understanding Equilibrium Value", status: "ready", mins: 9,
+      href: "v02/currency-exchange-rates.html",
+      tags: "FX bid offer spread cross rate triangular arbitrage forward points premium discount mark-to-market MTM covered interest parity CIP uncovered interest parity UIP forward rate parity PPP purchasing power Fisher effect international Fisher IFE real interest rate parity carry trade balance of payments current account Mundell-Fleming monetary model Dornbusch overshooting portfolio balance capital controls intervention currency crisis" },
+    { code: "CFA0236", title: "Economic Growth", status: "ready", mins: 8,
+      href: "v02/economic-growth.html",
+      tags: "potential GDP Grinold-Kroner dilution net buybacks relative dynamism Cobb-Douglas production function TFP total factor productivity growth accounting Solow labor productivity capital deepening natural resources Dutch disease resource curse labor force participation demographics human capital ICT neoclassical steady state endogenous growth Romer classical Malthus convergence absolute conditional club open economy" },
   ]},
   { n: 3, title: "Financial Statement Analysis", modules: [
     { code: "CFA0081", title: "Intercorporate Investments" },
