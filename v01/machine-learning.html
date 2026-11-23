@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Machine Learning · L2 Quick Notes</title>
+  <meta name="theme-color" content="#f6f5f1" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f1115" media="(prefers-color-scheme: dark)">
+  <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+  <link rel="preload" href="../assets/vendor/katex/fonts/KaTeX_Main-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/vendor/katex/fonts/KaTeX_Math-Italic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-root="../" data-vol="1" data-module="CFA2007">
+  <header class="topbar">
+    <div class="wrap">
+      <a class="back-btn" href="../index.html" aria-label="All notes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>All notes</a>
+      <span class="title">Machine Learning</span>
+      <button class="icon-btn theme-toggle" type="button"></button>
+    </div>
+    <div class="progress"></div>
+  </header>
+
+  <main class="wrap">
+    <div class="m-head">
+      <span class="eyebrow" data-fill="eyebrow">Quantitative Methods</span>
+      <h1>Machine Learning</h1>
+      <div class="meta"></div>
+      <nav class="chips" aria-label="Sections"></nav>
+    </div>
+
+    <div class="tldr">
+      <h2>In 30 seconds</h2>
+      <ul class="pts">
+        <li><b>Supervised</b> = labelled data (X's + target Y): <b>regression</b> if Y is continuous, <b>classification</b> if Y is categorical or ordinal. <b>Unsupervised</b> = no labels: dimension reduction (<b>PCA</b>) and <b>clustering</b>.</li>
+        <li><b>Overfitting</b> = low bias, high variance: great in-sample, poor out-of-sample. Fight it with <b>regularisation</b> (less complexity) and <b>cross-validation</b>.</li>
+        <li><b>Supervised algorithms:</b> LASSO, SVM, KNN, CART, ensembles and random forests. <b>Unsupervised:</b> PCA, k-means, hierarchical clustering.</li>
+        <li><b>Neural nets / deep learning</b> handle highly non-linear, complex problems. <b>Reinforcement learning</b> = an agent maximising reward by trial and error.</li>
+      </ul>
+    </div>
+
+    <!-- 1 ─────────────────────────────────────────── -->
+    <section class="sec" id="types" data-chip="Types of ML">
+      <h2><span class="n">01</span>Types of machine learning</h2>
+      <div class="tbl-wrap"><table class="tbl">
+        <tr><th>Type</th><th>Data → tasks / algorithms</th></tr>
+        <tr><td><b>Supervised</b></td><td>Labelled (X + target Y). <b>Regression:</b> LASSO, CART, RF, NN. <b>Classification:</b> SVM, KNN, CART, RF, NN</td></tr>
+        <tr><td><b>Unsupervised</b></td><td>No labels. <b>Dimension reduction:</b> PCA. <b>Clustering:</b> k-means, hierarchical</td></tr>
+        <tr><td><b>Deep learning</b></td><td>Large, complex, non-linear data: image, speech, NLP</td></tr>
+        <tr><td><b>Reinforcement</b></td><td>Agent learns from data it generates; maximises reward within constraints</td></tr>
+      </table></div>
+      <ul class="pts">
+        <li>A <b>hyperparameter</b> is set by the researcher <b>before</b> learning (λ, k, tree depth, number of layers). Parameters are learned from the data.</li>
+        <li>Predicting a 0/1 label (e.g. takeover target) = <b>classification on categorical</b> labelled data.</li>
+      </ul>
+    </section>
+
+    <!-- 2 ─────────────────────────────────────────── -->
+    <section class="sec" id="fit" data-chip="Overfitting">
+      <h2><span class="n">02</span>Generalisation &amp; overfitting</h2>
+      <ul class="pts">
+        <li><b>Training</b> sample (fit) → <b>validation</b> sample (tune, choose complexity) → <b>test</b> sample (final out-of-sample check). Training + validation = in-sample.</li>
+        <li><b>Underfit:</b> misses the pattern. <b>Overfit:</b> learns the noise ("perfect hindsight, no foresight"). Causes: <b>noisy data and too much complexity</b>.</li>
+      </ul>
+
+      <div class="f-card">
+        <div class="f-head"><span class="f-tag">F1</span><h3>Out-of-sample error decomposition</h3></div>
+        <div class="f-math"><span class="m d" data-tex="E_{out} = \text{bias} + \text{variance} + \text{base error}"><!--k--><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0576em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">o</span><span class="mord mathnormal mtight">u</span><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord text"><span class="mord">bias</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.7512em;vertical-align:-0.0833em;"></span><span class="mord text"><span class="mord">variance</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord">base error</span></span></span></span></span></span><!--/k--></span></div>
+        <dl class="f-vars">
+          <dt>Bias</dt><dd>poor fit to the <b>training</b> data → underfitting, high in-sample error</dd>
+          <dt>Variance</dt><dd>results swing with new data → overfitting, high out-of-sample error</dd>
+          <dt>Base</dt><dd>irreducible randomness in the data</dd>
+        </dl>
+        <p class="f-use">As complexity ↑: bias ↓, variance ↑. The optimum is where <b>total error</b> bottoms out (the fitting curve). Linear models lean to bias; non-linear models lean to variance.</p>
+      </div>
+
+      <div class="tbl-wrap"><table class="tbl">
+        <tr><th>Learning curve (accuracy vs training size)</th><th>Diagnosis</th></tr>
+        <tr><td>Curves converge but <b>below</b> the desired accuracy</td><td>High <b>bias</b> (underfit). More data won't help.</td></tr>
+        <tr><td>Training and validation curves <b>don't converge</b></td><td>High <b>variance</b> (overfit)</td></tr>
+        <tr><td>Converge <b>near</b> the desired accuracy</td><td>Good fit</td></tr>
+      </table></div>
+
+      <h3 class="sub">Two ways to prevent overfitting</h3>
+      <ul class="pts">
+        <li><b>1. Limit complexity</b> (Occam's razor): fewer features, an overfitting penalty (<b>regularisation</b>).</li>
+        <li><b>2. Cross-validation:</b> estimate out-of-sample error from validation samples.</li>
+        <li><b>k-fold CV:</b> shuffle, split into k parts (k = 5 or 10), train on k − 1, validate on 1, repeat k times, average the errors → estimate of <span class="m" data-tex="E_{out}"><!--k--><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0576em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">o</span><span class="mord mathnormal mtight">u</span><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><!--/k--></span>. <b>Can't be used on time series.</b></li>
+      </ul>
+    </section>
+
+    <!-- 3 ─────────────────────────────────────────── -->
+    <section class="sec" id="sup" data-chip="Supervised algos">
+      <h2><span class="n">03</span>Supervised algorithms</h2>
+
+      <div class="f-card">
+        <div class="f-head"><span class="f-tag">F2</span><h3>LASSO (penalised regression)</h3></div>
+        <div class="f-math"><span class="m d" data-tex="\min\;\sum_{i=1}^{n}(Y_i-\hat{Y}_i)^2 + \lambda\sum_{k=1}^{K}|\hat{b}_k|"><!--k--><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:2.9291em;vertical-align:-1.2777em;"></span><span class="mop">min</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6514em;"><span style="top:-1.8723em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.05em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.3em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.2777em;"><span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.2222em;">Y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1.1968em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord katex-accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9468em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.2222em;">Y</span></span><span style="top:-3.2523em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.25em;"><span class="mord">^</span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:3.1304em;vertical-align:-1.3021em;"></span><span class="mord mathnormal">λ</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.8283em;"><span style="top:-1.8479em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.0315em;">k</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.05em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.3em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.0715em;">K</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.3021em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">∣</span><span class="mord"><span class="mord katex-accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9579em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">b</span></span><span style="top:-3.2634em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.25em;"><span class="mord">^</span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0315em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">∣</span></span></span></span></span><!--/k--></span></div>
+        <p class="f-use">A feature stays only if it cuts SSE by more than it adds to the penalty, so LASSO <b>does feature selection</b>. <b>λ = 0 → plain OLS</b> (no regularisation). Larger λ → more parsimonious. The penalty applies only while training. Good with many correlated features.</p>
+      </div>
+
+      <ul class="pts">
+        <li><b>SVM:</b> linear classifier finding the hyperplane with the <b>maximum margin</b> between two classes. <b>Soft margin</b> penalises misclassified training points; non-linear SVM is more complex and more prone to overfitting. Suits small-to-medium, <b>high-dimensional</b> data (bankruptcy, text sentiment) and is robust to outliers and correlated features.</li>
+        <li><b>KNN:</b> classify a new point by majority vote of its <b>k nearest</b> neighbours. <b>Non-parametric</b>. Hard parts: choosing the <b>distance metric</b> and k (too small → noisy and outlier-sensitive; too large → dilutes "nearness"; even k → ties). Sensitive to irrelevant or correlated features, so it works best with <b>few features</b>.</li>
+        <li><b>CART:</b> binary tree (root → decision nodes → terminal nodes); each node is a feature + cutoff chosen to minimise error. Classification tree → majority class; regression tree → <b>mean</b> of the terminal node. Prone to overfitting, so regularise with max depth, min node size or <b>pruning</b>. <b>Interpretable</b> (visual), with no k or distance metric to choose.</li>
+      </ul>
+
+      <h3 class="sub">Ensembles</h3>
+      <ul class="pts">
+        <li><b>Ensemble learning</b> combines many models → usually <b>more accurate and more stable</b> than the best single model (noise averages out).</li>
+        <li><b>Voting classifier</b> (heterogeneous learners): majority vote across e.g. SVM, KNN and CART. More models help only up to a point.</li>
+        <li><b>Bagging</b> (homogeneous): same algorithm on n bootstrap samples (drawn <b>with replacement</b>), then vote or average → more stable, less overfitting.</li>
+        <li><b>Random forest:</b> many CARTs on bagged data, each split using a <b>random subset of features</b>. Lower variance and overfitting, better signal-to-noise, but a <b>black box</b>.</li>
+      </ul>
+    </section>
+
+    <!-- 4 ─────────────────────────────────────────── -->
+    <section class="sec" id="unsup" data-chip="Unsupervised">
+      <h2><span class="n">04</span>Unsupervised algorithms</h2>
+      <ul class="pts">
+        <li><b>PCA:</b> turns many <b>correlated</b> features into a few <b>uncorrelated</b> principal components. <b>Eigenvectors</b> define the components; <b>eigenvalues</b> give the share of variance each explains. PC1 explains the most variance and minimises projection error. A <b>scree plot</b> shows how many to keep (often enough for 85–95% of variance). <b>Drawback:</b> the components are hard to interpret. Typically used before fitting another model to cut overfitting and the curse of dimensionality.</li>
+        <li><b>Clustering</b> groups similar observations: high <b>cohesion</b> within a cluster, high <b>separation</b> between clusters. Distance is usually Euclidean (or correlation).</li>
+        <li><b>k-means:</b> fix <b>k</b> (a hyperparameter), place random centroids, assign each point to its nearest centroid, recompute the centroids (means), and repeat until no point moves. The result minimises within-cluster distance and maximises between-cluster distance. k must be chosen in advance.</li>
+        <li><b>Hierarchical:</b> no need to set k. <b>Agglomerative</b> (bottom-up): each point starts as its own cluster and the two closest merge. <b>Divisive</b> (top-down): one cluster splits repeatedly. In a <b>dendrogram</b>, arch height = distance, so shorter dendrites mean more similar.</li>
+      </ul>
+      <div class="callout key"><span class="ic">💡</span><div>
+        Clustering uses: find <b>peer groups</b> beyond standard industry codes, and improve <b>diversification</b> (hold stocks from different clusters).
+      </div></div>
+    </section>
+
+    <!-- 5 ─────────────────────────────────────────── -->
+    <section class="sec" id="nn" data-chip="Neural nets &amp; RL">
+      <h2><span class="n">05</span>Neural networks, deep learning &amp; RL</h2>
+      <ul class="pts">
+        <li>Layers: <b>input</b> (one node per feature) → <b>hidden</b> → <b>output</b>. The layer and node counts are hyperparameters.</li>
+        <li>Each hidden node has a <b>summation operator</b> (weighted sum = total net input) and an <b>activation function</b> (non-linear, e.g. sigmoid or ReLU, acting like a "light dimmer switch").</li>
+        <li><b>Forward propagation</b> passes signals forward; <b>backward propagation</b> adjusts the weights to cut the total error (e.g. MSE). The final weights are the network's <b>parameters</b>.</li>
+        <li><b>Deep neural nets:</b> <b>≥ 2 hidden layers</b>, often more than 20. Shallow = one hidden layer.</li>
+        <li><b>Reinforcement learning:</b> an agent learns by trial and error (often against itself) to maximise reward over time.</li>
+      </ul>
+      <div class="f-card">
+        <div class="f-head"><span class="f-tag">F3</span><h3>Weight update (training)</h3></div>
+        <div class="f-math"><span class="m d" data-tex="\begin{aligned} w_{new} = w_{old} &amp;- \eta \,\frac{\partial\,\text{total error}}{\partial w_{old}} \end{aligned}"><!--k--><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:2.2074em;vertical-align:-0.8537em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3537em;"><span style="top:-3.3537em;"><span class="pstrut" style="height:3.3714em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.0269em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight" style="margin-right:0.0269em;">w</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0269em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">o</span><span class="mord mathnormal mtight" style="margin-right:0.0197em;">l</span><span class="mord mathnormal mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8537em;"><span></span></span></span></span></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3537em;"><span style="top:-3.3537em;"><span class="pstrut" style="height:3.3714em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">η</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord" style="margin-right:0.0556em;">∂</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0269em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">o</span><span class="mord mathnormal mtight" style="margin-right:0.0197em;">l</span><span class="mord mathnormal mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord" style="margin-right:0.0556em;">∂</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord text"><span class="mord">total error</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.836em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8537em;"><span></span></span></span></span></span></span></span></span></span></span></span><!--/k--></span></div>
+        <p class="f-use"><span class="m" data-tex="\eta"><!--k--><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">η</span></span></span></span><!--/k--></span> = <b>learning rate</b> (a hyperparameter) that sets the size of each adjustment.</p>
+      </div>
+    </section>
+
+    <!-- 6 ─────────────────────────────────────────── -->
+    <section class="sec" id="choose" data-chip="Choosing an algo">
+      <h2><span class="n">06</span>Choosing an algorithm</h2>
+      <div class="tbl-wrap"><table class="tbl">
+        <tr><th>Situation</th><th>Algorithm</th></tr>
+        <tr><td>Many highly correlated features</td><td><b>PCA</b> first</td></tr>
+        <tr><td>Numerical prediction, linear</td><td>Penalised regression / <b>LASSO</b></td></tr>
+        <tr><td>Numerical prediction, non-linear</td><td>CART, random forest, NN</td></tr>
+        <tr><td>Classification, labelled, linear</td><td><b>KNN, SVM</b></td></tr>
+        <tr><td>Classification, labelled, non-linear</td><td>CART, random forest, NN / DNN</td></tr>
+        <tr><td>Unlabelled, non-linear</td><td>NN / DNN</td></tr>
+        <tr><td>Unlabelled, linear, <b>k known</b></td><td><b>k-means</b></td></tr>
+        <tr><td>Unlabelled, linear, <b>k unknown</b></td><td><b>Hierarchical</b></td></tr>
+      </table></div>
+    </section>
+
+    <!-- 7 ─────────────────────────────────────────── -->
+    <section class="sec" id="traps" data-chip="Exam traps">
+      <h2><span class="n">07</span>Exam traps</h2>
+      <div class="callout trap"><span class="ic">⚠️</span><div>
+        <ul class="pts" style="margin:0">
+          <li>Continuous target (e.g. a return) → supervised <b>regression</b>, not classification. Clustering has <b>no target</b>.</li>
+          <li><b>LASSO with λ = 0 is not regularisation</b>: it's OLS. Pruning a CART <b>is</b> regularisation.</li>
+          <li>PCA is <b>dimension reduction</b>, not clustering. k-means partitions into a fixed k.</li>
+          <li>"Group 10,000 stocks into 20 clusters": <b>20 is the hyperparameter k</b>. Portfolio size and universe size are not.</li>
+          <li>CART's advantages over KNN: no k to set, no distance metric needed, and a visual explanation.</li>
+          <li><b>Low bias + high variance = overfit.</b> Both an overfitting penalty and cross-validation reduce it.</li>
+          <li>Ensembles beat the best single model on accuracy and stability.</li>
+          <li>Deep learning needs <b>≥ 2</b> hidden layers (not "≥ 20"). The <b>summation operator</b> weights inputs; the <b>activation function</b> transforms them.</li>
+          <li>k-fold cross-validation is <b>not</b> suitable for time-series data.</li>
+        </ul>
+      </div></div>
+    </section>
+
+    <nav class="pager"></nav>
+    <a class="home-cta" href="../index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Back to all notes</a>
+  </main>
+
+  <footer class="foot wrap">Personal study notes · not affiliated with CFA Institute </footer>
+
+  <script src="../assets/js/catalog.js"></script>
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>
