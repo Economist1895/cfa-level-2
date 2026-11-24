@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Credit Default Swaps · L2 Quick Notes</title>
+  <meta name="theme-color" content="#f6f5f1" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f1115" media="(prefers-color-scheme: dark)">
+  <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+  <link rel="preload" href="../assets/vendor/katex/fonts/KaTeX_Main-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/vendor/katex/fonts/KaTeX_Math-Italic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-root="../" data-vol="6" data-module="CFA1456">
+  <header class="topbar">
+    <div class="wrap">
+      <a class="back-btn" href="../index.html" aria-label="All notes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>All notes</a>
+      <span class="title">Credit Default Swaps</span>
+      <button class="icon-btn theme-toggle" type="button"></button>
+    </div>
+    <div class="progress"></div>
+  </header>
+
+  <main class="wrap">
+    <div class="m-head">
+      <span class="eyebrow" data-fill="eyebrow">Fixed Income</span>
+      <h1>Credit Default Swaps</h1>
+      <div class="meta"></div>
+      <nav class="chips" aria-label="Sections"></nav>
+    </div>
+
+    <div class="tldr">
+      <h2>In 30 seconds</h2>
+      <ul class="pts">
+        <li>A CDS is <b>insurance on a reference entity's debt</b>. The protection buyer pays a premium and receives par − recovery after a <b>credit event</b>.</li>
+        <li>Protection <b>buyer = short credit</b> (gains when spreads widen). Protection <b>seller = long credit</b>. For <b>index</b> CDS, "buying the index" = <b>long</b> credit.</li>
+        <li>Standard coupons are <b>1% (IG) or 5% (HY)</b>. The gap to the fair spread is settled by an <b>upfront premium</b> ≈ (spread − coupon) × duration.</li>
+        <li>Mark-to-market P&amp;L ≈ Δspread × duration × notional. Monetise it by entering an <b>offsetting</b> CDS.</li>
+        <li>Uses: hedge or take credit exposure, long/short and <b>curve</b> trades, and <b>basis</b> trades (bond spread vs CDS spread).</li>
+      </ul>
+    </div>
+
+    <!-- 1 ─────────────────────────────────────────── -->
+    <section class="sec" id="basics" data-chip="Basics">
+      <h2><span class="n">01</span>Definitions &amp; types</h2>
+
+      <ul class="pts">
+        <li><b>Reference entity</b> = the borrower. <b>Reference obligation</b> = usually a <b>senior unsecured</b> bond. Coverage extends to all debt of <b>equal or higher</b> seniority.</li>
+        <li>Payoff is based on the <b>cheapest-to-deliver (CTD)</b> obligation: the lowest-priced eligible bond with the same seniority, not the bond you hold. Subordinated debt doesn't qualify.</li>
+        <li>Like a <b>put option</b> on credit. It does <b>not</b> remove all risk: the buyer takes on <b>counterparty risk</b>, and the definition of default may not match the actual loss.</li>
+        <li><b>Single-name</b>, <b>index</b> (CDX in North America; iTraxx in Europe, Asia, Australia) and <b>tranche</b> CDS (covers losses up to set levels, so only a <b>partial</b> hedge).</li>
+        <li>Other uses: leverage, access to maturities not available in cash bonds, credit exposure <b>without interest rate risk</b>, and more liquidity than corporate bonds.</li>
+        <li>Total CDS notional can <b>exceed</b> the debt outstanding (buyers needn't own the debt). <b>Naked</b> CDS on sovereign debt is banned in Europe.</li>
+      </ul>
+
+      <h3 class="sub">Contract terms</h3>
+      <ul class="pts">
+        <li><b>ISDA Master Agreement</b> must be signed first. Standard contracts: Standard North American, Standard Europe.</li>
+        <li>Maturities 1–10 yrs, <b>5 yrs</b> most liquid. Terminate on the 20th of Mar/Jun/Sep/Dec; Mar and Sep are index roll dates.</li>
+        <li>Premium paid quarterly at a <b>standard coupon</b>: 1% (IG) or 5% (HY).</li>
+      </ul>
+    </section>
+
+    <!-- 2 ─────────────────────────────────────────── -->
+    <section class="sec" id="events" data-chip="Events &amp; settlement">
+      <h2><span class="n">02</span>Credit events &amp; settlement</h2>
+
+      <ul class="pts">
+        <li><b>Credit events</b>: <b>bankruptcy</b>; <b>failure to pay</b> (after a grace period, no bankruptcy filing needed, on <i>any</i> obligation); <b>restructuring</b> (must be <b>involuntary</b> or <b>coercive</b>; <b>not</b> a credit event in the US). Sovereigns: moratorium or repudiation.</li>
+        <li>An ISDA <b>Determinations Committee</b> decides: 15 members (10 dealers + 5 buy-side), needs a <b>12-vote</b> supermajority. It also rules on <b>succession events</b> (merger, spinoff), which can split the CDS across entities.</li>
+        <li>Settlement is a right, not an obligation; typically <b>30 days</b> after the declaration.</li>
+      </ul>
+
+      <div class="f-card">
+        <div class="f-head"><span class="f-tag">F1</span><h3>Payout on a credit event</h3></div>
+        <div class="f-math"><span class="m d" data-tex="\begin{gathered} LGD = 1 - RR \\ \text{Payout} = LGD \times \text{Notional} \end{gathered}"><!--k--><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:2.7em;vertical-align:-1.1em;"></span><span class="mord"><span class="mtable"><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6em;"><span style="top:-3.76em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">L</span><span class="mord mathnormal">G</span><span class="mord mathnormal" style="margin-right:0.0278em;">D</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.0077em;">R</span><span class="mord mathnormal" style="margin-right:0.0077em;">R</span></span></span><span style="top:-2.26em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">Payout</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal">L</span><span class="mord mathnormal">G</span><span class="mord mathnormal" style="margin-right:0.0278em;">D</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord text"><span class="mord">Notional</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.1em;"><span></span></span></span></span></span></span></span></span></span></span></span><!--/k--></span></div>
+        <p class="f-use">RR is set by an <b>auction</b> of the CTD bond, and both parties accept it even if actual recovery differs. <b>Physical settlement</b> (less common): deliver the bond, receive par.</p>
+      </div>
+
+      <div class="callout key"><span class="ic">💡</span><div>
+        <b>Settlement choice:</b> if you hold the <b>CTD</b> bond, you're <b>indifferent</b> (cash payout + sell bond = par). If you hold a <b>pricier</b> bond than the CTD, prefer <b>cash</b> settlement: payout (par − CTD price) + sell your bond at its higher price &gt; par.
+      </div></div>
+    </section>
+
+    <!-- 3 ─────────────────────────────────────────── -->
+    <section class="sec" id="index" data-chip="Index CDS">
+      <h2><span class="n">03</span>Index CDS</h2>
+
+      <ul class="pts">
+        <li>CDX IG and iTraxx Main: <b>125</b> names. CDX HY: 100. iTraxx Crossover: up to 75 HY names.</li>
+        <li><b>Equally weighted</b>: one default settles <b>1/N</b> of the notional; the name drops out and the index continues with a smaller notional.</li>
+        <li><b>IG</b> indexes quoted as <b>spreads</b>; <b>HY</b> indexes quoted as <b>prices</b>. New series every 6 months (on-the-run); moving to it = a <b>roll</b>.</li>
+        <li>More <b>liquid</b> than single names. Value depends on <b>credit correlation</b>: higher default correlation → protection <b>costs more</b>.</li>
+        <li>Index price ≠ sum of components → arbitrage, but transaction costs are high.</li>
+      </ul>
+
+      <div class="callout trap"><span class="ic">⚠️</span><div>
+        <b>Trap:</b> sell $500m of index protection on 125 names = $4m long each name. Buy $3m single-name protection on one name → net long <b>$1m</b> (75% hedged). After it defaults, the index notional is <b>$496m</b>.
+      </div></div>
+    </section>
+
+    <!-- 4 ─────────────────────────────────────────── -->
+    <section class="sec" id="pricing" data-chip="Pricing">
+      <h2><span class="n">04</span>Pricing &amp; valuation</h2>
+
+      <div class="f-card">
+        <div class="f-head"><span class="f-tag">F2</span><h3>Hazard rate &amp; survival</h3></div>
+        <div class="f-math"><span class="m d" data-tex="\begin{gathered} POS_T = \prod_{t=1}^{T}(1 - h_t) \\ POD_{0\to T} = 1 - POS_T \end{gathered}"><!--k--><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:4.5954em;vertical-align:-2.0477em;"></span><span class="mord"><span class="mtable"><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.5477em;"><span style="top:-4.5477em;"><span class="pstrut" style="height:3.8283em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1389em;">P</span><span class="mord mathnormal" style="margin-right:0.0278em;">O</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0576em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.1389em;">T</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.8283em;"><span style="top:-1.8829em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.05em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∏</span></span></span><span style="top:-4.3em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.1389em;">T</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.2671em;"><span></span></span></span></span></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord mathnormal">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span><span style="top:-2.1406em;"><span class="pstrut" style="height:3.8283em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1389em;">P</span><span class="mord mathnormal" style="margin-right:0.0278em;">O</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0278em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">0</span><span class="mrel mtight">→</span><span class="mord mathnormal mtight" style="margin-right:0.1389em;">T</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.1389em;">P</span><span class="mord mathnormal" style="margin-right:0.0278em;">O</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0576em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.1389em;">T</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:2.0477em;"><span></span></span></span></span></span></span></span></span></span></span></span><!--/k--></span></div>
+        <p class="f-use">Hazard rate = POD <b>given</b> no prior default. A constant 2% hazard over 10 yrs: <span class="m" data-tex="1 - 0.98^{10}"><!--k--><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.8141em;"></span><span class="mord">0.9</span><span class="mord"><span class="mord">8</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">10</span></span></span></span></span></span></span></span></span></span></span></span><!--/k--></span> = <b>18.3%</b> cumulative POD. Small annual rates compound into large lifetime PODs.</p>
+      </div>
+
+      <div class="f-card">
+        <div class="f-head"><span class="f-tag">F3</span><h3>CDS spread (one period)</h3></div>
+        <div class="f-math"><span class="m d" data-tex="\text{CDS spread} \approx (1 - RR) \times POD"><!--k--><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">CDS spread</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.0077em;">R</span><span class="mord mathnormal" style="margin-right:0.0077em;">R</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.1389em;">P</span><span class="mord mathnormal" style="margin-right:0.0278em;">O</span><span class="mord mathnormal" style="margin-right:0.0278em;">D</span></span></span></span></span><!--/k--></span></div>
+        <p class="f-use">e.g. POD 2%, RR 60% → 80 bps. Same logic as CVA: expected exposure = notional.</p>
+      </div>
+
+      <div class="f-card">
+        <div class="f-head"><span class="f-tag">F4</span><h3>Upfront payment (two legs)</h3></div>
+        <div class="f-math"><span class="m d" data-tex="\begin{aligned} \text{Upfront} = \;&amp;PV(\text{protection leg}) \\ &amp;- PV(\text{premium leg}) \end{aligned}"><!--k--><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:2.7em;vertical-align:-1.1em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6em;"><span style="top:-3.76em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">Upfront</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span></span><span style="top:-2.26em;"><span class="pstrut" style="height:3em;"></span><span class="mord"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.1em;"><span></span></span></span></span></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6em;"><span style="top:-3.76em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mord mathnormal" style="margin-right:0.1389em;">P</span><span class="mord mathnormal" style="margin-right:0.2222em;">V</span><span class="mopen">(</span><span class="mord text"><span class="mord">protection leg</span></span><span class="mclose">)</span></span></span><span style="top:-2.26em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.1389em;">P</span><span class="mord mathnormal" style="margin-right:0.2222em;">V</span><span class="mopen">(</span><span class="mord text"><span class="mord">premium leg</span></span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.1em;"><span></span></span></span></span></span></span></span></span></span></span></span><!--/k--></span></div>
+        <p class="f-use">&gt; 0 → <b>buyer pays</b> seller (spread &gt; coupon). &lt; 0 → <b>seller pays</b> buyer (spread &lt; coupon). Also: PV(credit spread) = upfront + PV(fixed coupon).</p>
+      </div>
+
+      <div class="f-card">
+        <div class="f-head"><span class="f-tag">F5</span><h3>Upfront premium approximation</h3></div>
+        <div class="f-math"><span class="m d" data-tex="\begin{gathered} \text{Upfront \%} \approx (\text{spread} - \text{coupon}) \times \text{Dur} \\ \text{CDS price} = 100 - \text{upfront \%} \end{gathered}"><!--k--><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:2.7em;vertical-align:-1.1em;"></span><span class="mord"><span class="mtable"><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6em;"><span style="top:-3.76em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">Upfront %</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mopen">(</span><span class="mord text"><span class="mord">spread</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord text"><span class="mord">coupon</span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord text"><span class="mord">Dur</span></span></span></span><span style="top:-2.26em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">CDS price</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">100</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord text"><span class="mord">upfront %</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.1em;"><span></span></span></span></span></span></span></span></span></span></span></span><!--/k--></span></div>
+        <p class="f-use">Dur = <b>effective</b> duration of the CDS. Reverse it: spread = coupon + upfront ÷ Dur. E.g. seller pays 2% upfront on IG, Dur 4 → spread = 100 − 50 = <b>50 bps</b>, price = <b>102</b>.</p>
+      </div>
+
+      <div class="f-card">
+        <div class="f-head"><span class="f-tag">F6</span><h3>Value change during the CDS's life</h3></div>
+        <div class="f-math"><span class="m d" data-tex="\begin{gathered} \%\Delta\text{CDS price} \approx \Delta\text{spread} \times \text{Dur} \\ \text{Buyer P\&amp;L} \approx \Delta\text{spread} \times \text{Dur} \times \text{Notional} \end{gathered}"><!--k--><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:2.7em;vertical-align:-1.1em;"></span><span class="mord"><span class="mtable"><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6em;"><span style="top:-3.76em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">%Δ</span><span class="mord text"><span class="mord">CDS price</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">Δ</span><span class="mord text"><span class="mord">spread</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord text"><span class="mord">Dur</span></span></span></span><span style="top:-2.26em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">Buyer P&amp;L</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">Δ</span><span class="mord text"><span class="mord">spread</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord text"><span class="mord">Dur</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord text"><span class="mord">Notional</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.1em;"><span></span></span></span></span></span></span></span></span></span></span></span><!--/k--></span></div>
+        <p class="f-use">Spread <b>widens</b> → buyer gains, seller loses. Spread narrows → seller gains. Duration shortens over time, and the spread → <b>0 at maturity</b> if no default.</p>
+      </div>
+
+      <ul class="pts">
+        <li><b>Monetise</b>: enter an <b>offsetting</b> CDS (buyer sells protection on the same terms) and collect or pay the new upfront. It needn't be with the same counterparty; central clearing helps.</li>
+        <li>Three ways to realise P&amp;L: settle after a credit event, unwind with an offsetting CDS, or hold to maturity (seller keeps all premiums).</li>
+      </ul>
+
+      <h3 class="sub">Credit curve</h3>
+      <ul class="pts">
+        <li>Credit spread ≈ POD × LGD. The credit curve is essentially set by CDS rates.</li>
+        <li><b>Constant hazard</b> → roughly <b>flat</b> curve (not perfectly flat, because of discounting). <b>Upward</b> → more default risk in later years. <b>Downward</b> (rare) → near-term stress.</li>
+        <li>Long spread widens, short unchanged → long-term creditworthiness worse. Short spread jumps → near-term (liquidity) risk; if the firm survives, POD then falls.</li>
+      </ul>
+    </section>
+
+    <!-- 5 ─────────────────────────────────────────── -->
+    <section class="sec" id="apps" data-chip="Applications">
+      <h2><span class="n">05</span>Applications</h2>
+
+      <ul class="pts">
+        <li><b>Hedge</b>: lenders buy protection instead of selling an illiquid loan or bond (temporary, low cost). <b>Sell protection</b> = credit exposure with no interest rate risk and less capital. Dealers hedge by shorting the debt or equity (+ repo).</li>
+        <li><b>Long/short credit</b>: sell protection on the name or index you expect to <b>improve</b>, buy protection on the one you expect to <b>weaken</b> (e.g. strong vs weak ESG governance). P&amp;L = change in the spread <b>difference</b>.</li>
+        <li><b>Weaker economy</b> expected → buy HY index protection, sell IG index protection.</li>
+      </ul>
+
+      <div class="tbl-wrap"><table class="tbl">
+        <tr><th>View on credit curve</th><th>Curve trade</th></tr>
+        <tr><td><b>Steepening</b> (long-term risk ↑ relative). Short-run <b>bullish</b></td><td><b>Buy</b> long-dated protection, <b>sell</b> short-dated</td></tr>
+        <tr><td><b>Flattening</b> (near-term trouble). Short-run <b>bearish</b></td><td><b>Buy</b> short-dated protection, <b>sell</b> long-dated (cheaper hedge than outright)</td></tr>
+        <tr><td>Parallel widening</td><td>Buy long-dated protection (moves more), possibly hedge with short-dated</td></tr>
+      </table></div>
+    </section>
+
+    <!-- 6 ─────────────────────────────────────────── -->
+    <section class="sec" id="basis" data-chip="Basis trades">
+      <h2><span class="n">06</span>Basis trading &amp; valuation disparities</h2>
+
+      <div class="f-card">
+        <div class="f-head"><span class="f-tag">F7</span><h3>Bond credit spread &amp; CDS basis</h3></div>
+        <div class="f-math"><span class="m d" data-tex="\begin{gathered} \text{Bond spread} = y_{\text{bond}} - \text{MRR} \\ \text{Basis} = \text{CDS spread} - \text{bond spread} \end{gathered}"><!--k--><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:2.7em;vertical-align:-1.1em;"></span><span class="mord"><span class="mtable"><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6em;"><span style="top:-3.76em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">Bond spread</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">bond</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord text"><span class="mord">MRR</span></span></span></span><span style="top:-2.26em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">Basis</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord text"><span class="mord">CDS spread</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord text"><span class="mord">bond spread</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.1em;"><span></span></span></span></span></span></span></span></span></span></span></span><!--/k--></span></div>
+        <dl class="f-vars">
+          <dt>MRR</dt><dd>risk-free rate + funding spread</dd>
+        </dl>
+        <p class="f-use"><b>Negative basis</b> (bond spread &gt; CDS): credit is cheap in CDS → <b>buy the bond + buy protection</b> (hedge rates), capture the gap on convergence. <b>Positive basis</b>: the reverse.</p>
+      </div>
+
+      <ul class="pts">
+        <li>The basis comes from differences in opinions, models, <b>liquidity</b> and <b>repo</b> financing conditions. Embedded options or bonds far from par complicate the maths.</li>
+        <li>Within one issuer: buy its cheap instrument, sell the rich one (complicated by priority of claims).</li>
+        <li><b>LBO / debt-funded takeover</b>: more debt → spread widens. Trade: <b>buy the stock</b> (target) + <b>buy protection</b> on the issuer of the new debt.</li>
+      </ul>
+    </section>
+
+    <!-- 7 ─────────────────────────────────────────── -->
+    <section class="sec" id="traps" data-chip="Exam traps">
+      <h2><span class="n">07</span>Exam traps</h2>
+      <div class="callout trap"><span class="ic">⚠️</span><div>
+        <ul class="pts" style="margin:0">
+          <li>Recovery rate = <b>CTD</b> price (lowest same-seniority bond), not the bond you hold.</li>
+          <li>Own a bond priced above the CTD → <b>cash</b> settle (e.g. $6m payout + $5m bond = $11m vs $10m physical).</li>
+          <li>Failure to pay on <b>any</b> obligation, even subordinated, is a credit event without a bankruptcy filing.</li>
+          <li>Upfront ≈ (spread − coupon) × <b>duration</b>: (700 − 500) × 7 = <b>14%</b>, not 2% and not (700/500) × 7.</li>
+          <li>Sold protection at 150, closed at 100 bps, Dur 3.9, £6m → gain ≈ 0.005 × 3.9 × 6m = <b>£117k</b>. Close a sold position by <b>buying</b> protection.</li>
+          <li>Basis: bond spread = yield − <b>MRR</b> (7% − 2.5% = 4.5%). Gain = 4.5% − 4.25% = <b>0.25%</b>, not CDS − MRR.</li>
+          <li>Index CDS = <b>full</b> hedge of many names; tranche CDS = <b>partial</b>. Buying an index = long credit.</li>
+          <li>Downward credit curve = higher POD in <b>early</b> years; flat = constant hazard rate.</li>
+          <li>Cumulative survival multiplies each year's (1 − h): 0.9978 × 0.9965 × 0.9950 → POD ≈ <b>1.07%</b>.</li>
+          <li>Need an <b>ISDA Master Agreement</b> before trading CDS.</li>
+        </ul>
+      </div></div>
+    </section>
+
+    <nav class="pager"></nav>
+    <a class="home-cta" href="../index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Back to all notes</a>
+  </main>
+
+
+  <footer class="foot wrap">Personal study notes · not affiliated with CFA Institute </footer>
+
+  <script src="../assets/js/catalog.js"></script>
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>
