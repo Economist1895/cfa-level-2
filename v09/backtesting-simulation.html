@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Backtesting and Simulation · L2 Quick Notes</title>
+  <meta name="theme-color" content="#f6f5f1" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f1115" media="(prefers-color-scheme: dark)">
+  <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+  <link rel="preload" href="../assets/vendor/katex/fonts/KaTeX_Main-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/vendor/katex/fonts/KaTeX_Math-Italic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-root="../" data-vol="9" data-module="CFA2109">
+  <header class="topbar">
+    <div class="wrap">
+      <a class="back-btn" href="../index.html" aria-label="All notes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>All notes</a>
+      <span class="title">Backtesting and Simulation</span>
+      <button class="icon-btn theme-toggle" type="button"></button>
+    </div>
+    <div class="progress"></div>
+  </header>
+
+    <main class="wrap">
+    <div class="m-head">
+      <span class="eyebrow" data-fill="eyebrow">Portfolio Management</span>
+      <h1>Backtesting and Simulation</h1>
+      <div class="meta"></div>
+      <nav class="chips" aria-label="Sections"></nav>
+    </div>
+
+    <div class="tldr">
+      <h2>In 30 seconds</h2>
+      <ul class="pts">
+        <li><b>Backtesting</b> asks how a strategy would have done in the past, to gauge its risk–return trade-off. It assumes the future <b>resembles the past</b>.</li>
+        <li>Three steps: <b>strategy design</b> → <b>historical investment simulation</b> (rolling window: train in-sample, test out-of-sample, roll) → <b>output analysis</b>.</li>
+        <li>Pitfalls: <b>survivorship bias</b>, <b>look-ahead bias</b> (reporting lags, revisions, vendor back-fill), <b>data snooping</b>.</li>
+        <li><b>Historical scenario analysis</b> → performance by regime (recession, high volatility). <b>Simulation</b> (historical bootstrap or Monte Carlo) adds randomness. <b>Sensitivity analysis</b> changes the assumptions, e.g. normal → skewed t.</li>
+        <li>Factor returns are <b>negatively skewed</b>, <b>fat-tailed</b> and <b>tail-dependent</b>, so a normal distribution understates downside risk.</li>
+      </ul>
+    </div>
+
+    <!-- 1 ─────────────────────────────────────────── -->
+    <section class="sec" id="process" data-chip="Process">
+      <h2><span class="n">01</span>Objectives &amp; process</h2>
+      <ul class="pts">
+        <li>Goal: approximate the real investment process to see the <b>risk–return trade-off</b>. Used as an <b>acceptance or rejection</b> screen. Common with quant managers and also <b>widely used by fundamental managers</b>, e.g. to test a screening metric.</li>
+        <li><b>Step 1, strategy design</b>: goal (e.g. excess return or risk-adjusted absolute return) → <b>hypothesis</b> (trading rule or selection criterion) → rules and key parameters.</li>
+      </ul>
+      <div class="tbl-wrap"><table class="tbl">
+        <thead><tr><th>Key parameter</th><th>Points to note</th></tr></thead>
+        <tbody>
+          <tr><td><b>Investment universe</b></td><td>Usually a broad index's constituents. Must match client restrictions (e.g. domestic only).</td></tr>
+          <tr><td><b>Return definition</b></td><td>Single (home) currency vs local currency, depending on currency hedging. Benchmark consistent with the universe.</td></tr>
+          <tr><td><b>Rebalancing &amp; costs</b></td><td>Usually monthly. More frequent → higher <b>transaction costs</b>, plus bid–ask, asynchronous-trading and holiday bias. Many anomalies <b>vanish after costs</b>; disclose whether costs are included.</td></tr>
+          <tr><td><b>Start/end dates</b></td><td>Longer → more statistical confidence, but data are <b>non-stationary</b>, so add regime (scenario) analysis.</td></tr>
+        </tbody>
+      </table></div>
+      <div class="f-card">
+        <div class="f-head"><span class="f-tag">F1</span><h3>Trailing earnings yield (value signal)</h3></div>
+        <div class="f-math"><span class="m d" data-tex="\text{Earnings yield} = \frac{\text{Trailing 12-month EPS}}{\text{Current price}}"><!--k--><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">Earnings yield</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:2.2519em;vertical-align:-0.8804em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">Current price</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">Trailing 12-month EPS</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8804em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span><!--/k--></span></div>
+        <p class="f-use">Preferred to P/E: it is defined even when EPS is zero or negative.</p>
+      </div>
+    </section>
+
+    <!-- 2 ─────────────────────────────────────────── -->
+    <section class="sec" id="rolling" data-chip="Rolling window">
+      <h2><span class="n">02</span>Rolling window &amp; output</h2>
+      <ul class="pts">
+        <li><b>Step 2, historical simulation</b>: at each rebalance date, form the portfolio from <b>in-sample</b> data, hold it over the next <b>out-of-sample</b> period, then roll forward. Many samples, not just two; today's OOS data join the next in-sample window. Mimics live investing as new information arrives.</li>
+        <li><b>Long–short hedged portfolio</b>: rank the universe on the factor, split into quantiles (quintiles or deciles), go <b>long the top</b> and <b>short the bottom</b>, equal- or cap-weighted. Drawback: <b>not every manager can short</b>. Quantiles may differ in beta and other factor exposures.</li>
+        <li><b>Step 3, output</b>: mean return, volatility, <b>Sharpe</b>, <b>Sortino</b>, <b>maximum drawdown</b> (largest peak-to-trough loss), VaR, <b>CVaR</b>, turnover. Visuals: return time series, return distribution vs the normal, cumulative return on a <b>log scale</b> (equal % moves = equal height).</li>
+        <li>Cumulative plots reveal downside risk, <b>performance decay</b> and <b>structural breaks</b>: recessions and crises, geopolitics and trade blocs, monetary/fiscal shifts (e.g. QE), technology shocks.</li>
+        <li><b>Excess kurtosis</b> → more extreme surprises; <b>negative skew</b> → surprises are more likely losses. Risk-averse investors prefer positive skew and modest kurtosis.</li>
+      </ul>
+      <div class="callout trap"><span class="ic">⚠️</span><div>
+        Max drawdown and SD are <b>not substitutes</b>: SD measures volatility, drawdown measures downside. You can't infer <b>returns</b> or <b>turnover</b> from risk metrics alone. Lower VaR, CVaR and drawdown → less downside risk.
+      </div></div>
+    </section>
+
+    <!-- 3 ─────────────────────────────────────────── -->
+    <section class="sec" id="multifactor" data-chip="Multifactor">
+      <h2><span class="n">03</span>Backtesting multifactor strategies</h2>
+      <ul class="pts">
+        <li>Build long–short <b>factor portfolios</b> (e.g. value, growth, momentum, revisions, ROE, leverage, earnings quality), then combine them:
+          <b>Benchmark (BM)</b> = <b>equal weights</b>; <b>risk parity (RP)</b> = <b>equal risk contribution</b>, using factor volatilities and correlations. Both are long-only across factors (weights ≥ 0, summing to 100%).</li>
+        <li>Rolling window runs <b>twice</b>: once to form the factor portfolios, again to estimate the <b>covariance matrix</b> (e.g. trailing 5 years) for the RP weights. The second window avoids <b>look-ahead bias</b>.</li>
+        <li>Typical finding: RP has a slightly lower return but much lower volatility → <b>higher Sharpe</b>, smaller drawdown, VaR and CVaR, and near-symmetric returns. BM shows negative skew and high kurtosis.</li>
+        <li>Equal weighting often does as well as sophisticated optimisation.</li>
+      </ul>
+    </section>
+
+    <!-- 4 ─────────────────────────────────────────── -->
+    <section class="sec" id="biases" data-chip="Pitfalls">
+      <h2><span class="n">04</span>Common backtesting problems</h2>
+      <div class="tbl-wrap"><table class="tbl">
+        <thead><tr><th>Problem</th><th>What &amp; fix</th></tr></thead>
+        <tbody>
+          <tr><td><b>Survivorship bias</b></td><td>Testing only firms that exist today; failures, takeovers and delistings are dropped. Can even <b>reverse</b> conclusions. Fix: <b>point-in-time</b> constituents. It is a <b>type of look-ahead bias</b>.</td></tr>
+          <tr><td><b>Look-ahead bias</b></td><td>Using information not known at the time: <b>reporting lags</b>, <b>restated or revised data</b>, vendor <b>back-filled history</b> for newly added firms. Inflates results. Fix: point-in-time data or an assumed lag.</td></tr>
+          <tr><td><b>Data snooping</b> (p-hacking)</td><td>Test many models and pick the best: an inference made <b>after</b> seeing results → false positives. Fix: higher hurdle (<b>t &gt; 3.0</b>) and <b>cross-validation</b> (other periods or <b>other markets</b>).</td></tr>
+        </tbody>
+      </table></div>
+      <ul class="pts">
+        <li>A <b>uniform reporting lag</b> fixes look-ahead bias but creates <b>stale data</b> for fast reporters (large caps report within ~1–2 months). A sensible lag is about 1–3 months depending on region; a 4–6-month lag is stale.</li>
+        <li>Point-in-time data fix survivorship and look-ahead bias but <b>not</b> data snooping.</li>
+        <li>Rolling-window backtesting is itself a form of cross-validation (deterministic, not random).</li>
+      </ul>
+    </section>
+
+    <!-- 5 ─────────────────────────────────────────── -->
+    <section class="sec" id="scenario" data-chip="Scenarios">
+      <h2><span class="n">05</span>Historical scenario analysis</h2>
+      <ul class="pts">
+        <li>A backtest split by <b>regime</b> to study structural breaks. Examples: <b>expansion vs recession</b>, <b>high vs low volatility</b> (VIX above or below its 5-year moving average), trade agreement vs none.</li>
+        <li>Compare <b>Sharpe ratios by regime</b>: a robust strategy keeps a high Sharpe in every regime. Density plots show how the shape (volatility, skew, tails) changes.</li>
+        <li>Recession dates are known only <b>in hindsight</b>, which is a look-ahead issue in regime labels.</li>
+        <li>Switching universes (one index → another) is <b>not</b> scenario analysis: there is no regime change.</li>
+      </ul>
+    </section>
+
+    <!-- 6 ─────────────────────────────────────────── -->
+    <section class="sec" id="simulation" data-chip="Simulation">
+      <h2><span class="n">06</span>Simulation</h2>
+      <ul class="pts">
+        <li>Why: history happened only one way and isn't stationary. Simulation adds <b>randomness</b> to <b>verify</b> backtest results, especially <b>downside risk</b>.</li>
+      </ul>
+      <h3 class="sub">Eight steps</h3>
+      <ul class="pts">
+        <li>1 <b>Target variable</b> (strategy return); 2 <b>key decision variables</b> (asset or factor returns and weights); 3 number of trials <b>N</b> (typically 1,000–10,000); 4 <b>distribution</b> of the decision variables; 5 draw random numbers; 6 compute the target; 7 repeat N times; 8 compute metrics (Sharpe, <b>CVaR</b>, drawdown).</li>
+      </ul>
+      <div class="f-card">
+        <div class="f-head"><span class="f-tag">F2</span><h3>Target variable per trial</h3></div>
+        <div class="f-math"><span class="m d" data-tex="r_{p,t} = \sum_{i=1}^{K}\omega_{i,t}\, r_{i,t}"><!--k--><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.7167em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0278em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">p</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:3.106em;vertical-align:-1.2777em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.8283em;"><span style="top:-1.8723em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.05em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.3em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.0715em;">K</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.2777em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">ω</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0278em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span></span><!--/k--></span></div>
+      </div>
+      <div class="tbl-wrap"><table class="tbl">
+        <thead><tr><th></th><th>Historical simulation</th><th>Monte Carlo</th></tr></thead>
+        <tbody>
+          <tr><td>Draws from</td><td>Actual past periods, <b>random order</b> (uniform random number → month)</td><td>An assumed <b>statistical distribution</b>, calibrated to history</td></tr>
+          <tr><td>Key choice</td><td>With or without replacement. <b>Bootstrapping</b> (with replacement) when N &gt; data size</td><td><b>Functional form</b> of the distribution (most important decision)</td></tr>
+          <tr><td>Pros</td><td>Simple; keeps actual fat tails and joint behaviour</td><td>Flexible: non-normality, fat tails, tail dependence</td></tr>
+          <tr><td>Cons</td><td>Assumes the <b>past is a sufficient guide</b></td><td>Complex, computationally heavy; only as good as the distribution</td></tr>
+        </tbody>
+      </table></div>
+      <ul class="pts">
+        <li>Both are <b>random</b> (both use random number generators). Rolling-window backtesting is <b>deterministic</b>; historical simulation is a non-deterministic version of it.</li>
+        <li>Correlated assets → specify a <b>multivariate</b> distribution, not one per asset on its own.</li>
+        <li><b>Model calibration</b>: estimate the parameters by regression or distribution fitting. Complex forms → low <b>specification</b> error but high <b>estimation</b> error; simple forms → the reverse (<b>bias–variance trade-off</b>).</li>
+      </ul>
+      <div class="f-card">
+        <div class="f-head"><span class="f-tag">F3</span><h3>Multivariate normal parameters (K assets)</h3></div>
+        <div class="f-math"><span class="m d" data-tex="\begin{gathered}K\ \text{means} + K\ \text{SDs} \\ +\ \frac{K(K-1)}{2}\ \text{correlations}\end{gathered}"><!--k--><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:3.613em;vertical-align:-1.5565em;"></span><span class="mord"><span class="mtable"><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.0565em;"><span style="top:-4.6435em;"><span class="pstrut" style="height:3.427em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0715em;">K</span><span class="mspace"> </span><span class="mord text"><span class="mord">means</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.0715em;">K</span><span class="mspace"> </span><span class="mord text"><span class="mord">SDs</span></span></span></span><span style="top:-2.5565em;"><span class="pstrut" style="height:3.427em;"></span><span class="mord"><span class="mord">+</span><span class="mspace"> </span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.427em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0715em;">K</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.0715em;">K</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace"> </span><span class="mord text"><span class="mord">correlations</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.5565em;"><span></span></span></span></span></span></span></span></span></span></span></span><!--/k--></span></div>
+        <p class="f-use">Estimate the covariance terms for <b>all</b> K assets, not only those known to be correlated. 8 factors → 28; 9 → 36.</p>
+      </div>
+    </section>
+
+    <!-- 7 ─────────────────────────────────────────── -->
+    <section class="sec" id="sensitivity" data-chip="Sensitivity">
+      <h2><span class="n">07</span>Sensitivity analysis</h2>
+      <ul class="pts">
+        <li>Change an <b>input assumption</b> and re-run to see how the target and risk measures react. Classic case: replace the multivariate normal with a <b>multivariate skewed Student's t</b> to capture skew and fat tails.</li>
+        <li>Skewed t: better fit but <b>more parameters</b> → larger estimation error.</li>
+        <li>Typical result: <b>Sharpe</b> is fairly <b>insensitive</b> to the method. <b>CVaR</b> is <b>sensitive</b>: Monte Carlo (normal, and even skewed t) <b>understated</b> the BM strategy's tail risk compared with backtesting and historical simulation. RP, with near-symmetric returns, looked the same under every method.</li>
+        <li>If methods disagree on tail risk → try more distributional forms.</li>
+      </ul>
+      <div class="callout key"><span class="ic">💡</span><div>
+        Classify the action: change the <b>distribution assumption</b> → <b>sensitivity analysis</b>. Split the sample by <b>regime</b> → <b>scenario analysis</b>. Sample past months at random → <b>historical simulation</b>. Draw from a fitted distribution → <b>Monte Carlo</b>.
+      </div></div>
+    </section>
+
+    <!-- 8 ─────────────────────────────────────────── -->
+    <section class="sec" id="traps" data-chip="Exam traps">
+      <h2><span class="n">08</span>Exam traps</h2>
+      <div class="callout trap"><span class="ic">⚠️</span><div>
+        <ul class="pts">
+          <li>"Backtesting is used almost only by quant managers" is <b>false</b>; fundamental managers use it too.</li>
+          <li>"What if the future differs from the past?" is the core weakness of <b>backtesting</b> (and historical simulation). VaR and CVaR from a backtest <b>don't</b> fix it.</li>
+          <li>Client restricted to domestic securities → change the <b>investment universe</b>.</li>
+          <li>Smallest downside by "average of losses beyond the threshold" → lowest <b>CVaR</b>, not VaR or drawdown.</li>
+          <li>Choosing the best of thousands of backtests → <b>data snooping</b>.</li>
+          <li>A long (e.g. 4-month) uniform reporting lag → <b>stale data</b>, not snooping.</li>
+          <li>N trials &gt; history length in historical simulation → <b>bootstrap</b> (sample with replacement), not interpolation.</li>
+          <li>Non-normal factor returns in Monte Carlo → run <b>sensitivity analysis</b> with another distribution.</li>
+          <li>Best risk-adjusted performance across regimes → highest <b>Sharpe</b> in each regime.</li>
+          <li>Rolling window: the data are <b>not</b> split into just two samples; RP needs the window <b>twice</b>.</li>
+        </ul>
+      </div></div>
+    </section>
+
+    <nav class="pager"></nav>
+    <a class="home-cta" href="../index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Back to all notes</a>
+</main>
+
+
+  <footer class="foot wrap">Personal study notes · not affiliated with CFA Institute </footer>
+
+  <script src="../assets/js/catalog.js"></script>
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>

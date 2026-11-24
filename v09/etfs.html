@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Exchange-Traded Funds: Mechanics and Applications · L2 Quick Notes</title>
+  <meta name="theme-color" content="#f6f5f1" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f1115" media="(prefers-color-scheme: dark)">
+  <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+  <link rel="preload" href="../assets/vendor/katex/fonts/KaTeX_Main-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/vendor/katex/fonts/KaTeX_Math-Italic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-root="../" data-vol="9" data-module="CFA2043">
+  <header class="topbar">
+    <div class="wrap">
+      <a class="back-btn" href="../index.html" aria-label="All notes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>All notes</a>
+      <span class="title">Exchange-Traded Funds: Mechanics and Applications</span>
+      <button class="icon-btn theme-toggle" type="button"></button>
+    </div>
+    <div class="progress"></div>
+  </header>
+
+    <main class="wrap">
+    <div class="m-head">
+      <span class="eyebrow" data-fill="eyebrow">Portfolio Management</span>
+      <h1>Exchange-Traded Funds: Mechanics and Applications</h1>
+      <div class="meta"></div>
+      <nav class="chips" aria-label="Sections"></nav>
+    </div>
+
+    <div class="tldr">
+      <h2>In 30 seconds</h2>
+      <ul class="pts">
+        <li><b>Primary market</b> (OTC): only <b>authorised participants</b> create/redeem shares, <b>in kind</b>, with the issuer. <b>Secondary market</b> (exchange): where investors trade.</li>
+        <li>AP <b>arbitrage</b> keeps price ≈ NAV: premium → create &amp; sell; discount → buy &amp; redeem.</li>
+        <li>In-kind redemptions make ETFs <b>tax fair</b> and <b>tax efficient</b>. APs' costs go into the <b>bid–ask spread</b>, so buy-and-hold holders don't pay for others' trading.</li>
+        <li>Cost of ownership = <b>round-trip trading cost</b> (fixed) + <b>management fee × time</b>. Trading costs dominate short holds; fees dominate long ones.</li>
+        <li>Risks: <b>counterparty</b> (ETNs, swaps), <b>fund closure</b>, <b>investor misunderstanding</b> (leveraged/inverse daily reset). Uses: cash equitisation, rebalancing, completion, transitions, core and tactical exposure, factors.</li>
+      </ul>
+    </div>
+
+    <!-- 1 ─────────────────────────────────────────── -->
+    <section class="sec" id="mechanics" data-chip="Mechanics">
+      <h2><span class="n">01</span>Creation / redemption</h2>
+      <ul class="pts">
+        <li>Mutual fund: bought/sold from the fund at <b>closing NAV</b> for cash. ETF: trades <b>intraday</b> like a stock; shares created/redeemed continuously.</li>
+        <li><b>APs</b> = large broker/dealers (often market makers) authorised by the issuer. The issuer publishes a daily <b>creation basket</b>, which also defines the intraday NAV.</li>
+        <li>Investor buying on the exchange: the issuer is <b>not involved</b> and receives no new money.</li>
+      </ul>
+      <div class="tbl-wrap"><table class="tbl">
+        <thead><tr><th>ETF price vs NAV</th><th>AP arbitrage</th></tr></thead>
+        <tbody>
+          <tr><td><b>Premium</b> (price &gt; NAV)</td><td>Buy the basket, deliver it for <b>new</b> ETF shares (creation), sell ETF shares → ETF price ↓</td></tr>
+          <tr><td><b>Discount</b> (price &lt; NAV)</td><td>Buy ETF shares, <b>redeem</b> for the basket, sell the securities → ETF price ↑</td></tr>
+        </tbody>
+      </table></div>
+      <ul class="pts">
+        <li>AP pays all trading costs plus a creation/redemption fee and recovers them through the <b>bid–ask spread</b>. Frequent traders bear their own costs → structure is <b>fairer</b> than a mutual fund.</li>
+        <li>Arbitrage gap widens when the basket is <b>hard to trade simultaneously</b> (foreign market closed) or <b>illiquid</b> (high yield): the AP bears market risk until both legs are done.</li>
+        <li>US: trades clear through <b>NSCC</b> (guarantor once cleared), DTC keeps the book, continuous net settlement, <b>T+2</b>. Market makers get up to <b>6 days</b>.</li>
+        <li>Europe: mostly institutional, OTC-negotiated, cross-listed, many CSDs → fragmentation can widen spreads.</li>
+      </ul>
+    </section>
+
+    <!-- 2 ─────────────────────────────────────────── -->
+    <section class="sec" id="tracking" data-chip="Tracking">
+      <h2><span class="n">02</span>Expenses &amp; tracking</h2>
+      <ul class="pts">
+        <li>ETF fees are usually lower: no individual investor accounts (held via brokers), mostly index-based (no research).</li>
+        <li><b>Tracking error</b> = annualised <b>standard deviation</b> of daily return differences (fund NAV − index). Shows <b>variability only</b>, not whether the fund lags or leads.</li>
+        <li><b>Tracking difference</b> = rolling 12-month return gap. Shows the cumulative outcome; compare its median with the expense ratio. Expect underperformance ≈ <b>expense ratio</b>.</li>
+        <li>Always report a <b>central tendency</b> (mean/median) <b>and</b> a <b>spread</b> (SD/range).</li>
+      </ul>
+      <h3 class="sub">Sources of tracking error</h3>
+      <ul class="pts">
+        <li><b>Fees &amp; expenses</b>: index assumes frictionless trading at closing prices.</li>
+        <li><b>Representative sampling/optimisation</b> (holding a subset): more tracking error than full replication, wider range, regime-dependent.</li>
+        <li><b>Depositary receipts / other ETFs</b>: different trading hours; ETFs held at market price, not NAV.</li>
+        <li><b>Index changes</b> traded at other times/prices. Usually minor: infrequent, and APs can deliver market-on-close.</li>
+        <li><b>Fund accounting</b>: FX strike time (WM/Reuters 4 pm London vs ETF close), bond valuation time.</li>
+        <li><b>Regulatory &amp; tax</b>: dividend withholding rates differ from the index's; local taxes on foreign inflows.</li>
+        <li><b>Asset-manager operations</b>: <b>securities lending</b> and dividend recapture are <b>negative costs</b> (help the fund vs the index).</li>
+      </ul>
+    </section>
+
+    <!-- 3 ─────────────────────────────────────────── -->
+    <section class="sec" id="tax" data-chip="Tax">
+      <h2><span class="n">03</span>Tax issues</h2>
+      <ul class="pts">
+        <li><b>Tax fair</b>: investor sales happen on the exchange; AP redemptions are <b>in kind</b> (not taxable) → remaining holders aren't hit by gains triggered by others. Mutual funds sell securities to pay redeemers.</li>
+        <li><b>Tax efficient</b>: the manager delivers the <b>lowest-cost-basis lots</b> in redemptions → purges unrealised gains. Also lower turnover → <b>fewer capital-gain distributions</b>.</li>
+        <li>Gains distributions and taxes <b>on sale</b> are separate questions. On sale, ETFs are generally taxed like their <b>underlying holdings</b>.</li>
+        <li><b>Return of capital</b> (paid beyond earnings): generally not taxed now; <b>reduces cost basis</b>.</li>
+        <li>Structure matters: e.g. in the US, commodity <b>ETNs</b> are taxed differently from futures-based ETFs.</li>
+      </ul>
+    </section>
+
+    <!-- 4 ─────────────────────────────────────────── -->
+    <section class="sec" id="costs" data-chip="Trading costs">
+      <h2><span class="n">04</span>Spreads, premiums &amp; total cost</h2>
+      <div class="f-card">
+        <div class="f-head"><span class="f-tag">F1</span><h3>Bid–ask spread (upper bound)</h3></div>
+        <div class="f-math"><span class="m d" data-tex="\begin{aligned}\text{Spread}\le\ &amp;\pm\ \text{create/redeem \&amp; direct fees}\\&amp;+\ \text{underlyings' spreads}\\&amp;+\ \text{risk of hedging/carrying}\\&amp;+\ \text{market maker's profit}\\&amp;-\ \text{offsetting-flow discount}\end{aligned}"><!--k--><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:7.2em;vertical-align:-3.35em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:3.85em;"><span style="top:-6.01em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">Spread</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace"> </span></span></span><span style="top:-4.51em;"><span class="pstrut" style="height:3em;"></span><span class="mord"></span></span><span style="top:-3.01em;"><span class="pstrut" style="height:3em;"></span><span class="mord"></span></span><span style="top:-1.51em;"><span class="pstrut" style="height:3em;"></span><span class="mord"></span></span><span style="top:-0.01em;"><span class="pstrut" style="height:3em;"></span><span class="mord"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:3.35em;"><span></span></span></span></span></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:3.85em;"><span style="top:-6.01em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">±</span><span class="mspace"> </span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord text"><span class="mord">create/redeem &amp; direct fees</span></span></span></span><span style="top:-4.51em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace"> </span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord text"><span class="mord">underlyings’ spreads</span></span></span></span><span style="top:-3.01em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace"> </span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord text"><span class="mord">risk of hedging/carrying</span></span></span></span><span style="top:-1.51em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace"> </span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord text"><span class="mord">market maker’s profit</span></span></span></span><span style="top:-0.01em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace"> </span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord text"><span class="mord">offsetting-flow discount</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:3.35em;"><span></span></span></span></span></span></span></span></span></span></span></span><!--/k--></span></div>
+        <p class="f-use">Main drivers: <b>order flow</b> (more volume → tighter), <b>competition</b> among market makers, and liquidity-provider <b>costs/risks</b>. Liquid futures on the index → easy hedging → tight spreads even for small-cap ETFs.</p>
+      </div>
+      <div class="f-card">
+        <div class="f-head"><span class="f-tag">F2</span><h3>Premium / discount</h3></div>
+        <div class="f-math"><span class="m d" data-tex="\begin{gathered}\text{End of day}=\frac{\text{ETF price}-\text{NAV}}{\text{NAV}}\\[2pt]\text{Intraday}=\frac{\text{ETF price}-\text{iNAV}}{\text{iNAV}}\end{gathered}"><!--k--><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:4.3927em;vertical-align:-1.9463em;"></span><span class="mord"><span class="mtable"><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.4463em;"><span style="top:-4.4463em;"><span class="pstrut" style="height:3.3603em;"></span><span class="mord"><span class="mord text"><span class="mord">End of day</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">NAV</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">ETF price</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord text"><span class="mord">NAV</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span><span style="top:-2.1em;"><span class="pstrut" style="height:3.3603em;"></span><span class="mord"><span class="mord text"><span class="mord">Intraday</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">iNAV</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">ETF price</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord text"><span class="mord">iNAV</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.9463em;"><span></span></span></span></span></span></span></span></span></span></span></span><!--/k--></span></div>
+        <p class="f-use"><b>iNAV</b> = indicated intraday NAV from the creation basket.</p>
+      </div>
+      <ul class="pts">
+        <li><b>Timing differences</b>: foreign underlyings closed hours earlier; bonds priced at <b>bid</b> by pricing services → apparent premium. In stress, stale bond NAVs → apparent <b>discount</b>. The ETF price is then <b>price discovery</b>, not mispricing.</li>
+        <li><b>Stale pricing</b>: infrequently traded ETF; last trade compared with a later NAV → large apparent premium/discount.</li>
+      </ul>
+      <div class="f-card">
+        <div class="f-head"><span class="f-tag">F3</span><h3>Holding-period cost</h3></div>
+        <div class="f-math"><span class="m d" data-tex="\begin{gathered}\text{Round trip}=2\times\text{comm.}+2\times\tfrac12\text{spread}\\[2pt]\text{Cost}=\text{Round trip}+\text{fee}\times\tfrac{\text{months}}{12}\end{gathered}"><!--k--><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:2.9452em;vertical-align:-1.2226em;"></span><span class="mord"><span class="mtable"><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.7226em;"><span style="top:-3.8775em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">Round trip</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord text"><span class="mord">comm.</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mord text"><span class="mord">spread</span></span></span></span><span style="top:-2.1374em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">Cost</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord text"><span class="mord">Round trip</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord text"><span class="mord">fee</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8801em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">12</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">months</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.2226em;"><span></span></span></span></span></span></span></span></span></span></span></span><!--/k--></span></div>
+        <p class="f-use">Round-trip cost = full commissions both ways + <b>one full spread</b>. Trading costs are paid once; fees accrue with time → short-term traders care about spreads, long-term holders about <b>expense ratio</b>.</p>
+      </div>
+      <ul class="pts">
+        <li>Other cost items: tracking error (±), premium (+) / discount (−) at trade, portfolio turnover inside the fund, taxes, <b>securities lending income (−)</b>.</li>
+      </ul>
+    </section>
+
+    <!-- 5 ─────────────────────────────────────────── -->
+    <section class="sec" id="risks" data-chip="Risks">
+      <h2><span class="n">05</span>ETF risks</h2>
+      <ul class="pts">
+        <li><b>ETNs</b>: <b>unsecured, unsubordinated bank debt</b> promising the index return; no underlying holdings → <b>highest counterparty risk</b> (theoretically 100%). Monitor with the issuer's <b>CDS</b>. Deposit-based currency ETFs carry bank default risk too.</li>
+        <li><b>Settlement risk</b>: swap-based (synthetic), leveraged and some active ETFs. Mark-to-market gains exposed between settlements (daily/weekly); collateral in T-bills.</li>
+        <li><b>Securities lending</b>: over-collateralised (<b>102%</b> domestic, <b>105%</b> international); low risk; income usually credited to holders.</li>
+        <li><b>Fund closure</b>: <b>regulation</b>, <b>competition</b> (low AUM and volume are warning signs), <b>corporate actions</b> (issuer M&amp;A). Liquidation can trigger <b>capital gains</b>.</li>
+        <li><b>Soft closures</b>: <b>creation halts</b> (mostly ETNs; arbitrage breaks → large <b>premium</b>) and <b>index/strategy changes</b>.</li>
+        <li><b>Investor-related (expectation) risk</b>: not understanding the exposure, e.g. leveraged/inverse funds.</li>
+      </ul>
+      <div class="f-card">
+        <div class="f-head"><span class="f-tag">F4</span><h3>Leveraged / inverse daily reset</h3></div>
+        <div class="f-math"><span class="m d" data-tex="\begin{gathered}\text{NAV}_{t}=\text{NAV}_{t-1}\,(1+k\,r_{\text{index},t})\\[2pt]\text{Required exposure}=k\times\text{NAV}_t\end{gathered}"><!--k--><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:2.9em;vertical-align:-1.2em;"></span><span class="mord"><span class="mtable"><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.7em;"><span style="top:-3.86em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord text"><span class="mord">NAV</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord"><span class="mord text"><span class="mord">NAV</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.0315em;">k</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0278em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">index</span></span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span><span style="top:-2.16em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">Required exposure</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal" style="margin-right:0.0315em;">k</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord text"><span class="mord">NAV</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.2em;"><span></span></span></span></span></span></span></span></span></span></span></span><!--/k--></span></div>
+        <p class="f-use">Daily objective only. Exposure is reset each day (a 3× fund adds exposure after gains). Over longer periods compounding means the return ≠ k × index return (e.g. index +10% then −10% = −1%; −2× fund: −20% then +20% = <b>−4%</b>, not +2%).</p>
+      </div>
+    </section>
+
+    <!-- 6 ─────────────────────────────────────────── -->
+    <section class="sec" id="uses" data-chip="Uses">
+      <h2><span class="n">06</span>ETFs in portfolio management</h2>
+      <h3 class="sub">Efficient portfolio management</h3>
+      <ul class="pts">
+        <li><b>Liquidity management</b>: <b>cash equitisation</b> (avoid cash drag); park small flows; hold for expected outflows.</li>
+        <li><b>Rebalancing</b>: one liquid ETF trade; can <b>short</b> an ETF to cut exposure fast, then cover as underlyings are sold.</li>
+        <li><b>Completion</b>: fill exposure gaps left by external managers without changing them.</li>
+        <li><b>Transition management</b>: hold the benchmark ETF while firing/hiring managers; "fund" new managers with ETFs.</li>
+        <li>Very large owners may prefer <b>SMAs</b>: lower negotiated fees, customisation, and no public disclosure of large holdings.</li>
+      </ul>
+      <h3 class="sub">Asset-class exposure</h3>
+      <ul class="pts">
+        <li><b>Core</b> (strategic) exposure, incl. fixed income: bond ETFs are cheaper, more continuously priced and more liquid than trading bonds.</li>
+        <li><b>Tactical</b> tilts: country, sector, duration, credit, currency, commodities; short selling. <b>Thematic</b> ETFs are narrow and volatile, so evaluate them like stocks.</li>
+        <li>For tactical trading, prefer the ETF with the <b>highest trading volume</b> in its category.</li>
+      </ul>
+      <h3 class="sub">Active &amp; factor investing</h3>
+      <ul class="pts">
+        <li><b>Factor (smart beta)</b>: rules-based screens/weights (value, quality, momentum, low vol, dividend). Usually <b>long-term buy-and-hold</b>, not tactical. Multi-factor → lower volatility, less timing upside.</li>
+        <li><b>Risk management</b>: low-vol/beta ETFs, currency-hedged, duration-hedged credit, <b>inverse</b> ETFs for short-term macro hedges (less turnover in core holdings).</li>
+        <li><b>Alternatively weighted</b> (equal, fundamental, dividend yield); <b>discretionary active</b> (mostly fixed income); <b>liquid alts</b>; <b>dynamic multi-asset</b>.</li>
+        <li>Unsuitable for ETFs: strategies needing secrecy (illiquid, concentrated, black box), and underlyings too illiquid for daily creation/redemption.</li>
+      </ul>
+    </section>
+
+    <!-- 7 ─────────────────────────────────────────── -->
+    <section class="sec" id="traps" data-chip="Exam traps">
+      <h2><span class="n">07</span>Exam traps</h2>
+      <div class="callout trap"><span class="ic">⚠️</span><div>
+        <ul class="pts">
+          <li><b>Premium</b> → AP <b>creates</b> (buys basket, sells ETF). <b>Discount</b> → AP <b>redeems</b>. Don't flip them.</li>
+          <li>Only APs, in the <b>primary market</b>, create/redeem. Ordinary investor trades don't change shares outstanding.</li>
+          <li>Who pays transaction costs? The <b>AP</b>, passed on via the <b>bid–ask spread</b> to trading investors, not to all holders.</li>
+          <li><b>Tracking error</b> = SD of daily differences (magnitude of deviation). <b>Rolling tracking difference</b> is better for judging the investor outcome.</li>
+          <li>Biggest tracking-error sources: <b>sampling/optimisation</b> and ADR holdings. <b>Index changes</b> are a <b>minor</b> source.</li>
+          <li>Holding-period cost: <span class="m" data-tex="(m/12)\times"><!--k--><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">m</span><span class="mord">/12</span><span class="mclose">)</span><span class="mord">×</span></span></span></span><!--/k--></span>fee + round-trip commissions + <b>one full spread</b>. Don't annualise trading costs.</li>
+          <li><b>ETN</b> = unsecured debt → greatest counterparty risk. Creation halts → ETN trades at a <b>premium</b>.</li>
+          <li>Leveraged/inverse ETFs hit their multiple <b>daily only</b>.</li>
+          <li>ETFs distribute <b>fewer capital gains</b> (in-kind redemptions, low turnover). Return of capital <b>lowers cost basis</b> and isn't taxed now.</li>
+          <li>Factor ETFs = <b>strategic buy-and-hold</b>; most-traded ETFs for <b>tactical</b> use.</li>
+        </ul>
+      </div></div>
+    </section>
+
+    <nav class="pager"></nav>
+    <a class="home-cta" href="../index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Back to all notes</a>
+</main>
+
+
+  <footer class="foot wrap">Personal study notes · not affiliated with CFA Institute </footer>
+
+  <script src="../assets/js/catalog.js"></script>
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>
