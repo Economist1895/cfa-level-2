@@ -210,6 +210,7 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 14px; }
 .tbl tr:last-child td { border-bottom: 0; }
 .tbl th { font-size: 12.5px; letter-spacing: .01em; color: var(--ink-3); font-weight: 650; background: var(--bg-sunk); }
 .tbl td:first-child { font-weight: 600; }
+.tbl.even td:first-child { font-weight: inherit; }
 .tbl .up { color: var(--good); font-weight: 650; }
 .tbl .down { color: var(--bad); font-weight: 650; }
 

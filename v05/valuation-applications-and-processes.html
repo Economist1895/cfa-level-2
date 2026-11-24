@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Equity Valuation: Applications and Processes · L2 Quick Notes</title>
+  <meta name="theme-color" content="#f6f5f1" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f1115" media="(prefers-color-scheme: dark)">
+  <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+  <link rel="preload" href="../assets/vendor/katex/fonts/KaTeX_Main-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/vendor/katex/fonts/KaTeX_Math-Italic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-root="../" data-vol="5" data-module="CFA0091">
+  <header class="topbar">
+    <div class="wrap">
+      <a class="back-btn" href="../index.html" aria-label="All notes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>All notes</a>
+      <span class="title">Valuation: Applications &amp; Processes</span>
+      <button class="icon-btn theme-toggle" type="button"></button>
+    </div>
+    <div class="progress"></div>
+  </header>
+
+  <main class="wrap">
+    <div class="m-head">
+      <span class="eyebrow" data-fill="eyebrow">Equity Valuation</span>
+      <h1>Equity Valuation: Applications and Processes</h1>
+      <div class="meta"></div>
+      <nav class="chips" aria-label="Sections"></nav>
+    </div>
+
+    <div class="tldr">
+      <h2>In 30 seconds</h2>
+      <ul class="pts">
+        <li>Active investing assumes <b>price can differ from intrinsic value</b>. Your estimate − price = true mispricing + your estimation error.</li>
+        <li>Pick the <b>value definition</b> that fits: going concern vs liquidation, fair market value vs investment value (one buyer's synergies).</li>
+        <li><b>5 steps:</b> understand the business → forecast → select model → convert forecasts to value → apply the conclusion.</li>
+        <li><b>Absolute</b> models (DCF, asset-based) give intrinsic value. <b>Relative</b> models (multiples) only say cheap or dear <i>versus a benchmark</i>.</li>
+        <li>Model choice: fit the <b>company's characteristics</b>, the <b>data available</b> and the <b>purpose / perspective</b>.</li>
+      </ul>
+    </div>
+
+    <!-- 1 ─────────────────────────────────────────── -->
+    <section class="sec" id="value" data-chip="Value concepts">
+      <h2><span class="n">01</span>What is value?</h2>
+
+      <div class="f-card">
+        <div class="f-head"><span class="f-tag">F1</span><h3>Sources of perceived mispricing</h3></div>
+        <div class="f-math"><span class="m d" data-tex="V_E - P = (V - P) + (V_E - V)"><!--k--><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.2222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0576em;">E</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.1389em;">P</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.2222em;">V</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.1389em;">P</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.2222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0576em;">E</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.2222em;">V</span><span class="mclose">)</span></span></span></span></span><!--/k--></span></div>
+        <dl class="f-vars">
+          <dt><span class="m" data-tex="V - P"><!--k--><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.2222em;">V</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.1389em;">P</span></span></span></span><!--/k--></span></dt><dd><b>true mispricing</b>: intrinsic value − market price. This is the source of <b>alpha</b>.</dd>
+          <dt><span class="m" data-tex="V_E - V"><!--k--><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.2222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0576em;">E</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.2222em;">V</span></span></span></span><!--/k--></span></dt><dd><b>estimation error</b>: your estimate − true (unobservable) value</dd>
+        </dl>
+        <p class="f-use">Winning requires expectations that <b>differ from consensus</b> and are, on average, <b>correct</b>.</p>
+      </div>
+
+      <ul class="pts">
+        <li><b>Intrinsic value:</b> value given a hypothetically complete understanding of the asset. Relevant concept for public equities.</li>
+        <li><b>Rational efficient markets</b> (Grossman–Stiglitz): investors only pay for information if they expect higher gross returns, so prices can't be perfectly efficient.</li>
+        <li><b>Catalyst:</b> an event that makes the market re-evaluate the stock. Needed because price may not converge to value within your horizon.</li>
+      </ul>
+
+      <div class="tbl-wrap"><table class="tbl">
+        <tr><th>Concept</th><th>Meaning</th></tr>
+        <tr><td><b>Going-concern</b></td><td>Firm keeps operating for the foreseeable future. Default for healthy firms.</td></tr>
+        <tr><td><b>Liquidation</b></td><td>Firm dissolved, assets sold individually. Relevant for <b>distressed</b> firms. Orderly liquidation &gt; forced sale.</td></tr>
+        <tr><td><b>Fair market value</b></td><td>Willing, informed buyer and seller, neither compelled. Used for tax and buy–sell agreements.</td></tr>
+        <tr><td><b>Investment value</b></td><td>Value to a <b>specific buyer</b>, including its synergies and requirements.</td></tr>
+      </table></div>
+      <p style="font-size:14.5px">Fair value (financial reporting) is related to, but not identical to, fair market value: arm's-length exchange between knowledgeable, willing parties.</p>
+    </section>
+
+    <!-- 2 ─────────────────────────────────────────── -->
+    <section class="sec" id="uses" data-chip="Uses &amp; process">
+      <h2><span class="n">02</span>Applications &amp; the valuation process</h2>
+
+      <h3 class="sub">What valuation is used for</h3>
+      <ul class="pts">
+        <li><b>Stock selection</b> (primary use): fairly priced, over- or underpriced vs value and vs comparables?</li>
+        <li><b>Inferring market expectations:</b> fix every input except one fundamental, solve for the value that makes model value = price, then compare with your own view. Implied growth &gt; your forecast → <b>overvalued</b>.</li>
+        <li><b>Evaluating corporate events</b> (M&amp;A, divestitures, spin-offs, going private) · <b>fairness opinions</b> · business strategies · communicating with shareholders · <b>appraising private businesses</b> · share-based payment.</li>
+      </ul>
+
+      <h3 class="sub">Five-step process</h3>
+      <ul class="pts">
+        <li><b>1. Understand the business:</b> industry, competitive position, strategy, financial reports.</li>
+        <li><b>2. Forecast performance:</b> sales, earnings, dividends, financial position.</li>
+        <li><b>3. Select the model.</b></li>
+        <li><b>4. Convert forecasts to value:</b> sensitivity analysis + situational adjustments.</li>
+        <li><b>5. Apply the conclusion:</b> recommendation, transaction opinion, strategic decision.</li>
+      </ul>
+    </section>
+
+    <!-- 3 ─────────────────────────────────────────── -->
+    <section class="sec" id="business" data-chip="Business &amp; earnings">
+      <h2><span class="n">03</span>Understanding the business</h2>
+
+      <h3 class="sub">Three industry &amp; competitive questions</h3>
+      <ul class="pts">
+        <li>How <b>attractive</b> is the industry (sustained profitability)?</li>
+        <li>What is the firm's <b>competitive position and strategy</b>? (cost leadership · differentiation · focus)</li>
+        <li>How well has it <b>executed</b>, and what are its prospects?</li>
+      </ul>
+
+      <div class="tbl-wrap"><table class="tbl">
+        <tr><th>Porter force</th><th>Favours profitability when…</th></tr>
+        <tr><td>Rivalry</td><td>Few competitors, strong brands</td></tr>
+        <tr><td>New entrants</td><td>High entry costs / barriers</td></tr>
+        <tr><td>Substitutes</td><td>Few substitutes, high switching cost</td></tr>
+        <tr><td>Supplier power</td><td><b>Many</b> suppliers</td></tr>
+        <tr><td>Buyer power</td><td><b>Many</b> customers</td></tr>
+      </table></div>
+
+      <div class="callout key"><span class="ic">💡</span><div>
+        <b>Regression to the mean:</b> don't extrapolate past results. High profits attract competitors; weak firms get restructured. IP and franchise agreements expire. Long-run growth converges toward the economy's growth.
+      </div></div>
+
+      <h3 class="sub">Quality of earnings</h3>
+      <ul class="pts">
+        <li>Non-recurring gains (litigation wins, one-off tax credits, gains on non-operating asset sales) → reported earnings <b>biased upward</b> vs sustainable earnings.</li>
+        <li>Start by comparing <b>net income with operating cash flow</b>. The <b>cash component is more persistent</b> than accruals. High accruals → lower future ROA → lower earnings quality.</li>
+        <li>Red flags: early revenue (bill-and-hold, before installation), non-operating gains classed as operating, reserve manipulation, capitalising costs, long useful lives, high pension return or discount-rate assumptions, off-balance-sheet financing, bank overdraft increases shown as CFO.</li>
+        <li>Qualitative factors matter too: ownership structure, IP, licences, contingent liabilities, management integrity, accounting transparency.</li>
+      </ul>
+    </section>
+
+    <!-- 4 ─────────────────────────────────────────── -->
+    <section class="sec" id="models" data-chip="Model choice">
+      <h2><span class="n">04</span>Forecasting &amp; selecting the model</h2>
+
+      <div class="tbl-wrap"><table class="tbl even">
+        <tr><th>Top-down</th><th>Bottom-up</th></tr>
+        <tr><td>Macro → industry → company. E.g. sales = market share × industry sales; sales grow with GDP.</td><td>Micro → aggregate. E.g. new stores' sales from existing stores' sales per m².</td></tr>
+      </table></div>
+
+      <div class="tbl-wrap"><table class="tbl even">
+        <tr><th>Absolute</th><th>Relative</th></tr>
+        <tr><td>Point estimate of <b>intrinsic value</b> to compare with price</td><td>Value <b>vs another asset</b> (method of comparables)</td></tr>
+        <tr><td><b>PV / DCF models</b>: DDM, FCFF, FCFE, residual income. Also <b>asset-based</b> (natural resources, reserves)</td><td>Price multiples (P/E, P/B…) and EV multiples vs a peer or group median</td></tr>
+        <tr><td>Harder than bonds: no contractual CF, no maturity, subjective discount rate → give a <b>range</b>, run sensitivities</td><td>Simple, market-based. Gives intrinsic value <b>only if</b> the benchmark is fairly valued</td></tr>
+      </table></div>
+
+      <ul class="pts">
+        <li>"Low P/E vs peers" = <b>relatively</b> undervalued. If the whole peer group is overvalued, the stock may be too.</li>
+        <li>Two analysts can both be right: overvalued vs <b>industry</b> peers, undervalued vs <b>the broad market</b>.</li>
+        <li><b>Pairs trading</b> (relative-value investing): buy the undervalued stock, <b>short the overvalued one</b> in the same industry, regardless of market direction.</li>
+      </ul>
+
+      <h3 class="sub">Three model-selection criteria</h3>
+      <ul class="pts">
+        <li><b>Consistent with the company's characteristics:</b> bank (marketable assets) → asset-based relative value works; service firm with intangibles → it doesn't.</li>
+        <li><b>Data availability and quality:</b> no dividend history → not DDM; negative or volatile EPS → not P/E.</li>
+        <li><b>Purpose and perspective:</b> a <b>controlling buyer</b> can redirect cash flows → use <b>FCF</b>, not dividends. Watch the report writer's biases.</li>
+      </ul>
+      <p style="font-size:14.5px">Using more than one model adds insight.</p>
+    </section>
+
+    <!-- 5 ─────────────────────────────────────────── -->
+    <section class="sec" id="sotp" data-chip="SOTP &amp; adjustments">
+      <h2><span class="n">05</span>Sum-of-the-parts &amp; situational adjustments</h2>
+
+      <ul class="pts">
+        <li><b>Sum-of-the-parts</b> (breakup value, private market value): value each segment as an independent going concern, then adjust for corporate items (overhead, taxes, unallocated assets and liabilities).</li>
+        <li>Best when segments are in <b>different industries with different growth / valuation characteristics</b>. Also used to size value unlocked by a spin-off, split-off, tracking stock or carve-out.</li>
+        <li><b>Conglomerate discount:</b> market discounts firms in multiple unrelated businesses. Explanations: <b>inefficient internal capital markets</b>; <b>endogenous factors</b> (weak firms diversify by acquisition); <b>research measurement errors</b> (the discount may not exist).</li>
+        <li>Breakup value &gt; going-concern value → may prompt a divestiture or spin-off.</li>
+      </ul>
+
+      <h3 class="sub">Converting forecasts to value</h3>
+      <ul class="pts">
+        <li><b>Sensitivity analysis:</b> how value changes with growth, margins, discount rate, competitive response.</li>
+        <li><b>Control premium:</b> controlling stake (usually &gt; 50%) can redeploy assets and change capital structure → <b>value ↑</b>.</li>
+        <li><b>Lack of marketability discount:</b> <b>no public market</b> (private shares).</li>
+        <li><b>Illiquidity discount:</b> public shares with thin trading. <b>Blockage factor:</b> selling a block that is large vs trading volume (but not a controlling stake).</li>
+      </ul>
+    </section>
+
+    <!-- 6 ─────────────────────────────────────────── -->
+    <section class="sec" id="reports" data-chip="Analyst &amp; reports">
+      <h2><span class="n">06</span>Analyst role &amp; research reports</h2>
+      <ul class="pts">
+        <li><b>Sell-side</b> (brokerage): widely distributed reports. <b>Buy-side</b> (investment managers, trusts): report to a PM or committee. Also corporate analysts and independent vendors.</li>
+        <li>Analysts help <b>clients</b> (better decisions), <b>capital markets</b> (prices reflect value) and <b>suppliers of capital</b> (monitoring management).</li>
+        <li><b>Due diligence</b> goes beyond public filings and conference calls: talk to management, employees, competitors; understand the industry and <b>general economic conditions</b>. Don't reveal insights by asking probing questions on public calls.</li>
+      </ul>
+
+      <h3 class="sub">An effective report…</h3>
+      <ul class="pts">
+        <li>is <b>timely</b>, clear and incisive, objective and well researched, with <b>key assumptions identified</b></li>
+        <li><b>separates fact from opinion</b>; analysis, forecasts, valuation and recommendation are <b>internally consistent</b></li>
+        <li>gives enough information for the reader to <b>critique the valuation</b>; states <b>risk factors</b>; discloses <b>conflicts of interest</b></li>
+        <li>a <b>target price</b> needs its basis, time frame and the uncertainty of reaching it</li>
+      </ul>
+      <p style="font-size:14.5px"><b>Format:</b> summary &amp; investment conclusion → business summary → risks → valuation → historical / pro forma tables. Key Standards: I(B) independence, I(C) misrepresentation, V(A) diligence &amp; reasonable basis, V(B) communication (fact vs opinion), V(C) record retention.</p>
+    </section>
+
+    <!-- 7 ─────────────────────────────────────────── -->
+    <section class="sec" id="traps" data-chip="Exam traps">
+      <h2><span class="n">07</span>Exam traps</h2>
+      <div class="callout trap"><span class="ic">⚠️</span><div>
+        <ul class="pts" style="margin:0">
+          <li>The mispricing active managers try to capture is <b>V − P</b> (intrinsic − price), not <span style="white-space:nowrap">V<sub>E</sub> − P</span> or <span style="white-space:nowrap">V<sub>E</sub> − V</span>.</li>
+          <li>Distressed-securities fund → <b>liquidation value</b>. Healthy firm generating FCF → <b>going-concern value</b>.</li>
+          <li>Value to a buyer with synergies is <b>investment value</b>, not fair market value.</li>
+          <li><b>Many suppliers</b> and many buyers are <i>good</i> for industry profitability. Low entry or switching costs are bad.</li>
+          <li>Firm not profitable, no dividend planned, likely takeover target → <b>FCF model</b> (not DDM, not P/E).</li>
+          <li>Mostly intangible assets + only occasional special dividends → <b>FCFF</b>, not asset-based or DDM.</li>
+          <li>Unrelated segments with different growth → <b>sum-of-the-parts</b>. Buying 70% of a listed firm → <b>control premium</b> (not marketability discount; the shares are listed).</li>
+          <li>Top-down means starting from <b>macro / economic conditions</b>. Extrapolating store-level sales per m² is <b>bottom-up</b>.</li>
+          <li>Discounting forecast FCF plus a terminal value is an <b>absolute</b> (PV) model.</li>
+        </ul>
+      </div></div>
+    </section>
+
+    <nav class="pager"></nav>
+    <a class="home-cta" href="../index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Back to all notes</a>
+  </main>
+
+  <footer class="foot wrap">Personal study notes · not affiliated with CFA Institute </footer>
+
+  <script src="../assets/js/catalog.js"></script>
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>
