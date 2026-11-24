@@ -100,8 +100,10 @@ window.CATALOG = [
       tags: "CDS credit default swap credit derivative protection buyer protection seller short credit long credit reference entity reference obligation cheapest-to-deliver CTD single-name CDS index CDS tranche CDS CDX iTraxx credit correlation ISDA master agreement Determinations Committee credit event bankruptcy failure to pay restructuring succession event cash settlement physical settlement auction recovery rate LGD standard coupon upfront premium premium leg protection leg hazard rate probability of survival credit curve CDS spread duration monetize unwind naked CDS long/short trade curve trade steepening flattening basis trade negative basis positive basis MRR LBO" },
   ]},
   { n: 7, title: "Derivatives", modules: [
-    { code: "CFA1746", title: "Pricing and Valuation of Forward Commitments" },
-    { code: "CFA1740", title: "Valuation of Contingent Claims" },
+    { code: "CFA1746", title: "Pricing and Valuation of Forward Commitments", status: "ready", mins: 9, href: "v07/forward-commitments.html",
+      tags: "forward futures swap pricing valuation no-arbitrage law of one price carry arbitrage reverse carry cost of carry carry costs carry benefits convergence mark-to-market margin equity forward dividend yield FRA forward rate agreement MRR SOFR advanced set advanced settled settled in arrears bond futures conversion factor CF cheapest-to-deliver CTD accrued interest clean price dirty price quoted futures price interest rate swap swap rate PV factors receive-fixed pay-fixed synthetic floating rate bond currency swap notional exchange equity swap" },
+    { code: "CFA1740", title: "Valuation of Contingent Claims", status: "ready", mins: 9, href: "v07/contingent-claims.html",
+      tags: "options binomial model hedge ratio risk-neutral probability no-arbitrage expectations approach replicating portfolio put-call parity two-period American option early exercise dividends escrow interest rate tree BSM Black-Scholes-Merton geometric Brownian motion lognormal N(d1) N(d2) carry benefit dividend yield currency options Black model futures options interest rate options standard market model cap caplet floor floorlet swaption payer receiver callable bond Greeks delta gamma theta vega rho delta hedging gamma risk implied volatility volatility smile volatility surface VIX" },
   ]},
   { n: 8, title: "Alternative Investments", modules: [
     { code: "CFA1745", title: "Introduction to Commodities and Commodity Derivatives" },
