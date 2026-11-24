@@ -53,7 +53,8 @@
     const mins = Math.max(1, Math.round(words / 230 + nF / 5));
     const meta = $(".meta");
     if (meta) meta.insertAdjacentHTML("afterbegin",
-      `<span class="pill">⏱ ~${mins} min read</span><span class="pill">ƒ ${nF} formulas</span>`);
+      `<span class="pill">⏱ ~${mins} min read</span>` +
+      (vol && vol.n === 10 ? (nF ? `<span class="pill">§ ${nF} rule cards</span>` : "") : `<span class="pill">ƒ ${nF} formulas</span>`));
 
     // jump chips from sections
     const chips = $(".chips");
