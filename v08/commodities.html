@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Introduction to Commodities and Commodity Derivatives · L2 Quick Notes</title>
+  <meta name="theme-color" content="#f6f5f1" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f1115" media="(prefers-color-scheme: dark)">
+  <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+  <link rel="preload" href="../assets/vendor/katex/fonts/KaTeX_Main-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/vendor/katex/fonts/KaTeX_Math-Italic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-root="../" data-vol="8" data-module="CFA1745">
+  <header class="topbar">
+    <div class="wrap">
+      <a class="back-btn" href="../index.html" aria-label="All notes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>All notes</a>
+      <span class="title">Introduction to Commodities and Commodity Derivatives</span>
+      <button class="icon-btn theme-toggle" type="button"></button>
+    </div>
+    <div class="progress"></div>
+  </header>
+
+    <main class="wrap">
+    <div class="m-head">
+      <span class="eyebrow" data-fill="eyebrow">Alternative Investments</span>
+      <h1>Introduction to Commodities and Commodity Derivatives</h1>
+      <div class="meta"></div>
+      <nav class="chips" aria-label="Sections"></nav>
+    </div>
+
+    <div class="tldr">
+      <h2>In 30 seconds</h2>
+      <ul class="pts">
+        <li>Commodities are <b>physical</b> assets with <b>no cash flows</b> (they cost money to store). Value = discounted forecast of future prices driven by <b>supply &amp; demand</b>, not DCF.</li>
+        <li><b>Backwardation</b>: spot &gt; futures (near &gt; far). <b>Contango</b>: spot &lt; futures. Curves can flip between the two.</li>
+        <li>Three theories of the curve: <b>insurance</b> (backwardation), <b>hedging pressure</b> (either, depending on who hedges more), <b>storage</b> (F = S + storage − convenience yield).</li>
+        <li>Fully collateralised futures return = <b>price + roll + collateral</b>. Roll return is <b>positive in backwardation</b>, negative in contango.</li>
+        <li>Swaps (excess return, total return, basis, variance/volatility) and indexes differ by <b>weighting, roll and rebalancing</b> rules.</li>
+      </ul>
+    </div>
+
+    <!-- 1 ─────────────────────────────────────────── -->
+    <section class="sec" id="sectors" data-chip="Sectors">
+      <h2><span class="n">01</span>Sectors &amp; life cycles</h2>
+      <ul class="pts">
+        <li>Fundamental analysis = <b>supply &amp; demand</b>: <b>stocks</b> (capacity: land, fields, mines, herds) and <b>flows</b> (use of that capacity), plus <b>timing</b> (seasonality, shocks) and <b>money flow</b> (sentiment, rates, subsidies).</li>
+        <li>Data are messy: non-normal returns, shifting correlations, non-stationary coefficients.</li>
+      </ul>
+      <div class="tbl-wrap"><table class="tbl">
+        <tr><th>Sector</th><th>Main demand / supply drivers</th></tr>
+        <tr><td>Energy</td><td><b>Weather</b> (heating/cooling, hurricanes), GDP, geopolitics, pipelines</td></tr>
+        <tr><td>Grains</td><td>Weather, disease, biofuel substitution, population</td></tr>
+        <tr><td>Industrial metals</td><td><b>Industrial activity</b>, construction, GDP growth, policy</td></tr>
+        <tr><td>Livestock</td><td>Herd size, feed cost, consumer income, disease, weather</td></tr>
+        <tr><td>Precious metals</td><td><b>Monetary</b>: central banks, inflation, geopolitics. <b>Least weather-sensitive</b></td></tr>
+        <tr><td>Softs</td><td>Weather, disease, <b>global income</b></td></tr>
+      </table></div>
+      <h3 class="sub">Life cycles</h3>
+      <ul class="pts">
+        <li><b>Short</b> life cycle → supply adjusts fast. <b>Long</b> life cycle → slow reaction to shocks.</li>
+        <li><b>Energy</b>: natural gas is usable almost <b>immediately</b> after extraction. Crude must be <b>refined</b> ("cracking"). Both are stored. Refineries are costly; pipelines are often the casualty in conflicts.</li>
+        <li><b>Metals</b>: most <b>flexible</b> (store for years, no spoilage). Big <b>economies of scale</b> in smelting → producers find it <b>hard to cut output</b> when supply &gt; demand. Variability comes mostly from <b>demand</b>.</li>
+        <li><b>Livestock</b>: poultry weeks, hogs months, cattle years (feeder → live cattle). Historically the <b>least export-oriented</b> because of <b>spoilage</b>; freezing tech is changing that.</li>
+        <li><b>Grains</b>: plant → grow → pod/ear → harvest. Seasons are <b>opposite</b> in the two hemispheres. Stored year-round in silos.</li>
+        <li><b>Softs</b>: coffee harvested somewhere all year near the Equator. Arabica (NY) and robusta (London) contracts are on green beans and are <b>not interchangeable</b>.</li>
+      </ul>
+    </section>
+
+    <!-- 2 ─────────────────────────────────────────── -->
+    <section class="sec" id="market" data-chip="Valuation &amp; players">
+      <h2><span class="n">02</span>Valuation &amp; market participants</h2>
+      <ul class="pts">
+        <li>Stocks and bonds are <b>claims on cash flows</b>. Commodities generate <b>none</b>; owning them <b>costs</b> storage and transport. Some (electricity, weather) aren't even physical.</li>
+        <li>Most investment is via <b>derivatives</b> (futures) with finite lives.</li>
+        <li>Not everyone can make or take delivery → arbitrage gives a <b>range</b> (bounds) linking spot and futures, not an exact equality.</li>
+      </ul>
+      <div class="tbl-wrap"><table class="tbl">
+        <tr><th>Participant</th><th>Role</th></tr>
+        <tr><td>Hedgers</td><td>Producers (short) and consumers (long) offsetting business risk. Informed, but not perfect forecasters</td></tr>
+        <tr><td>Informed investors</td><td>Speculators with an information edge (incl. index investors)</td></tr>
+        <tr><td>Liquidity providers</td><td>Bridge the timing gap between producers and consumers → effectively <b>sell insurance</b> to hedgers</td></tr>
+        <tr><td>Arbitrageurs</td><td>Own <b>storage</b> (warehouses, silos, feedlots) and trade physical vs futures mispricing</td></tr>
+        <tr><td>Exchanges, analysts, regulators</td><td>Rules &amp; clearing; non-trading users of price data; US = <b>CFTC</b> (delegates to the <b>NFA</b>), most others unified</td></tr>
+      </table></div>
+      <div class="callout key"><span class="ic">💡</span><div><b>Hedging ≠ long, speculating ≠ short.</b> Food maker long corn = hedge; miner short gold = hedge; oil major betting on its view = speculation; CTA short = speculation.</div></div>
+    </section>
+
+    <!-- 3 ─────────────────────────────────────────── -->
+    <section class="sec" id="curve" data-chip="Curve shape">
+      <h2><span class="n">03</span>Spot, futures &amp; curve shape</h2>
+      <div class="f-card">
+        <div class="f-head"><span class="f-tag">F1</span><h3>Basis &amp; calendar spread</h3></div>
+        <div class="f-math"><span class="m d" data-tex="\begin{gathered} \text{Basis} = \text{Spot} - \text{Futures} \\ \text{Calendar spread} = F_{\text{near}} - F_{\text{far}} \end{gathered}"><!--k--><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:2.7em;vertical-align:-1.1em;"></span><span class="mord"><span class="mtable"><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6em;"><span style="top:-3.76em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">Basis</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord text"><span class="mord">Spot</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord text"><span class="mord">Futures</span></span></span></span><span style="top:-2.26em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">Calendar spread</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1389em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">near</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1389em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">far</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.1em;"><span></span></span></span></span></span></span></span></span></span></span></span><!--/k--></span></div>
+        <p class="f-use"><b>Positive</b> → <b>backwardation</b> (spot &gt; near &gt; far). <b>Negative</b> → <b>contango</b>. Spreads trade as their own instrument.</p>
+      </div>
+      <ul class="pts">
+        <li><b>Spot</b> prices are <b>local</b> (location, quality). <b>Futures</b> are standardised and global/regional, with premiums or discounts for delivery grades.</li>
+        <li><b>Physical delivery</b> forces spot–futures <b>convergence</b>. Cash-settled contracts may not fully converge and are worthless after expiry. Cash settlement drew in speculators and arbitrageurs.</li>
+        <li>Shape reflects <b>both</b> structural factors and expected supply/demand, and can <b>flip</b> quickly under stress.</li>
+      </ul>
+    </section>
+
+    <!-- 4 ─────────────────────────────────────────── -->
+    <section class="sec" id="theories" data-chip="Theories">
+      <h2><span class="n">04</span>Theories of futures returns</h2>
+      <div class="tbl-wrap"><table class="tbl">
+        <tr><th>Theory</th><th>Idea → curve</th></tr>
+        <tr><td><b>Insurance</b> (normal backwardation)</td><td>Producers sell forward to lock in revenue and accept a <b>discount</b>. Speculators earn a premium → <b>backwardation</b>. Evidence weak: "normal backwardation is not normal"</td></tr>
+        <tr><td><b>Hedging pressure</b></td><td>Producers hedge more → <b>backwardation</b>. Consumers hedge more → bid up futures → <b>contango</b>. Balanced → <b>flat</b>. Hard to measure the imbalance</td></tr>
+        <tr><td><b>Storage</b></td><td>Inventory level drives the curve. Stored commodity (supply dominates) → <b>contango</b>. Just-in-time use, scarce stock (demand dominates) → <b>backwardation</b></td></tr>
+      </table></div>
+      <div class="f-card">
+        <div class="f-head"><span class="f-tag">F2</span><h3>Theory of storage</h3></div>
+        <div class="f-math"><span class="m d" data-tex="F = S + \text{Storage} - \text{Conv. yield}"><!--k--><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.1389em;">F</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.0576em;">S</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">Storage</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">Conv. yield</span></span></span></span></span></span><!--/k--></span></div>
+        <dl class="f-vars">
+          <dt>Storage</dt><dd>Direct costs: rent, insurance, inspection, spoilage</dd>
+          <dt>Conv. yield</dt><dd>Benefit of holding physical stock as a buffer against disruption</dd>
+        </dl>
+        <p class="f-use">Convenience yield is <b>high when inventories are scarce</b> and low when stock is abundant. Conv. yield &gt; storage → <b>backwardation</b>. Both inputs are largely <b>unobservable</b>.</p>
+      </div>
+      <div class="callout key"><span class="ic">💡</span><div>Only <b>hedging pressure</b> can explain <b>contango driven by consumers</b>. Insurance theory always predicts backwardation.</div></div>
+    </section>
+
+    <!-- 5 ─────────────────────────────────────────── -->
+    <section class="sec" id="returns" data-chip="Returns">
+      <h2><span class="n">05</span>Components of futures returns</h2>
+      <div class="f-card">
+        <div class="f-head"><span class="f-tag">F3</span><h3>Total return (fully collateralised)</h3></div>
+        <div class="f-math"><span class="m d" data-tex="\begin{gathered} TR = \text{Price} + \text{Roll} + \text{Collateral} \\ \text{Price return} = \frac{P_{\text{now}} - P_{\text{prev}}}{P_{\text{prev}}} \end{gathered}"><!--k--><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:3.8324em;vertical-align:-1.6662em;"></span><span class="mord"><span class="mtable"><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.1662em;"><span style="top:-4.6865em;"><span class="pstrut" style="height:3.3603em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1389em;">T</span><span class="mord mathnormal" style="margin-right:0.0077em;">R</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord text"><span class="mord">Price</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord text"><span class="mord">Roll</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord text"><span class="mord">Collateral</span></span></span></span><span style="top:-2.6662em;"><span class="pstrut" style="height:3.3603em;"></span><span class="mord"><span class="mord text"><span class="mord">Price return</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.1389em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">prev</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.1389em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">now</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1389em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">prev</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.9721em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.6662em;"><span></span></span></span></span></span></span></span></span></span></span></span><!--/k--></span></div>
+        <p class="f-use">"Fully collateralised" = cash equal to the futures' notional, so <b>no leverage</b>. An index can add a <b>rebalance return</b>.</p>
+      </div>
+      <div class="f-card">
+        <div class="f-head"><span class="f-tag">F4</span><h3>Roll return</h3></div>
+        <div class="f-math"><span class="m d" data-tex="\text{Roll} = \frac{F_{\text{near}} - F_{\text{far}}}{F_{\text{near}}} \times \%\,\text{rolled}"><!--k--><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord">Roll</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:2.1963em;vertical-align:-0.836em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.1389em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">near</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.1389em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">near</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1389em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">far</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.836em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.8056em;vertical-align:-0.0556em;"></span><span class="mord">%</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord text"><span class="mord">rolled</span></span></span></span></span></span><!--/k--></span></div>
+        <p class="f-use">Backwardation (near &gt; far) → <b>positive</b>. Contango → <b>negative</b>. Flat → zero. Multiply by the share of the position rolled that day (e.g. a 5-day roll = 20%/day).</p>
+      </div>
+      <div class="f-card">
+        <div class="f-head"><span class="f-tag">F5</span><h3>Collateral return</h3></div>
+        <div class="f-math"><span class="m d" data-tex="\text{Collateral} = r_f \times \frac{\text{months held}}{12}"><!--k--><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord">Collateral</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.8694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0278em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.1076em;">f</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:2.0574em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">12</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">months held</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span><!--/k--></span></div>
+        <p class="f-use">Usually T-bill yield. For long-horizon forecasts use a bond matching the horizon.</p>
+      </div>
+      <ul class="pts">
+        <li><b>Rolling to hold exposure constant</b>: contracts = exposure / price. Backwardation (far cheaper) → <b>buy more</b> far contracts. Contango → buy <b>fewer</b>.</li>
+        <li>Roll return is an <b>accounting</b> split, not a stand-alone return you can capture.</li>
+        <li>Long history (broad index): roll return <b>small and negative</b> on average; collateral return was the biggest piece; volatility comes almost entirely from <b>price</b> return.</li>
+        <li>Roll return matters in any <b>single period</b> but is modest over many. Its correlation with price return is ≈ 0.</li>
+        <li><b>By sector</b>: stored commodities (metals, ags, livestock, softs, gold) → negative roll. Only <b>energy</b> (ex-nat gas) has a chance of a positive roll.</li>
+      </ul>
+    </section>
+
+    <!-- 6 ─────────────────────────────────────────── -->
+    <section class="sec" id="swaps" data-chip="Swaps">
+      <h2><span class="n">06</span>Commodity swaps</h2>
+      <ul class="pts">
+        <li>Why swaps: <b>one contract</b> instead of managing many futures, plus <b>customisation</b> (specific grade, blend, dates). Dealer hedges with futures, physical deals or another swap, or keeps the risk.</li>
+      </ul>
+      <div class="tbl-wrap"><table class="tbl">
+        <tr><th>Swap</th><th>Payoff</th></tr>
+        <tr><td><b>Excess return</b></td><td>Pays the change in the futures/index price (or the amount above a fixed level) × notional. Paying above a fixed price for a premium ≈ a strip of <b>calls</b></td></tr>
+        <tr><td><b>Total return</b></td><td>Index change incl. <b>collateral interest</b>. Index up → buyer (long) <b>receives</b>; index down → buyer <b>pays</b>. Settled each reset</td></tr>
+        <tr><td><b>Basis</b></td><td>Difference between two related, imperfectly correlated prices (liquid vs illiquid grade)</td></tr>
+        <tr><td><b>Variance / volatility</b></td><td>Realised vs fixed variance (vol). Realised &gt; strike → <b>buyer</b> receives. Seller profits if realised is lower. A bet on volatility, <b>not direction</b></td></tr>
+      </table></div>
+      <div class="f-card">
+        <div class="f-head"><span class="f-tag">F6</span><h3>Total return swap payment</h3></div>
+        <div class="f-math"><span class="m d" data-tex="\text{Payment}_t = NA \times \frac{I_t - I_{t-1}}{I_{t-1}}"><!--k--><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.9275em;vertical-align:-0.2441em;"></span><span class="mord"><span class="mord text"><span class="mord">Payment</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1864em;"><span style="top:-2.4559em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2441em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.109em;">N</span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:2.2547em;vertical-align:-0.8943em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.0785em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.0785em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0785em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8943em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span><!--/k--></span></div>
+        <p class="f-use">Positive → dealer pays the long. Negative → long pays the dealer.</p>
+      </div>
+    </section>
+
+    <!-- 7 ─────────────────────────────────────────── -->
+    <section class="sec" id="indexes" data-chip="Indexes">
+      <h2><span class="n">07</span>Commodity indexes</h2>
+      <ul class="pts">
+        <li>Uses: benchmark, macro indicator, basis for investment products. Must be <b>investable</b>.</li>
+        <li>Differences: <b>breadth</b>, <b>weighting</b>, <b>roll</b> method, <b>rebalancing</b> frequency, <b>governance</b> (rules-based vs committee-selected).</li>
+      </ul>
+      <div class="tbl-wrap"><table class="tbl">
+        <tr><th>Index</th><th>Weighting</th><th>Roll · Rebalance</th></tr>
+        <tr><td>S&amp;P GSCI (24)</td><td><b>Production</b> → energy-heavy (up to ~80%)</td><td>Nearby liquid · annual</td></tr>
+        <tr><td>BCOM (23)</td><td>Production + <b>liquidity</b>; sector cap 33%, floor 2%; committee</td><td>Front → next · annual</td></tr>
+        <tr><td>DBLCI (14)</td><td>Fixed; <b>no livestock</b></td><td><b>Optimised</b> for roll yield · annual</td></tr>
+        <tr><td>TR/CC CRB (19)</td><td>Fixed, tiered</td><td>Front → next · <b>monthly</b></td></tr>
+        <tr><td>RICI (38)</td><td>Fixed, tiered; exotic/illiquid</td><td>Front → next · <b>monthly</b></td></tr>
+      </table></div>
+      <ul class="pts">
+        <li><b>Frequent rebalancing</b> wins in <b>mean-reverting</b> markets and loses in <b>trending</b> ones (sells winners that keep rising).</li>
+        <li>Production weighting is self-rebalancing in part (weights float with prices).</li>
+        <li>Indexes holding commodities usually in <b>backwardation</b> earn a positive roll → better returns. One in contango lags.</li>
+        <li>Indexes correlate highly with each other (&gt;70%) and ≈ 0 with stocks and bonds. No index dominates.</li>
+      </ul>
+    </section>
+
+    <!-- traps ─────────────────────────────────────── -->
+    <section class="sec" id="traps" data-chip="Exam traps">
+      <h2><span class="n">08</span>Exam traps</h2>
+      <div class="callout trap"><span class="ic">⚠️</span><div>
+        <ul class="pts">
+          <li><b>Calendar spread sign</b>: near − far. A <b>negative</b> spread = <b>contango</b>, not backwardation.</li>
+          <li><b>Roll return denominator</b> is the <b>near</b> price. Contango (far &gt; near) gives a <b>negative</b> roll.</li>
+          <li><b>Collateral return</b> must be pro-rated for the holding period (3 months = annual rate × 0.25). Total return = price + roll + collateral, all for the <b>same period</b>.</li>
+          <li><b>Rolling</b>: sell exposure/near price contracts and buy exposure/far price contracts. Cheaper far contract → buy <b>more</b>.</li>
+          <li><b>Convenience yield</b> is <b>high</b> when inventories are <b>scarce</b>. It is <b>subtracted</b> in the storage formula.</li>
+          <li><b>Insurance theory</b> → always backwardation. Contango where consumers hedge more = <b>hedging pressure</b>.</li>
+          <li><b>Negative roll ≠ worse total return</b>: price and collateral returns can more than offset it.</li>
+          <li><b>Swap direction</b>: total return swap <b>buyer pays</b> when the index falls. To bet on <b>lower</b> volatility, go <b>short</b> a volatility swap. To bet on the index rising, go <b>long</b> an excess return swap. To bet on one grade beating another, use a <b>basis swap</b>.</li>
+          <li><b>Production-weighted</b> index (S&amp;P GSCI) is <b>more</b> sensitive to energy than an equal-weighted index.</li>
+          <li>Indexes on <b>several exchanges</b> do <b>not</b> add much diversification (exchanges are highly correlated).</li>
+        </ul>
+      </div></div>
+    </section>
+
+    <nav class="pager"></nav>
+    <a class="home-cta" href="../index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Back to all notes</a>
+</main>
+
+
+  <footer class="foot wrap">Personal study notes · not affiliated with CFA Institute </footer>
+
+  <script src="../assets/js/catalog.js"></script>
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>
